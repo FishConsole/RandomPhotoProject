@@ -1,0 +1,8 @@
+.启动图 {
+    font-size: 38px;
+    animation-iteration-count: infinite;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

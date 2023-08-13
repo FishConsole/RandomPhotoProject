@@ -1,0 +1,377 @@
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+
+
+
+.header {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    background: none !important;
+    animation-name: start;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    z-index: 999;
+}
+
+
+.header-text {
+    position: relative;
+    top: -4px;
+}
+
+.header-text-img {
+    animation: 旋转风车 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 2s;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 8px;
+}
+
+
+.time {
+    font-weight: bold;
+    font-size: 13px;
+    height: 30px;
+    margin-top: 0px;
+}
+
+.time > span {
+    position: relative;
+    top: 5px;
+    left: 45px;
+}
+
+
+.time-before {
+    font-weight: bold;
+    font-size: 13px;
+    height: 30px;
+    margin-top: 0px;
+    margin-top: 20px;
+}
+
+.time-before > span {
+    position: relative;
+    top: 5px;
+    left: 45px;
+}
+
+
+.img {
+    overflow: hidden;
+    display: flex;
+    width: 140px;
+    height: 250px;
+    border-radius: 21px;
+    margin: 20px;
+    box-shadow: -10px -6px 20px 0px #a0b5ca6e;
+    background: #a9b5d8 !important;
+    animation-name: start;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    object-fit: cover;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.img:hover {
+    box-shadow: none;
+    border-radius: 21px;
+}
+
+.img:active {
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+img {
+    height: 182px;
+    width: 148px;
+    transform: scale(0.9);
+    border-radius: 21px;
+    transition: all 0.35s;
+    object-fit: cover;
+    border-style: none !important;
+    border-radius: 21px !important;
+}
+
+img:hover {
+    transform: scale(1.7);
+    border-radius: 4px;
+
+}
+
+
+p {
+    margin-top: -10px;
+    font-weight: 550;
+    position: relative;
+    top: -30px;
+}
+
+i {
+    position: relative;
+    left: -5px;
+    top: -3px;
+    animation-name: start;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    background: none !important;
+}
+
+.photo-box {
+    width: 100%;
+    height: 10%;
+}
+
+.xianzhi {
+    height: auto;
+    margin: 0 auto;
+
+}
+
+
+body-big {
+    background: none;
+    animation-name: none;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+a {
+    text-decoration: none;
+    background: none;
+}
+
+
+.liubai {
+    width: 100%;
+    height: 66px;
+}
+
+
+.header-img {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    top: 16px;
+    left: -5px;
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tool {
+    position: relative;
+    left: -9vw;
+}
+
+.页面切换 {
+    font-weight: 600;
+}
+
+.页面切换:hover {
+    border-bottom: 2px solid black;
+    color: #4bc2ff;
+}
+
+.页面切换:active {
+    border-bottom: 2px solid black;
+    color: #4bc2ff;
+}
+
+
+.限制 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    flex-direction: row;
+    width: 100vw;
+    margin-left: -16px;
+}
+
+.限制>span:active{
+    transform: scale(1.5);
+}
+
+@media screen and (min-width: 1400px) {
+    .img {
+        width: 172px;
+    }
+
+    span > a > img {
+        width: 184px !important;
+
+    }
+
+    .限制 {
+        width: 100% !important;
+    }
+
+    .mdui-toolbar {
+        width: 83% !important;
+    }
+
+    .mdui-drawer {
+        background: none !important;
+    }
+
+    .xianzhi {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 740px) and (-webkit-device-pixel-ratio: 4) {
+    .img, img {
+        width: 294px;
+    }
+}
+
+
+.抽屉栏_内容 {
+    width: 89%;
+    margin-left: 24px!important;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.抽屉栏_内容 > li {
+    border-radius: 25px;
+    margin-top: 8px;
+}
+
+.抽屉栏_内容 > li > i {
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+.div {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 7px;
+    left: -31px;
+    border-radius: 45%;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: rotate;
+    animation-delay: 1.5s;
+    transform-origin: center;
+    transform: rotate(0deg);
+}
+
+.div_a {
+    position: absolute;
+    animation-delay: 1s;
+    top: 9px;
+    left: -38px;
+}
+
+
+
+.动画 {
+    overflow: hidden;
+    height: 100px;
+}
+
+.抽屉栏_标题_分割线 {
+    margin-bottom: 16px;
+    margin-left: 17px;
+    width: 77%;
+}
+
+.抽屉栏_标题 {
+    font-weight: 520;
+    font-size: 26px;
+    z-index: 1;
+    position: absolute;
+    left: 43px;
+    top: 40px;
+}
+
+.抽屉栏_内容 > li > div {
+    font-weight: bold !important;
+    font-size: 13px !important;
+    position: relative;
+    left: 20px;
+}
+
+.悬浮搜素按钮 {
+    height: 55px;
+    width: 142px;
+    position: fixed;
+    bottom: 21px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 2px 3px 0px #00000040;
+    right: 13px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.悬浮搜素按钮:hover{
+    background: rgb(172 177 188);
+    box-shadow: 4px 3px 14px rgb(0 0 0 / 24%);
+}
+
+
+@keyframes start {
+    0% {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+    }
+
+
+    100% {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: black;
+    }
+}
+
+@keyframes 旋转风车 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

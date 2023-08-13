@@ -1,0 +1,42 @@
+h1{
+    font-size: 3vh;
+}
+
+
+.范围{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.header-img {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    top: 16px;
+    left: -5px;
+}
+
+.upload_info {
+    white-space: nowrap;
+    overflow: scroll;
+    text-overflow: ellipsis;
+    margin-left: 20px;
+    font-size: 8px;
+    color: #8a76765c;
+    width: 68vw;
+    position: fixed;
+    bottom: 24px;
+    height: 120px;
+}
+
+#progressBar {
+    background-color: #ffbc003d!important;
+    margin-top: 5px;
+}
+
+#progressContainer {
+    background-color: #ffbc00!important;
+}

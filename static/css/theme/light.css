@@ -1,0 +1,225 @@
+@import url(/static/css/theme/pColormixer/tokens.css);
+
+
+textarea {
+    border: 9px solid var(--md-ref-palette-primary90);
+    box-shadow: 1px 1px 4px #99999959;
+    background-color: var(--md-ref-palette-primary90);
+}
+
+textarea:active {
+    box-shadow: 2px 2px 20px var(--md-ref-palette-primary95);
+}
+
+.子页面按钮 {
+    background-color: var(--md-ref-palette-tertiary70);
+    color: #001356;
+    box-shadow: 2px 2px 12px #697380bd;
+}
+
+.mdui-btn-raised {
+    box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0), 0 1px 3px 0 rgba(0, 0, 0, 0.14), 0 2px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mdui-menu {
+    background-color: #dde1ff;
+    box-shadow: 0 3px 6px 0px rgba(26, 27, 51, 0.212);
+}
+
+.抽屉栏_标题_分割线 {
+    border: 0.5px solid #dde1ff;
+    background: #dde1ff;
+}
+
+
+.config_page2_ul > li > div > i {
+    color: #001959;
+}
+
+.点火器 > button {
+    background-color: #5c5d92;
+    color: white;
+}
+
+.点火器 > button:hover {
+    background-color: #7778a8 !important;
+}
+
+.点火器 > button:active {
+    background-color: rgba(122, 139, 224, 0.258);
+}
+
+.题目展示框 > div {
+    background-color: #dde1ff;
+}
+
+input {
+    opacity: 0;
+}
+
+.home_GeneratorFramework_QuestionsAndAnswers > input {
+    opacity: 1;
+}
+
+.mdui-list-item:hover {
+    background-color: rgba(94, 137, 190, 0.2);
+}
+
+.mdui-snackbar {
+    box-shadow: 0px 3px 12px rgba(87, 87, 87, 0.638);
+}
+
+.mdui-overlay {
+    background-color: rgba(0, 19, 86, 0.133);
+}
+
+.mdui-dialog-actions .mdui-btn {
+    background: #fbf8ff;
+    color: #95a6fd !important;
+}
+
+
+.mdui-typo a::before {
+    background-color: rgba(0, 19, 86, 0.247);
+}
+
+
+.计数器 {
+    color: #fefbff;
+}
+
+.计数器:active {
+    box-shadow: 2px 2px 12px #93a1b5;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, 0) rotateZ(0deg);
+    }
+
+    to {
+        transform: translate(-50%, 0%) rotateZ(360deg);
+    }
+}
+
+.主界面 {
+    border-radius: 30px;
+    height: 50vh;
+    border: rgb(0 0 0 / 45%) solid 1px;
+    overflow: scroll;
+    transition: 0.4s all cubic-bezier(0.62, -0.46, 0.13, 0.82);
+}
+
+#题目界面 > li {
+    height: 35px;
+    display: flex;
+    border-bottom-style: solid;
+    border-width: 1px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.subPageButton {
+    background-color: #95a6fd;
+    color: #fbf8ff;
+    box-shadow: 2px 2px 12px #697380bd;
+}
+
+.drawerbar_Title_SplitLine {
+    border: 0.5px solid #95a6fd;
+    background: #95a6fd;
+}
+
+.igniter > button {
+    background-color: rgba(58, 76, 156, 0.505);
+    color: #434368d6;
+}
+
+.igniter > button:hover {
+    background-color: #3a4c9c;
+}
+
+.igniter > button:active {
+    background-color: #3a4c9c !important;
+}
+
+.topicDisplayBox > div {
+    background: #f0efff;
+}
+
+.mdui-list-item:hover {
+    background-color: rgba(94, 137, 190, 0.2);
+}
+
+.mdui-snackbar {
+    box-shadow: 0px 3px 12px rgba(0, 10, 61, 0.638);
+}
+
+.mdui-overlay {
+    box-shadow: 0px 3px 12px rgba(0, 10, 61, 0.134);
+}
+
+.mdui-dialog-actions > a {
+    background: #dde1ff;
+    color: rgba(45, 64, 144, 0.536) !important;
+}
+
+
+.mdui-typo a::before {
+    background-color: #5f6d8a;
+}
+
+.div {
+    background: #dde1ff;
+}
+
+.div_a {
+    background: #ffa5c7b3;
+}
+
+.counter {
+    color: #fff;
+}
+
+.counter:active {
+    box-shadow: 2px 2px 12px #93a1b5;
+}
+
+.正文_介绍 {
+    background-color: #dde1ff;
+    color: #334481;
+}
+
+.mdui-typo-title {
+    color: var(--md-ref-palette-secondary70) !important;
+}
+
+.mdui-drawer {
+    /* background: var(--md-ref-palette-primary99); */
+}
+
+.mdui-menu-item > a:hover {
+    background-color: #96a0c887;
+}
+
+.启动图 {
+text-align: center;
+    font-size: 38px;
+    animation-iteration-count: infinite;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.mdui-btn, .mdui-btn-raised {
+    background: none;
+}
+
+
+#randomcall_body {
+    backdrop-filter: contrast(0.3);
+}
+

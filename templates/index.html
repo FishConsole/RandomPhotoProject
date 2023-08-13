@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+    // var _hmt = _hmt || [];
+    // (function () {
+    //     var hm = document.createElement("script");
+    //     hm.src = "https://hm.baidu.com/hm.js?4057cb69b2af9d74a2ac2f2ba8963d07";
+    //     var s = document.getElementsByTagName("script")[0];
+    //     s.parentNode.insertBefore(hm, s);
+    // })();
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+    <link rel="shortcut icon" href="static/photo.ico"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="../static/css/theme/google_font.css">
+
+    <script src="../static/js/ChangeLog.js"></script>
+    <script src="../static/js/静态资源集中管理部门.js"></script>
+
+
+    <title>RandomPhoto - 随机图片提供系统（已提供{{ 统计调用次数 }}次调用服务）By：鱼鱼</title>
+</head>
+
+<body class="mdui-loaded mdui-drawer-body-left" style="background: none">
+
+<div class="mdui-progress" style="z-index:999" id="加载状态">
+    <div class="mdui-progress-indeterminate"></div>
+</div>
+
+<div id="子页面_历史更新容器"></div>
+<div id="子页面_文件上传容器"></div>
+<div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
+    <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="开启抽屉栏()">
+        <i class="mdui-icon material-symbols-outlined">menu_open</i>
+    </a>
+    <a href="javascript:" class="mdui-typo-headline">
+        <span class="header-text">RandomPhoto</span>
+        <img src="../static/assats/photo.jpg" class="header-text-img">
+    </a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="../index/{{ 上一页 }}" class="mdui-btn mdui-btn-icon">
+        <i class="mdui-icon material-symbols-outlined">arrow_back</i>
+    </a>
+    <a href="../index/{{ 下一页 }}" class="mdui-btn mdui-btn-icon">
+        <i class="mdui-icon material-symbols-outlined">arrow_forward</i>
+    </a>
+
+</div>
+<div class="mdui-drawer" id="drawer">
+    <div class="动画">
+        <h1 class="抽屉栏_标题">Photo</h1>
+        <div class="div"></div>
+        <div class="div div_a"></div>
+    </div>
+
+    <ul class="mdui-list 抽屉栏_内容">
+        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
+               style="color:rgb(212, 117, 28)!important;background: rgba(189, 129, 92, 0.2)!important;">upload</i>
+            <div>上传文件</div>
+        </li>
+        <li class="mdui-list-item mdui-ripple" onclick="snackbar('功能未开放')">
+            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
+               style="color:rgb(92, 189, 139)!important;background: rgb(92 189 139 / 20%)!important;">settings</i>
+            <div>程序设置</div>
+        </li>
+        <li class="mdui-list-item mdui-ripple" onclick="进入更新记录()">
+            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
+               style="color:rgb(53, 114, 255)!important;background: rgb(53 114 255 / 20%)!important;">history_edu</i>
+            <div>更新记录</div>
+
+        </li>
+        <li class="mdui-list-item mdui-ripple" onclick="输出文档()">
+            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
+               style="color:rgb(233 206 26)!important;background: rgb(219 204 102 / 26%)!important;">help</i>
+            <div>帮助文档</div>
+        </li>
+        <li class="mdui-list-item mdui-ripple" onclick="加入群组()">
+            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
+               style="color:rgb(233, 26, 67)!important;background: rgb(219 102 151 / 26%)!important">group</i>
+            <div>加入群组</div>
+        </li>
+        <!--  <li class="mdui-list-item mdui-ripple" onclick="window.open('http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=-oliRT0JFze5-8MVoIuLMX9a1XAaVDsV&authKey=8uo%2FKb%2FcG5uVu25N8fkyfr0AzdKwWa9wBVnDSHdT2ErtSmam8AgQJN%2FmUZ2Bee4g&noverify=0&group_code=117907928', '_blank')">&ndash;&gt;-->
+        <!--                <i class="mdui-list-item-icon mdui-icon material-icons"-->
+        <!--                    style="color:rgb(233, 26, 67)!important;background: rgb(219 102 151 / 26%)!important">group</i>-->
+        <!--                <div>加入群组</div>-->
+        <!--            </li>-->
+        <li></li>
+    </ul>
+</div>
+
+
+<div class="mdui-container container">
+    <div class="liubai">
+    </div>
+
+    <div class=xianzhi>
+        <div class="限制"></div>
+        <div class=time-before>
+            <span>END</span>
+        </div>
+    </div>
+</div>
+
+<div class="悬浮搜素按钮 mdui-ripple-black" onclick="搜索发动()">
+    <i class="mdui-icon material-symbols-outlined">manage_search</i>发动搜索
+</div>
+
+
+<script>
+
+    setTimeout(function () {
+        // 参数传递器将会此处传递参数，因此无视这个报错
+        数据源 = {{ 图片信息资源 | safe }}
+        组件生成(数据源)
+    }, 1000)
+
+</script>
+<script>
+    强制返回 = {{ 强制返回 | safe }}
+    if (强制返回) {
+        setTimeout(function () {
+            window.history.go(-1)
+        }, 500)
+    }
+
+    静态资源集中管理部门([
+        "../static/css/RandomPhoto_style.css",
+        "../static/js/index.js",
+        "../static/css/independent/photo.css",
+        "../static/css/theme/light.css",
+        "../static/js/ajax_helper.js",
+
+    ])
+
+</script>
+<script src="../static/js/mdui_tool.js"></script>
+</body>
+
+</html>

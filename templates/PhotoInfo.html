@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/assats/photo.ico" />
+    <link rel="stylesheet" href="../static/css/independent/photo-info.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/theme/google_font.css"/>
+
+    <script src="../static/js/静态资源集中管理部门.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+
+    <title>PhotoInfo</title>
+
+</head>
+<script>
+
+
+    function 文本拷贝(text) {
+        const input = document.createElement('textarea');
+        input.value = text;
+        // 不要让input.value转义
+        input.setAttribute('readonly', '');
+
+
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        console.log(text)
+        snackbar(`文件名:${text}复制成功`)
+    }
+</script>
+
+<body style="background: #ffffff99;">
+    <div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
+        <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="window.history.back()">
+            <i class="mdui-icon material-symbols-outlined">arrow_back</i>
+        </a>
+        <a href="javascript:" class="mdui-typo-headline">
+            <span class="header-text">Photo</span>
+            <img src="../static/assats/photo.jpg" class="header-img">
+        </a>
+        <a onclick="对话框('这是标签重构控件')" class="mdui-btn mdui-btn-icon">
+        <i class="mdui-icon material-symbols-outlined">edit</i>
+    </a>
+    </div>
+
+
+    <div class=main id="main">
+
+    </div>
+    <script>
+        数据源 = String.raw`{{ 路径 }}`
+        // 去掉所有的斜线
+        数据源 = 数据源.replace(/\\/g, "")
+        数据源 = 数据源.replace(/img/g, "")
+        数据源 = 数据源.replace(/主站原始图片/g, "")
+
+        main = document.getElementById("main")
+        main.innerHTML = `
+            <img src="../img/主站原始图片/${数据源}" onclick="文本拷贝('${数据源}')" id="img">
+        `
+    </script>
+    <div class=foot>
+        <div class=date>{{ 时间 }}</div>
+        <div class=message>{{ 内容 }}</div>
+    </div>
+</body>
+<script>
+    静态资源集中管理部门([
+        "../../static/js/mdui_tool.js",
+        "../../static/css/RandomPhoto_style.css",
+    ])
+
+</script>
+</html>

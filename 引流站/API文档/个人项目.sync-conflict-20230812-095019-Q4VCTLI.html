@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 引入 Markdown.js 库文件 -->
+    <script src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="../css/mdui.css"/>
+    <script src="../js/mdui.js"></script>
+
+</head>
+<body>
+<!-- 创建一个用于展示 markdown 内容的 div 元素 -->
+<div class="mdui-typo" id="content"></div>
+<script>
+    // 创建一个 Markdown.js 的实例
+    var md = window.markdownit();
+
+    // 创建一个包含 markdown 文本的字符串
+var markdownText = `
+# 标题
+## 子标题
+- 列表项1
+- 列表项2
+
+这是一段普通文本。
+
+这是一段[链接](https://www.bing.com)。
+
+这是一段代码
+
+${`\```javascript
+var x = 10;
+var y = 20;
+console.log(x + y);
+\```}
+`;
+
+
+
+    // 调用 Markdown.js 的 render 方法，传入 markdown 文本，返回 HTML 代码
+    var htmlText = md.render(markdownText);
+
+    // 获取 div 元素
+    var content = document.getElementById("content");
+
+    // 将 HTML 代码插入到 div 元素中
+    content.innerHTML = htmlText;
+</script>
+</body>
+</html>

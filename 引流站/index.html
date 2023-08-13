@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="baidu-site-verification" content="codeva-a9s4Px3t8d" />
+    <meta name="360-site-verification" content="a8d3b76cd4b755026fed70e63558776b" />
+    <meta name="sogou_site_verification" content="BCF4aEUXye" />
+    <title>RandomPhoto - 一款免费的壁纸提供接口站，你可以在本站预览和下载所有的壁纸</title>
+    <style>
+        * {
+            margin: 0 auto;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        h1, p {
+            z-index: 2;
+        }
+
+        i {
+            color: white !important;
+        }
+
+        .范围 {
+            width: 80%;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .mdui-appbar {
+            box-shadow: none;
+        }
+
+        .mdui-spinner-layer {
+            border-color: #a4b2ff!important;
+        }
+
+        body {
+            background: url(https://v-storage.hitokoto.cn/2022/HitokotoBanner04-PC.jpg) center no-repeat;
+            height: 100vh;
+            background-size: auto 100%;
+        }
+
+        body::before {
+            display: block;
+            content: '';
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgb(0 0 0 / 59%) 0%, #00000000); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            position: absolute;
+        }
+
+        .标题 {
+            color: white !important;
+            position: sticky;
+        }
+
+        #容器 > * {
+            z-index: 2;
+            position: relative;
+        }
+
+    </style>
+    <script src="js/ajax_helper.js"></script>
+    <link rel="stylesheet" href="css/mdui.css"/>
+    <meta name="description" content="RandomPhoto是一款免费的壁纸提供接口站，本站提供了600余张全网精选的手机版和电脑版的二次元壁纸，您可以在本站预览和下载所有的壁纸">
+    <meta name="keywords" content="RandomPhoto,二次元壁纸,壁纸接口,手机壁纸,电脑壁纸">
+    <meta name="author" content="鱼几斤YUIJ | 联系方式：2645602049@qq.com | 来源说明：RandomPhoto">
+</head>
+<body id="body">
+
+<div class="mdui-appbar">
+    <div class="mdui-toolbar">
+              <a href="javascript:" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <a href="javascript:;" class="mdui-typo-title 标题" style="z-index:2">RandomPhoto</a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="window.location.reload()"><i class="mdui-icon material-icons">refresh</i></a>
+    </div>
+</div>
+
+
+<div class='范围 mdui-typo'>
+    <h1 class="mdui-typo-title">RandomPhoto是什么</h1>
+    <p>
+        RandomPhoto是一款免费的壁纸提供接口站，本站存有540张全网精选二次元壁纸，包含手机版和电脑版两种版本，你可以在本站预览和下载所有的壁纸。
+    </p>
+    <div id="容器">
+        <div class="mdui-container mdui-p-t-5" style="width: 50px;">
+            <div class="mdui-spinner"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script src="js/mdui.js"></script>
+<script>
+    官网地址 = 'https://[::1]';
+    var formData = new FormData();
+    ajax_helper_main('get', `${官网地址}/survive`, formData, "Survive",
+        成功函数 = function (data) {
+            body = document.getElementById('body')
+            body.style.cssText = `background:url(${官网地址}/Random) center no-repeat;background-size: auto 110%;`;
+            const 返回值 = ajax_helper_返回值解码(data);
+            const 容器 = document.getElementById('容器');
+            容器.innerHTML =
+                `<button className="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple " style="width: 100px;height: 40px;background: #5264c1;border: none;border-radius: 20px;" onclick="window.location.href='${官网地址}'">${返回值['状态']}</button>`
+        },
+    )
+</script>
+</html>

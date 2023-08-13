@@ -1,0 +1,131 @@
+<!--
+ * @Author: YUIJ 2645602049@qq.com
+ * @Date: 2022-12-05 08:51:35
+ * @LastEditors: YUIJ 2645602049@qq.com
+ * @LastEditTime: 2023-01-10 18:54:45
+ * @FilePath: \RandomCall\main.html
+ * @Description: 这是默认设置,请设置'customMade', 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+    <title>RandomPhoto随机图片提供系统 - By鱼鱼</title>
+    <meta name="keywords"
+          content="Maybe,忆雨,RandomCall,鱼鱼,鱼几斤,By鱼鱼,By鱼几斤,辅助记忆系统,抽背,2645602049@qq.com"/>
+    <script src="../static/js/静态资源集中管理部门.js"></script>
+    <style>
+        html {
+           /* 加载背景图 */
+           background-image: url(/Random) !important;
+           /* 背景图垂直、水平均居中 */
+           background-position: center center;
+           /* 背景图不平铺 */
+           background-repeat: no-repeat;
+           /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+           background-attachment: fixed;
+           /* 让背景图基于容器大小伸缩 */
+           background-size: cover;
+        }
+        html::before {
+            position: fixed;
+            top: 0;
+            display: block;
+            content: '';
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgb(255 255 255 / 31%) 0%, #ffffff85);
+        }
+
+        body{
+            background: none;
+        }
+
+        @keyframes CircleAnimation {
+            0% {
+                stroke-dasharray: 0;
+            }
+            90% {
+                stroke-dasharray: 50;
+            }
+            90% {
+                stroke-dasharray: 140;
+            }
+        }
+
+        circle{
+            fill: none;
+            stroke: black;
+            stroke-width: 7px;
+            stroke-dasharray: 140;
+            stroke-linecap: round;
+            r: 22;
+            animation-duration: 3s;
+            animation-name: CircleAnimation;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(0.64, -0.04, 0.63, 0.92);
+        }
+
+
+    </style>
+</head>
+
+<body id="body" style="opacity: 0;">
+
+<div id="计时器" style="display: none">true</div>
+<div id="index">
+
+</div>
+
+<div id="启动图" class="启动图">
+    <h1
+            style="text-align: center;font-size: 38px;margin-top: 33vh;animation-iteration-count: infinite;font-weight: bold;margin-bottom: 20vh;">
+        RandomPhoto</h1>
+
+    <svg>
+        <circle cx="145" cy="80" fill="none" stroke="red"></circle>
+    </svg>
+</div>
+
+</body>
+<script>
+    静态资源集中管理部门([
+        '../https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css',
+        '../https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js',
+        '../static/css/independent/main/启动图.css',
+        '../static/css/independent/main/组件.css',
+        '../static/css/independent/main/子页面相关.css',
+        '../static/css/independent/main/渐变入场.css',
+        '../static/css/theme/light.css',
+        "../static/css/independent/photo.css",
+        "../static/css/RandomPhoto_style.css",
+        "../static/js/index.js",
+        "../static/js/mdui_tool.js",
+        "../static/js/ajax_helper.js",
+        "../static/css/independent/项目范围.css",
+        "../static/css/independent/正文.css",
+        "../static/css/independent/upload.css",
+        "../static/js/independent/upload.js",
+    ])
+    document.getElementById('index').innerHTML='<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2" class="iframe_randomcall"></iframe>'
+    RandomPhoto = document.getElementById('iframe_RandomPhoto')
+    启动图 = document.getElementById('启动图')
+    计时器状态 = document.getElementById('计时器')
+    setTimeout(function (){
+        if(计时器状态.innerHTML === "true"){
+            snackbar('加载失败，准备重试')
+            window.location.reload()
+        }
+    },20000)
+    window.onload = () => {
+        计时器状态.innerHTML = "false"
+        RandomPhoto.style.cssText = 'top:0;opacity:1;'
+        启动图.style.cssText = 'opacity:0;'
+    }
+</script>
+
+</html>
