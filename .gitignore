@@ -1,3 +1,5 @@
 /DeepDanbooru/
 /img/
 /数据库/
+/Lib/smtp_server.py
+/Lib/自动图像标签生成器.py
