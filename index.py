@@ -3,7 +3,7 @@
 from Lib.版本号提取 import 版本号提取
 
 print(f' * RandomPhoto_当前版本: {版本号提取()}')
-
+print('-'*90)
 from Lib.所需库一键部署 import 所需库一键部署
 
 所需库一键部署()
@@ -119,7 +119,7 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    main.run(host='::', port=443, threaded=False,
+    main.run(host='::', port=9093, threaded=False,
              ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))
 
     # main.run(host='::', port=, debug=True)
