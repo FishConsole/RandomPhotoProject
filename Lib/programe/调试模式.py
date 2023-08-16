@@ -1,5 +1,5 @@
 def 调试模式():
-    return True
+    return False
 
 
 def 自动标签生成器开关():
