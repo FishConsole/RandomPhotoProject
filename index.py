@@ -119,7 +119,7 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    main.run(host='::', port=9093, threaded=False,
+    main.run(host='164.155.203.179', port=443, threaded=False,
              ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))
 
     # main.run(host='::', port=, debug=True)
