@@ -17,7 +17,7 @@
     <title>RandomPhoto随机图片提供系统 - By鱼鱼</title>
     <meta name="keywords"
           content="Maybe,忆雨,RandomCall,鱼鱼,鱼几斤,By鱼鱼,By鱼几斤,辅助记忆系统,抽背,2645602049@qq.com"/>
-{#    <script src="../static/js/静态资源集中管理部门.js"></script>#}
+    {#    <script src="../static/js/静态资源集中管理部门.js"></script>#}
     <link rel="stylesheet" href="../static/css/independent/main/启动图.css">
     <link rel="stylesheet" href="../static/css/independent/main/组件.css">
     <link rel="stylesheet" href="../static/css/independent/main/子页面相关.css">
@@ -58,34 +58,42 @@
             0% {
                 stroke-dasharray: 0;
             }
-            90% {
-                stroke-dasharray: 50;
-            }
-            90% {
+            100% {
                 stroke-dasharray: 140;
             }
         }
 
-        @keyframes svg旋转 {
-            from {
-            transform：rotate(0 deg)
+        @keyframes SvgAnimation {
+            0% {
+                transform: rotate(0deg)
             }
-            to {
-            transform：rotate(360 deg)
+            100% {
+                transform: rotate(360deg)
             }
+        }
+
+        svg {
+            animation-duration: 3s;
+            animation-name: SvgAnimation;
+            animation-iteration-count: infinite;
+            width: 52px;
+            animation-timing-function: cubic-bezier(0.28, 0.27, 1, 1);
+            height: 52px;
+            transition: none;
+
         }
 
         circle {
             fill: none;
-            stroke: black;
+            stroke: rgba(0, 0, 0, 0.73);
             stroke-width: 7px;
             stroke-dasharray: 140;
             stroke-linecap: round;
             r: 22;
-            animation-duration: 3s;
+            animation-duration: 10s;
             animation-name: CircleAnimation;
             animation-iteration-count: infinite;
-            animation-timing-function: cubic-bezier(0.64, -0.04, 0.63, 0.92);
+            animation-timing-function: ease-out;
         }
 
 
@@ -105,14 +113,13 @@
         RandomPhoto</h1>
 
     <svg>
-        <circle cx="145" cy="80" fill="none" stroke="red"></circle>
+        <circle cx="26" cy="26" fill="none" stroke="red"></circle>
     </svg>
 </div>
 
 </body>
 <script>
 
-    document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2" class="iframe_randomcall"></iframe>'
     RandomPhoto = document.getElementById('iframe_RandomPhoto')
     启动图 = document.getElementById('启动图')
     计时器状态 = document.getElementById('计时器')
@@ -124,6 +131,7 @@
     }, 20000)
     window.onload = () => {
         计时器状态.innerHTML = "false"
+        document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2" class="iframe_randomcall"></iframe>'
         RandomPhoto.style.cssText = 'top:0;opacity:1;'
         启动图.style.cssText = 'opacity:0;'
     }
