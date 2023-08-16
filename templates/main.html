@@ -129,9 +129,9 @@
             window.location.reload()
         }
     }, 20000)
+    document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2" class="iframe_randomcall"></iframe>'
     window.onload = () => {
         计时器状态.innerHTML = "false"
-        document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2" class="iframe_randomcall"></iframe>'
         RandomPhoto.style.cssText = 'top:0;opacity:1;'
         启动图.style.cssText = 'opacity:0;'
     }
