@@ -12,7 +12,7 @@ class 线程锁变量编辑器:
             try:
                 # 从键值对读取指定的值
                 值 = self.共享变量集合[目标变量]
-                if(值 == None):
+                if 值 == None:
                     return {}
                 else:
                     return 值
@@ -27,7 +27,7 @@ class 线程锁变量编辑器:
                     pass
                 # 没有值的情况
                 计数器 = 计数器 + 1
-                if(计数器 > 20):
+                if 计数器 > 20:
                     return {}
                 time.sleep(0.001)
     
@@ -51,6 +51,6 @@ class 线程锁变量编辑器:
                     pass
                 # 防止死循环
                 计数器 = 计数器+1
-                if(计数器 > 20):
+                if 计数器 > 20:
                     break
                 time.sleep(0.001)

@@ -2,7 +2,7 @@ import exifread
 
 
 # 获取照片位置
-class Image_Location():
+class Image_Location:
 
     def __init__(self, image_path):
         self.img_path = image_path

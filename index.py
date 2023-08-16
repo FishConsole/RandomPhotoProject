@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+
+from Lib.版本号提取 import 版本号提取
+print(f' * RandomPhoto_当前版本: {版本号提取()}')
+
+from Lib.所需库一键部署 import 所需库一键部署
+所需库一键部署()
+
 import threading
 
 from flask import Flask
@@ -80,13 +87,13 @@ def 自动死亡线程(调试模式):
     # 当然是访问存活报告，如果访问不了那么就说明自己在外网上已经死了
     # 那么就自觉的退出，让系统重启自己
     import requests
-    print('自动死亡线程：自动死亡线程启动')
+    print(' * 自动死亡线程：自动死亡线程启动')
     if not 调试模式:
         while True:
             try:
                 requests.get('https://root-a.top/survive')
             except:
-                print('自动死亡线程：自动死亡机制启动,程序关闭，等待服务端重启')
+                print(' * 自动死亡线程：自动死亡机制启动,程序关闭，等待服务端重启')
                 # 官方库的重启函数
                 if not 调试模式:
                     发送邮件('RandomPhoto主程序：服务器准备重启')
@@ -94,7 +101,7 @@ def 自动死亡线程(调试模式):
                 os._exit(0)
             time.sleep(60 * 2)
     else:
-        print('自动死亡线程：调试模式启动，线程退出')
+        print(' * 自动死亡线程：调试模式启动，线程退出')
 
 
 if __name__ == "__main__":
@@ -110,7 +117,7 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    main.run(host='164.155.203.179', port=443, threaded=False, debug=True,
+    main.run(host='::', port=443, threaded=False,
              ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))
 
     # main.run(host='::', port=, debug=True)
