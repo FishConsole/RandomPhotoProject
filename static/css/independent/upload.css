@@ -1,9 +1,9 @@
-h1{
+h1 {
     font-size: 3vh;
 }
 
 
-.范围{
+.范围 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,10 +33,30 @@ h1{
 }
 
 #progressBar {
-    background-color: #ffbc003d!important;
+    background-color: #ffbc003d !important;
     margin-top: 5px;
 }
 
 #progressContainer {
-    background-color: #ffbc00!important;
+    background-color: #ffbc00 !important;
+}
+
+.文件选择框 {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.文件上传{
+    box-shadow: none!important;
+    color: black!important;
+}
+
+.文件上传:active {
+    background-color: #e2e2e26b;
+    box-shadow: inset 1px 1px 1px #aea6a68c, inset -1px 0px 2px #ffffff82;
+    color: #000000a3;
 }

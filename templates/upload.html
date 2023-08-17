@@ -2,13 +2,16 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
 
     <title>文件上传</title>
     <link rel="stylesheet" href="" type="text/css">
     <link rel="stylesheet" href="../../static/css/theme/google_font.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
-    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+          integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+            integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+            crossorigin="anonymous"></script>
 
     <script src="../../../static/js/静态资源集中管理部门.js"></script>
 
@@ -16,30 +19,36 @@
 </head>
 
 <body>
-    <div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
-        <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="parent.parent.返回('upload')">
-            <i class="mdui-icon material-symbols-outlined">arrow_back</i>
-        </a>
-        <a href="javascript:" class="mdui-typo-headline">
-            <span class="header-text">Photo</span>
-            <img src="../static/assats/photo.jpg" class="header-img">
-        </a>
-    </div>
+<div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
+    <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="parent.parent.返回('upload')">
+        <i class="mdui-icon material-symbols-outlined">arrow_back</i>
+    </a>
+    <a href="javascript:" class="mdui-typo-headline">
+        <span class="header-text">Photo</span>
+        <img src="../static/assats/photo.jpg" class="header-img">
+    </a>
+</div>
 
-    <div class="mdui-progress" id="progressBar" style="display: none;">
-        <div class="mdui-progress-determinate" id="progressContainer">
-        </div>
+<div class="mdui-progress" id="progressBar" style="display: none;">
+    <div class="mdui-progress-determinate" id="progressContainer">
     </div>
+</div>
 
-    <div class="范围">
-        <i class="mdui-icon material-icons" style="font-size: 50px;">cloud_upload</i>
-        <h1>上传文件</h1>
-        <form method="POST" enctype="multipart/form-data" id="uploadForm">
-            <input type="file" name="file" id="file" class="mdui-btn mdui-ripple" style="background-color: #ff000075;" multiple=true>
-            <input value="开始上传" class="mdui-btn mdui-ripple" style="background-color: #ff000075;">
-        </form>
-    </div>
-    <p class="upload_info" id="upload_info">空闲</p>
+
+<div class="范围">
+    <i class="mdui-icon material-icons" style="font-size: 50px;">cloud_upload</i>
+    <h1>上传文件</h1>
+    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+        <input id="文件上传" type="file" name="file" class="file-input" multiple=true style="display: none">
+        <label for="文件上传" class="mdui-btn mdui-ripple 文件上传" style="">
+            选择文件
+        </label>
+        <input id="开始上传" type="submit" style="display: none">
+        <label for="开始上传" class="mdui-btn mdui-ripple" style="background-color: #ff000075;">开始上传</label>
+    </form>
+
+</div>
+<p class="upload_info" id="upload_info">空闲</p>
 
 </body>
 <script>

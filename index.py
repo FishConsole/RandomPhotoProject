@@ -119,7 +119,8 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    main.run(host='164.155.203.179', port=443, threaded=False,
-             ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))
-
-    # main.run(host='::', port=, debug=True)
+    if not 调试模式():
+        main.run(host='164.155.203.179', port=443, threaded=False,
+                 ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))
+    else:
+        main.run(host='::', debug=True)
