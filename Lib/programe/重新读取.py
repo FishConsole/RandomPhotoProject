@@ -16,21 +16,30 @@ from Lib.路径控制 import 路径控制
 class 图片信息资源管理器:
 
     @staticmethod
-    def 获取指定页数的压缩图片信息资源(page):
-        conn = sqlite3.connect(os.path.join('数据库', '图片信息资源.db'))
+    def 获取指定页数的压缩图片信息资源(页码):
+        连接 = sqlite3.connect(os.path.join('数据库', '图片信息资源.db'))
         # 创建游标对象
-        cur = conn.cursor()
+        游标 = 连接.cursor()
         # 创建表
-        cur.execute(
+        游标.execute(
             "CREATE TABLE IF NOT EXISTS 压缩图片信息资源 (路径, 版式, 上传时间, 标签 text , PRIMARY KEY (路径))")
+
+        # 获取全部图片的数量
+        游标.execute("SELECT 路径 FROM 压缩图片信息资源")
+        全部图片的数量 = 游标.fetchall()
+
         # 获取数据
-        page = int(page)
-        if page == '1': page = page + 1  # 为了防止第一页的时候出现问题
-        cur.execute("SELECT 路径,标签 FROM 压缩图片信息资源 LIMIT ?,10", ((page - 1) * 10,))
-        row = cur.fetchall()
+        页码 = int(页码)
+        每页记录数 = 10
+        总记录数 = len(全部图片的数量)
+        起始位置 = max(总记录数 - (页码 * 每页记录数), 0)
+
+        游标.execute("SELECT 路径, 标签 FROM 压缩图片信息资源 LIMIT ?, ?", (起始位置, 每页记录数))
+        # 倒排
+        结果行 = 游标.fetchall()
         # 关闭连接
-        conn.close()
-        return row
+        连接.close()
+        return 结果行
 
     @staticmethod
     def 获得最新上传的图片():
