@@ -21,7 +21,7 @@ def 生成站点地图(资源):
                 链接元素 = ET.SubElement(子Sitemap元素, "url")
 
                 地址 = ET.SubElement(链接元素, "lastmod")
-                地址.text = f'https://{路径控制.启动位置.启动位置()}/PhotoInfo/{链接[0]}'
+                地址.text = f'https://{路径控制.启动位置.域名()}/PhotoInfo/{链接[0]}'
 
                 最后修改时间 = ET.SubElement(链接元素, "loc")
                 最后修改时间.text = 链接[1]
