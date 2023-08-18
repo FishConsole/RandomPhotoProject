@@ -105,6 +105,17 @@
             text-wrap: nowrap;
             user-select: none;
         }
+
+        .iframe_randomcall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            border: none;
+            z-index: 1;
+            transition: all 0.5s;
+        }
     </style>
 </head>
 
@@ -161,14 +172,14 @@
 
     ], true)
 
-     window.onload = () => {
-         setTimeout(function () {
-             计时器状态.innerHTML = "false"
-             RandomPhoto.style.cssText = 'top:0;opacity:1;'
-             启动图.style.cssText = 'opacity:0;'
-             加载内容.style.cssText = 'opacity:0;'
-         }, 500)
-     }
+    window.onload = () => {
+        setTimeout(function () {
+            计时器状态.innerHTML = "false"
+            RandomPhoto.style.cssText = 'top:0;opacity:1;'
+            启动图.style.cssText = 'opacity:0;'
+            加载内容.style.cssText = 'opacity:0;'
+        }, 500)
+    }
 
 </script>
 
