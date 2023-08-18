@@ -21,17 +21,17 @@ def 生成站点地图(资源):
                 地址 = ET.SubElement(url, "loc")
                 地址.text = f'https://{路径控制.启动位置.域名()}/PhotoInfo/{链接[0]}'
 
-                最后修改时间 = ET.SubElement(url, "lastmod")
-                最后修改时间.text = 链接[1]
-
-                更新频率 = ET.SubElement(url, "changefreq")
-                更新频率.text = 'never'
-
-                优先级元素 = ET.SubElement(url, "priority")
-                优先级元素.text = 优先级
-
-                描述 = ET.SubElement(url, "description")
-                描述.text = 链接[2]
+                # 最后修改时间 = ET.SubElement(url, "lastmod")
+                # 最后修改时间.text = 链接[1]
+                #
+                # 更新频率 = ET.SubElement(url, "changefreq")
+                # 更新频率.text = 'never'
+                #
+                # 优先级元素 = ET.SubElement(url, "priority")
+                # 优先级元素.text = 优先级
+                #
+                # 描述 = ET.SubElement(url, "description")
+                # 描述.text = 链接[2]
 
     return ET.tostring(根, encoding="utf-8").decode("utf-8")
 
