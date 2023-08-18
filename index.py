@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+from Lib.所需库一键部署 import 所需库一键部署
+所需库一键部署()
+
 from Lib.版本号提取 import 版本号提取
+
 
 print(f' * RandomPhoto_当前版本: {版本号提取()}')
 print('-' * 90)
-from Lib.所需库一键部署 import 所需库一键部署
 
-所需库一键部署()
 
 import threading
 
