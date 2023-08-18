@@ -1,11 +1,11 @@
 import os
-from Lib.programe.调试模式 import 调试模式
+from Lib.programe.调试模式 import *
 
 class 路径控制:
     class 启动位置:
         @staticmethod
         def 启动位置():
-            if 调试模式():
+            if 调试模式_启动位置() or 调试模式():
                 return '127.0.0.1'
             else:
                 return '164.155.203.179'
