@@ -1,5 +1,5 @@
 def 调试模式():
-    return False
+    return True
 
 
 def 调试模式_启动位置():
