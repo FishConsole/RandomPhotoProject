@@ -3,16 +3,17 @@
 from Lib.版本号提取 import 版本号提取
 
 print(f' * RandomPhoto_当前版本: {版本号提取()}')
-print('-'*90)
+print('-' * 90)
 from Lib.所需库一键部署 import 所需库一键部署
 
 所需库一键部署()
 
 import threading
 
-from flask import Flask
+from flask import Flask, make_response
 from flask_cors import CORS, cross_origin  # 跨域访问限制
 from flask_sslify import SSLify
+
 
 from Lib.programe.admin import *
 from Lib.programe.图片返回器 import *
@@ -21,10 +22,14 @@ from Lib.programe.文件上传器 import upload_bp
 from Lib.programe.调试模式 import 调试模式
 from Lib.programe.重新读取 import 重新读取_
 from Lib.smtp_server import 发送邮件
+from Lib.路径控制 import 路径控制
 
 from Lib.affiliate.海纳 import ocss_page_bp
+import test
 
 main = Flask(__name__)
+sslify = SSLify(main)
+
 CORS(main, resources={r"/static/*": {"origins": "https://www.root-a.top"}})
 
 main.register_blueprint(img_bp, name='img')
@@ -53,7 +58,7 @@ main.register_blueprint(admin_AutoTag_bp, name='admin_AutoTag')
 
 main.register_blueprint(ocss_page_bp, name='ocss_page')
 
-sslify = SSLify(main)
+
 
 main.config['SSL_CERTIFICATE'] = 'ssl/root-a.top_bundle.crt'
 main.config['SSL_PRIVATE_KEY'] = 'ssl/root-a.top.key'
@@ -106,6 +111,21 @@ def 自动死亡线程(调试模式):
         print(' * 自动死亡线程：调试模式启动，线程退出')
 
 
+@main.route('/sitemap', methods=['GET'])
+def sitemap():
+    from Lib.站点地图生成器 import 生成站点地图
+    from Lib.programe.重新读取 import 图片信息资源管理器
+
+    生成的XML = 生成站点地图([
+        {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息(), '优先级': '0.5','分类':'info'},
+    ])
+
+    response = make_response(生成的XML)
+    response.headers["Content-Type"] = "application/xml"
+
+    return response
+
+
 if __name__ == "__main__":
     main.config['上一次统计'] = {}
 
@@ -119,8 +139,5 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    if not 调试模式():
-        main.run(host='164.155.203.179', port=443, threaded=False,
-                 ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))
-    else:
-        main.run(host='::', debug=True)
+    main.run(host=路径控制.启动位置.启动位置(), port=443, threaded=False,
+             ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))

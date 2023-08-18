@@ -1,7 +1,18 @@
 import os
-
+from Lib.programe.调试模式 import 调试模式
 
 class 路径控制:
+    class 启动位置:
+        @staticmethod
+        def 启动位置():
+            if 调试模式():
+                return '127.0.0.1'
+            else:
+                return '164.155.203.179'
+
+        @staticmethod
+        def 域名():
+            return 'www.root-a.top'
 
     @staticmethod
     def 反跨源回调图片_路径():

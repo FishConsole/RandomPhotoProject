@@ -16,6 +16,21 @@ from Lib.路径控制 import 路径控制
 class 图片信息资源管理器:
 
     @staticmethod
+    def 站点地图生成器_获取全部图片信息():
+        conn = sqlite3.connect(os.path.join('数据库', '图片信息资源.db'))
+        # 创建游标对象
+        cur = conn.cursor()
+        # 创建表
+        cur.execute(
+            "CREATE TABLE IF NOT EXISTS 压缩图片信息资源 (路径, 版式, 上传时间, 标签 text , PRIMARY KEY (路径))")
+        # 获取数据
+        cur.execute("SELECT 路径,上传时间,标签 FROM 压缩图片信息资源")
+        row = cur.fetchall()
+        # 关闭连接
+        conn.close()
+        return row
+
+    @staticmethod
     def 获取指定页数的压缩图片信息资源(页码):
         连接 = sqlite3.connect(os.path.join('数据库', '图片信息资源.db'))
         # 创建游标对象
