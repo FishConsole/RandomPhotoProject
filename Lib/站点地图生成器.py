@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 from Lib.路径控制 import 路径控制
 
+
 def 生成站点地图(资源):
     根 = ET.Element("sitemapindex", xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
 
@@ -19,11 +20,11 @@ def 生成站点地图(资源):
 
                 链接元素 = ET.SubElement(子Sitemap元素, "url")
 
-                地址 = ET.SubElement(链接元素, "loc")
-                地址.text = 链接[0]
+                地址 = ET.SubElement(链接元素, "lastmod")
+                地址.text = f'https://{路径控制.启动位置.启动位置()}/PhotoInfo/{链接[0]}'
 
-                最后修改时间 = ET.SubElement(链接元素, "lastmod")
-                最后修改时间.text = f'https://{路径控制.启动位置.启动位置()}/PhotoInfo/{链接[1]}'
+                最后修改时间 = ET.SubElement(链接元素, "loc")
+                最后修改时间.text = 链接[1]
 
                 更新频率 = ET.SubElement(链接元素, "changefreq")
                 更新频率.text = 'never'
@@ -34,9 +35,7 @@ def 生成站点地图(资源):
                 描述 = ET.SubElement(链接元素, "description")
                 描述.text = 链接[2]
 
-
     return ET.tostring(根, encoding="utf-8").decode("utf-8")
-
 
 # 生成的XML = 生成图片信息([
 #     {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息()[:5], '优先级': '0.5'},

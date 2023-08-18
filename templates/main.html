@@ -126,10 +126,12 @@
 
 </body>
 <script>
-    document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2" class="iframe_randomcall"></iframe>'
+    document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2;top:30px" class="iframe_randomcall"></iframe>'
     RandomPhoto = document.getElementById('iframe_RandomPhoto')
     启动图 = document.getElementById('启动图')
     计时器状态 = document.getElementById('计时器')
+    加载内容 = document.getElementById('加载内容')
+
     setTimeout(function () {
         if (计时器状态.innerHTML === "true") {
             snackbar('加载失败，准备重试')
@@ -159,13 +161,14 @@
 
     ], true)
 
-    // window.onload = () => {
-    //     setTimeout(function () {
-    //         计时器状态.innerHTML = "false"
-    //         RandomPhoto.style.cssText = 'top:0;opacity:1;'
-    //         启动图.style.cssText = 'opacity:0;'
-    //     }, 500)
-    // }
+     window.onload = () => {
+         setTimeout(function () {
+             计时器状态.innerHTML = "false"
+             RandomPhoto.style.cssText = 'top:0;opacity:1;'
+             启动图.style.cssText = 'opacity:0;'
+             加载内容.style.cssText = 'opacity:0;'
+         }, 500)
+     }
 
 </script>
 
