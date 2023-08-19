@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from Lib.所需库一键部署 import 所需库一键部署
+
 所需库一键部署()
 
 from Lib.版本号提取 import 版本号提取
 
-
 print(f' * RandomPhoto_当前版本: {版本号提取()}')
 print('-' * 90)
-
 
 import threading
 
 from flask import Flask, make_response
 from flask_cors import CORS, cross_origin  # 跨域访问限制
 from flask_sslify import SSLify
-
 
 from Lib.programe.admin import *
 from Lib.programe.图片返回器 import *
@@ -59,8 +57,6 @@ main.register_blueprint(admin_PassPhoto_bp, name='admin_PassPhoto')
 main.register_blueprint(admin_AutoTag_bp, name='admin_AutoTag')
 
 main.register_blueprint(ocss_page_bp, name='ocss_page')
-
-
 
 main.config['SSL_CERTIFICATE'] = 'ssl/root-a.top_bundle.crt'
 main.config['SSL_PRIVATE_KEY'] = 'ssl/root-a.top.key'
@@ -119,13 +115,18 @@ def sitemap():
     from Lib.programe.重新读取 import 图片信息资源管理器
 
     生成的XML = 生成站点地图([
-        {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息(), '优先级': '0.5','分类':'info'},
+        {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息(), '优先级': '0.5', '分类': 'info'},
     ])
 
     response = make_response(生成的XML)
     response.headers["Content-Type"] = "application/xml"
 
     return response
+
+
+@main.route('/robots.txt', methods=['GET'])
+def robots():
+    return 'User-agent: *'
 
 
 if __name__ == "__main__":
