@@ -8,6 +8,7 @@ ChangeLog_数据源 = [
         '更新内容':[
             '质量更新：加入robots.txt用来支持搜索引擎的要求',
             '质量更新：全站meta标签补全',
+            '质量更新：全站meta_description标签补全',
             '质量更新：全站title标签补全',
             '质量更新：CloudFlare缓存超时上调至1年',
         ]
