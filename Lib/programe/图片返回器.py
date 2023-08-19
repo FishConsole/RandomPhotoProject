@@ -113,7 +113,7 @@ def PhotoInfo(id):
     return render_template('PhotoInfo.html', 时间=标签, 路径=路径)
 
 
-##########################################
+########################################################################################
 # 接口
 ########################################################################################
 
@@ -124,8 +124,10 @@ def Random_Random():
     # 如果是windows或者mac
     if 'Windows' in ua or 'Macintosh' in ua:
         return Random_More_Random('横屏')
+    elif 'Android' in ua and 'Tablet' in ua:
+        return Random_More_Random('平板')
     # 如果是安卓
-    elif 'Android' in ua:
+    else:
         return Random_More_Random('竖屏')
 
 
@@ -140,7 +142,6 @@ def Random_More_Random(model):
     # 从数据库中获得数据,要原图
     图片 = Random(True, 图片信息资源管理器.获取指定_版式_压缩图片信息资源(model, 范围))
     return send_file(图片, mimetype='image/jpg')
-
 
 
 ########################################################################################

@@ -11,6 +11,7 @@ ChangeLog_数据源 = [
             '质量更新：全站meta_description标签补全',
             '质量更新：全站title标签补全',
             '质量更新：CloudFlare缓存超时上调至1年',
+            '质量更新：上传系统最高支持40MB图片的上传',
         ]
     },
     {

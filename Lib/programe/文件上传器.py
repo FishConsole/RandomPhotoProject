@@ -10,6 +10,7 @@ from Lib.路径控制 import 路径控制
 
 upload_bp = Blueprint('upload', __name__)
 
+
 @upload_bp.route('/UploadStart', methods=['POST'])
 def upload_start():
     文件 = request.files.get('file')
@@ -47,7 +48,7 @@ def upload_start():
         return 回调中心.文件上传器.无效的文件类型()
 
     文件大小 = 获取文件大小(文件)
-    最大文件大小 = 6 * 1024 * 1024  # 6MB
+    最大文件大小 = 40 * 1024 * 1024  # 40MB
     if 文件大小 > 最大文件大小:
         return 回调中心.文件上传器.文件大小限制(文件.filename)
 
@@ -73,7 +74,8 @@ def upload_start():
         with open('shenhe_token', 'r') as f:
             随机数发生器_生成的数字 = f.read()
             f.close()
-            发送邮件(f"<h2>RandomPhoto上传中心</h2>有用户上传了图片，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
+            发送邮件(
+                f"<h2>RandomPhoto上传中心</h2>有用户上传了图片，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
     except:
         pass
 
