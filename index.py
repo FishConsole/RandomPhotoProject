@@ -25,7 +25,6 @@ from Lib.smtp_server import 发送邮件
 from Lib.路径控制 import 路径控制
 
 from Lib.affiliate.海纳 import ocss_page_bp
-import test
 
 main = Flask(__name__)
 sslify = SSLify(main)
@@ -60,6 +59,8 @@ main.register_blueprint(ocss_page_bp, name='ocss_page')
 
 main.config['SSL_CERTIFICATE'] = 'ssl/root-a.top_bundle.crt'
 main.config['SSL_PRIVATE_KEY'] = 'ssl/root-a.top.key'
+
+main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 
 
 # 这个东西到时候要给第一个路由使用
