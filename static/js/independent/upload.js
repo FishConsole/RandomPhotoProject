@@ -16,34 +16,6 @@ document.getElementById('文件上传').addEventListener('change', function () {
     console.log(this.files);
 });
 
-async function ajax_helper_main(方法, 地址, 表单数据, 负载, 成功函数 = function () {}, 错误函数 = function () {}) {
-
-    阻止异步请求 = new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.timeout = 5000; // 设置超时时间为5秒
-        xhr.open(方法, 地址 + '?' + new URLSearchParams(负载).toString());
-
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                成功函数(xhr.responseText);
-                resolve(xhr.responseText);
-            } else {
-                错误函数(xhr.statusText);
-            }
-        };
-
-        xhr.onerror = function () {
-            错误函数(xhr.statusText);
-        };
-
-        xhr.ontimeout = function (e) {
-            错误函数(xhr.statusText);
-        }
-
-        xhr.send(表单数据);
-    });
-    return 阻止异步请求
-}
 
 
 document.getElementById('uploadForm').addEventListener('submit', async function (event) {

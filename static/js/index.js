@@ -79,7 +79,7 @@ function 搜索发动() {
                 }
 
             }, function () {
-                snackbar('网络错误')
+                snackbar('关键词错误或网络错误')
             })
         }
     })
