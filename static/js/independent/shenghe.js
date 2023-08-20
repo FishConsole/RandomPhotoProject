@@ -13,7 +13,7 @@ function 文本拷贝(text) {
 
 function 通过审核图片(文件名) {
     进度条 = document.getElementById("进度条")
-    文本对话框("一句话描述这个图片", function (value) {
+    文本对话框("一句话描述这个图片", async function (value) {
         // 如果value这个字符串中没有任何内容，则后面的函数不进行
         进度条.style.cssText = 'width: 10%;';
         if (value === "") {
@@ -30,7 +30,7 @@ function 通过审核图片(文件名) {
         }
         进度条.style.cssText = 'width: 40%;';
 
-        ajax_helper_main('get', `../../admin_thing~/shenhe/Accept/${value}/${文件名}`, new FormData(), {}, function (responseText) {
+        await ajax_helper_main('get', `../../admin_thing~/shenhe/Accept/${value}/${文件名}`, new FormData(), {}, function (responseText) {
             进度条.style.cssText = 'width: 80%;';
 
             data = ajax_helper_返回值解码(responseText)
@@ -52,8 +52,8 @@ function 通过审核图片(文件名) {
     })
 }
 
-function 删除审核图片(文件名) {
-    ajax_helper_main('get', `../../admin_thing~/shenhe/Delete/${文件名}`, new FormData(), {}, function (responseText) {
+async function 删除审核图片(文件名) {
+    await ajax_helper_main('get', `../../admin_thing~/shenhe/Delete/${文件名}`, new FormData(), {}, function (responseText) {
         data = ajax_helper_返回值解码(responseText)
         snackbar(`${data['内容']}`)
         目标标签 = document.getElementById(`Photo_${文件名}`)

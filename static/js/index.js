@@ -44,7 +44,7 @@ function 组件生成(数据源) {
 
 
 function 搜索发动() {
-    文本对话框("请输入您想要搜索的图片名称", function (搜索内容) {
+    文本对话框("请输入您想要搜索的图片名称", async function (搜索内容) {
         if (搜索内容 === "") {
             snackbar('至少要说一句话')
         } else {
@@ -54,7 +54,7 @@ function 搜索发动() {
             }
             限制 = document.querySelector('.限制')
             限制.style.cssText = 'opacity:0;'
-            ajax_helper_main('get', `/Search/${搜索内容}`, new FormData(), {}, function (responseText) {
+            await ajax_helper_main('get', `/Search/${搜索内容}`, new FormData(), {}, function (responseText) {
                 responseText = ajax_helper_返回值解码(responseText)
                 console.log(responseText)
                 responseText = eval(responseText)
@@ -71,14 +71,14 @@ function 搜索发动() {
                     限制.style.cssText = 'opacity:1;'
                     snackbar('没有找到相关图片')
                 } else {
-                    限制.innerHTML=''
+                    限制.innerHTML = ''
                     responseText = {'Image_Data': responseText}
                     组件生成(responseText)
                     限制.style.cssText = 'opacity:1;'
 
                 }
 
-            },function (){
+            }, function () {
                 snackbar('网络错误')
             })
         }
