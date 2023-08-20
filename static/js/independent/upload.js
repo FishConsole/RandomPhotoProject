@@ -71,7 +71,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
             },
             async function (data) {
                 文件上传_错误计数器 = 文件上传_错误计数器 + 1
-                if (文件上传_错误计数器 > 30) {
+                if (文件上传_错误计数器 > 4) {
                     上传失败统计 = 上传失败统计 + 1
 
                     snackbar(`目标文件上传失败，已经尝试重新上传: ${文件上传_错误计数器}次`);
