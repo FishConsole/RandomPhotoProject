@@ -11,6 +11,9 @@ body::-webkit-scrollbar {
     background-color: rgb(255, 0, 0);
 }
 
+body.mdui-locked{
+    overflow: unset;
+}
 
 iframe {
     position: fixed;
@@ -275,4 +278,34 @@ body.mdui-loaded .mdui-drawer {
 
 .mdui-toolbar > * {
     overflow: unset;
+}
+
+
+.mdui-panel-item-open>.mdui-panel-item-header{
+    height: 50px;
+}
+
+.mdui-panel-item-open>.mdui-panel-item-body{
+    height:40vh!important;
+    line-height:40px;
+}
+
+.mdui-panel-item-body::after, .mdui-panel-item-body::before{
+    margin-top: 40px;
+}
+
+
+.mdui-panel-item{
+    box-shadow: none!important;
+    border-radius: 27px;
+    width: 92%;
+}
+
+.mdui-panel{
+    margin-top: 20px;
+    margin-left: 16px;
+}
+
+a{
+    color: #ff4b79;
 }

@@ -67,17 +67,17 @@ main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 
 @main.route('/')
 def zhuye():
-    return render_template('main.html')
+    return render_template('main.html', 域名=路径控制.启动位置.域名())
 
 
 @main.route('/ChangeLog')
 def ChangeLog():
-    return render_template('ChangeLog.html')
+    return render_template('ChangeLog.html', 域名=路径控制.启动位置.域名())
 
 
 @main.route('/Upload')
 def 文件上传中心():
-    return render_template('upload.html')
+    return render_template('upload.html', 域名=路径控制.启动位置.域名())
 
 
 @main.route('/survive')

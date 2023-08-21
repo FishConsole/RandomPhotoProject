@@ -1,7 +1,7 @@
 from flask import render_template
 
 from Lib.programe.重新读取 import 图片信息资源管理器
-
+from Lib.路径控制 import 路径控制
 
 def home_(压缩图片信息资源):
     with open('上一次统计.txt', 'r') as f:
@@ -23,7 +23,9 @@ def home_(压缩图片信息资源):
                            图片信息资源={"Image_Count": len(压缩图片信息资源),
                                          "Image_Data": 压缩图片信息资源},
                            下一页=2,
-                           上一页=1,强制返回='false')
+                           上一页=1,
+                           强制返回='false',
+                           域名=路径控制.启动位置.域名(),)
 
 
 def home_page_(page, 压缩图片信息资源):
@@ -54,7 +56,10 @@ def home_page_(page, 压缩图片信息资源):
         return render_template('index.html', 统计调用次数=上一次统计, Image_Count=len(压缩图片信息资源),
                                图片信息资源={"Image_Count": len(压缩图片信息资源),
                                              "Image_Data": 压缩图片信息资源},
-                               下一页=下一页, 上一页=上一页, 强制返回=强制返回器)
+                               下一页=下一页,
+                               上一页=上一页,
+                               强制返回=强制返回器,
+                               域名=路径控制.启动位置.域名())
     except ValueError:
         return ''
 
