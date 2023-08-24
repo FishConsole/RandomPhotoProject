@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from Lib.所需库一键部署 import 所需库一键部署
+from Lib.programe.调试模式 import 调试模式
 
 所需库一键部署()
 
 from Lib.版本号提取 import 版本号提取
 
-print(f' * RandomPhoto_当前版本: {版本号提取()}')
+if not 调试模式():
+    print(f' * RandomPhoto_当前版本: {版本号提取()} - [业务模式]')
+else:
+    print(f' * RandomPhoto_当前版本: {版本号提取()} - [调试模式]')
 print('-' * 90)
 
 import threading
@@ -19,7 +23,6 @@ from Lib.programe.admin import *
 from Lib.programe.图片返回器 import *
 from Lib.programe.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
 from Lib.programe.文件上传器 import upload_bp
-from Lib.programe.调试模式 import 调试模式
 from Lib.programe.重新读取 import 重新读取_
 from Lib.smtp_server import 发送邮件
 from Lib.路径控制 import 路径控制
@@ -143,5 +146,6 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    main.run(host=路径控制.启动位置.启动位置(), port=443, threaded=False,
+    # main.run(host=路径控制.启动位置.启动位置(), port=443, threaded=False,
+    main.run(host='0.0.0.0', port=443, threaded=False,
              ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))

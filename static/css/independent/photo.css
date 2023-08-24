@@ -202,7 +202,6 @@ a {
     justify-content: center;
     align-content: space-around;
     flex-direction: row;
-    width: 100vw;
     margin-left: -16px;
 }
 

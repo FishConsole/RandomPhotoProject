@@ -93,10 +93,10 @@ function 输出文档() {
      由鱼几斤开发，您可以在此处预览和下载本站的所有图片
      <br><br>
      随机图片调用地址：
-     <a href="/Random">随机图片调用地址</a>
+     <a href="/Random?range=月亮" target="_blank">随机图片调用地址</a>
      <br><br>
      指定图片调用地址：
-     <a href="/Select/你中意的图片的文件名.png">指定图片调用地址</a>
+     <a href="/Select/你中意的图片的文件名.png" target="_blank">指定图片调用地址</a>
      <br><br><br>
 </div>
 `);

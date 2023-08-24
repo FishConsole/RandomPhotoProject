@@ -119,16 +119,33 @@ def PhotoInfo(id):
 
 @Random_bp.route('/Random', methods=['get'])
 def Random_Random():
-    # 判断用户ua
+    # 判断用户ua，根据用户的ua来选择需要返回的图片
+
     ua = request.headers.get('User-Agent')
     # 如果是windows或者mac
     if 'Windows' in ua or 'Macintosh' in ua:
         return Random_More_Random('横屏')
-    elif 'Android' in ua and 'Tablet' in ua:
-        return Random_More_Random('平板')
+    
     # 如果是安卓
-    else:
-        return Random_More_Random('竖屏')
+    elif 'Android' in ua:
+        if 'Tablet' in ua:
+            return Random_More_Random('平板')
+        else:
+            return Random_More_Random('竖屏')
+    
+    # 如果是鸿蒙
+    elif 'Harmony' in ua:
+        if 'Tablet' in ua:
+            return Random_More_Random('平板')
+        else:
+            return Random_More_Random('竖屏')
+    
+    # 如果是ios
+    elif 'iPhone' in ua or 'iPad' in ua:
+        if 'Tablet' in ua:
+            return Random_More_Random('平板')
+        else:
+            return Random_More_Random('竖屏')
 
 
 @Random_More_bp.route('/Random/<model>', methods=['get'])
@@ -148,14 +165,33 @@ def Random_More_Random(model):
 
 @Random_NotCount_bp.route('/RandomNotCount/')
 def Random_RandomNotCount():
-    # 判断用户ua
+    # 判断用户ua，根据用户的ua来选择需要返回的图片
+
     ua = request.headers.get('User-Agent')
     # 如果是windows或者mac
     if 'Windows' in ua or 'Macintosh' in ua:
         return Random_More_RandomNotCount('横屏')
+    
     # 如果是安卓
     elif 'Android' in ua:
-        return Random_More_RandomNotCount('竖屏')
+        if 'Tablet' in ua:
+            return Random_More_RandomNotCount('平板')
+        else:
+            return Random_More_RandomNotCount('竖屏')
+    
+    # 如果是鸿蒙
+    elif 'Harmony' in ua:
+        if 'Tablet' in ua:
+            return Random_More_RandomNotCount('平板')
+        else:
+            return Random_More_RandomNotCount('竖屏')
+    
+    # 如果是ios
+    elif 'iPhone' in ua or 'iPad' in ua:
+        if 'Tablet' in ua:
+            return Random_More_RandomNotCount('平板')
+        else:
+            return Random_More_RandomNotCount('竖屏')
 
 
 @Random_NotCount_bp.route('/RandomNotCount/<model>')

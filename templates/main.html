@@ -7,7 +7,7 @@
  * @Description: 这是默认设置,请设置'customMade', 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" id="html">
 
 <head>
     <meta charset="utf-8">
@@ -26,8 +26,6 @@
     <link rel="canonical" href="{{ 域名 }}">
     <style>
         html {
-            /* 加载背景图 */
-            background-image: url(/Random) !important;
             /* 背景图垂直、水平均居中 */
             background-position: center center;
             /* 背景图不平铺 */
@@ -173,6 +171,32 @@
         "../static/js/mdui_tool.js",
 
     ], true)
+
+    // 流量节省工具
+    if ('connection' in navigator) {
+        html = document.getElementById('html')
+        加载内容 = document.getElementById('加载内容')
+        const connection = navigator.connection;
+        // 获取当前网络连接类型
+        const 网络连接类型 = connection.type;
+
+        if (网络连接类型 === 'wifi') {
+          console.log('当前使用 Wi-Fi 连接');
+          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接</p>' + '<br>'
+          html.style.cssText = 'background-image: url(/Random) !important;'
+        } else if (网络连接类型 === 'cellular') {
+          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
+          console.log('当前使用数据流量连接');
+        } else {
+          html.style.cssText = 'background-image: url(/Random) !important;'
+          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
+          console.log('当前网络连接类型未知');
+        }
+    } else {
+          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'
+          html.style.cssText = 'background-image: url(/Random) !important;'
+          console.log('浏览器不支持获取网络连接信息');
+    }
 
     window.onload = () => {
         setTimeout(function () {
