@@ -39,6 +39,23 @@ setTimeout(function () {
 // 归位，因为默认是这个颜色值
 localStorage.setItem('动态颜色值', '#a9b5d8 !important')
 
+function 加载完成() {
+    加载内容 = document.getElementById('加载内容')
+    加载内容.innerHTML = 加载内容.innerHTML + '<p> * 等待加载完毕</p>' + '<br>'
+
+    window.onload = () => {
+        console.log('加载完成')
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 加载完毕</p>' + '<br>'
+
+        setTimeout(function () {
+            计时器状态.innerHTML = "false"
+            RandomPhoto.style.cssText = 'top:0;opacity:1;'
+            启动图.style.cssText = 'display:none;'
+            加载内容.style.cssText = 'opacity:0;'
+        }, 500)
+    }
+}
+
 // 背景图片控制工具
 function 背景图片加载() {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> > 等待背景图片</p>' + '<br>'
@@ -114,31 +131,13 @@ function 背景图片加载() {
                 rgb颜色值 = `rgb(${平均颜色['红']},${平均颜色['绿']},${平均颜色['蓝']})`
                 localStorage.setItem('动态颜色值', rgb颜色值 + ' !important')
                 加载内容.innerHTML = 加载内容.innerHTML + '<p> > 动态取色完成</p>' + '<br>'
-
+                加载完成()
             }
         })
 }
 
 
 // 流量节省工具
-
-function 加载完成() {
-    加载内容 = document.getElementById('加载内容')
-    加载内容.innerHTML = 加载内容.innerHTML + '<p> * 等待加载完毕</p>' + '<br>'
-
-    window.onload = () => {
-        console.log('加载完成')
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 加载完毕</p>' + '<br>'
-
-        setTimeout(function () {
-            计时器状态.innerHTML = "false"
-            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-            启动图.style.cssText = 'display:none;'
-            加载内容.style.cssText = 'opacity:0;'
-        }, 500)
-    }
-}
-
 if ('connection' in navigator) {
     html = document.getElementById('html')
     加载内容 = document.getElementById('加载内容')
