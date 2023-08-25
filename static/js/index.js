@@ -3,6 +3,9 @@
 function 组件生成(数据源) {
     加载状态 = document.getElementById('加载状态')
     加载状态.style.cssText = ''
+    // 提取动态颜色值
+    动态颜色值 = localStorage.getItem('动态颜色值')
+
     console.log(数据源)
     数据源 = 数据源["Image_Data"]
     // 获取输出图片的位置
@@ -14,7 +17,7 @@ function 组件生成(数据源) {
         // 取图片简介的前四个字
         图片简介_剪切 = 图片简介.slice(0, 4)
         图片标签 = `
-            <span class="img mdui-ripple mdui-ripple-white" onload="cssd()" mdui-tooltip="{content: '${图片简介}'}">
+            <span class="img mdui-ripple mdui-ripple-white" onload="cssd()" style="background:${动态颜色值}"mdui-tooltip="{content: '${图片简介}'}">
                 <a href="/PhotoInfo/${图片地址}">
                     <img src="../img/picture_down//${图片地址}" title=${图片简介} style="opacity: 0" target="_blank">
                 </a>

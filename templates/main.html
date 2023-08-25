@@ -11,7 +11,7 @@
 
 <head>
     <meta charset="utf-8">
-
+    <link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
     <title>RandomPhoto - 随机图片提供系统 By鱼鱼</title>
@@ -23,99 +23,10 @@
     <link rel="stylesheet" href="../static/css/independent/main/组件.css">
     <link rel="stylesheet" href="../static/css/independent/main/子页面相关.css">
     <link rel="stylesheet" href="../static/css/independent/main/渐变入场.css">
+    <link rel="stylesheet" href="../static/css/independent/main/main.css">
     <link rel="canonical" href="{{ 域名 }}">
     <style>
-        html {
-            /* 背景图垂直、水平均居中 */
-            background-position: center center;
-            /* 背景图不平铺 */
-            background-repeat: no-repeat;
-            /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
-            background-attachment: fixed;
-            /* 让背景图基于容器大小伸缩 */
-            background-size: cover;
-        }
-
-        html::before {
-            position: fixed;
-            top: 0;
-            display: block;
-            content: '';
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgb(255 255 255 / 31%) 0%, #ffffff85);
-        }
-
-        body {
-            background: none;
-        }
-
-        @keyframes CircleAnimation {
-            0% {
-                stroke-dasharray: 0;
-            }
-            100% {
-                stroke-dasharray: 140;
-            }
-        }
-
-        @keyframes SvgAnimation {
-            0% {
-                transform: rotate(0deg)
-            }
-            100% {
-                transform: rotate(360deg)
-            }
-        }
-
-        svg {
-            animation-duration: 3s;
-            animation-name: SvgAnimation;
-            animation-iteration-count: infinite;
-            width: 52px;
-            animation-timing-function: cubic-bezier(0.28, 0.27, 1, 1);
-            height: 52px;
-            transition: none;
-
-        }
-
-        circle {
-            fill: none;
-            stroke: rgba(0, 0, 0, 0.73);
-            stroke-width: 7px;
-            stroke-dasharray: 140;
-            stroke-linecap: round;
-            r: 22;
-            animation-duration: 10s;
-            animation-name: CircleAnimation;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-out;
-        }
-
-        .加载内容 {
-            line-height: 0px;
-            font-weight: 100;
-            font-size: 7px;
-            position: fixed;
-            top: 0;
-            color: #00000099;
-            width: 42%;
-            height: 100vh;
-            overflow: hidden;
-            text-wrap: nowrap;
-            user-select: none;
-        }
-
-        .iframe_randomcall {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            border: none;
-            z-index: 1;
-            transition: all 0.5s;
-        }
+        
     </style>
 </head>
 
@@ -136,77 +47,6 @@
 </div>
 
 </body>
-<script>
-    document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2;top:30px" class="iframe_randomcall"></iframe>'
-    RandomPhoto = document.getElementById('iframe_RandomPhoto')
-    启动图 = document.getElementById('启动图')
-    计时器状态 = document.getElementById('计时器')
-    加载内容 = document.getElementById('加载内容')
-
-    setTimeout(function () {
-        if (计时器状态.innerHTML === "true") {
-            snackbar('加载失败，准备重试')
-            window.location.reload()
-        }
-    }, 20000)
-
-    静态资源集中管理部门([
-        '../static/css/independent/main/启动图.css',
-        '../static/css/independent/main/子页面相关.css',
-        '../static/css/independent/main/渐变入场.css',
-        '../static/css/independent/main/组件.css',
-        '../static/css/independent/photo.css',
-        '../static/css/independent/photo_info.css',
-        "../static/css/independent/upload.css",
-        "../static/css/independent/正文.css",
-        "../static/css/independent/项目范围.css",
-        '../static/css/theme/light.css',
-        '../static/css/RandomPhoto_style.css',
-
-        "../static/js/independent/shenghe.js",
-        "../static/js/independent/upload.js",
-        "../static/js/ajax_helper.js",
-        "../static/js/ChangeLog.js",
-        '../static/js/index.js',
-        "../static/js/mdui_tool.js",
-
-    ], true)
-
-    // 流量节省工具
-    if ('connection' in navigator) {
-        html = document.getElementById('html')
-        加载内容 = document.getElementById('加载内容')
-        const connection = navigator.connection;
-        // 获取当前网络连接类型
-        const 网络连接类型 = connection.type;
-
-        if (网络连接类型 === 'wifi') {
-          console.log('当前使用 Wi-Fi 连接');
-          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接</p>' + '<br>'
-          html.style.cssText = 'background-image: url(/Random) !important;'
-        } else if (网络连接类型 === 'cellular') {
-          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
-          console.log('当前使用数据流量连接');
-        } else {
-          html.style.cssText = 'background-image: url(/Random) !important;'
-          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
-          console.log('当前网络连接类型未知');
-        }
-    } else {
-          加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'
-          html.style.cssText = 'background-image: url(/Random) !important;'
-          console.log('浏览器不支持获取网络连接信息');
-    }
-
-    window.onload = () => {
-        setTimeout(function () {
-            计时器状态.innerHTML = "false"
-            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-            启动图.style.cssText = 'display:none;'
-            加载内容.style.cssText = 'opacity:0;'
-        }, 500)
-    }
-
-</script>
+<script src="../static/js/independent/main.js"></script>
 
 </html>
