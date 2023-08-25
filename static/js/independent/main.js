@@ -1,7 +1,5 @@
 // 动态加载iframe
-document.getElementById('index').innerHTML = '<iframe src="/index" id="iframe_RandomPhoto" style="z-index:2;top:30px" class="iframe_randomcall"></iframe>'
 加载内容 = document.getElementById('加载内容')
-RandomPhoto = document.getElementById('iframe_RandomPhoto')
 
 // 加载超时
 启动图 = document.getElementById('启动图')
@@ -39,23 +37,6 @@ setTimeout(function () {
 // 归位，因为默认是这个颜色值
 localStorage.setItem('动态颜色值', '#a9b5d8 !important')
 
-function 加载完成() {
-    加载内容 = document.getElementById('加载内容')
-    加载内容.innerHTML = 加载内容.innerHTML + '<p> * 等待加载完毕</p>' + '<br>'
-
-    window.onload = () => {
-        console.log('加载完成')
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 加载完毕</p>' + '<br>'
-
-        setTimeout(function () {
-            计时器状态.innerHTML = "false"
-            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-            启动图.style.cssText = 'display:none;'
-            加载内容.style.cssText = 'opacity:0;'
-        }, 500)
-    }
-}
-
 // 背景图片控制工具
 function 背景图片加载() {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> > 等待背景图片</p>' + '<br>'
@@ -65,8 +46,13 @@ function 背景图片加载() {
             return response.blob()
         })
         .then(function (blob) {
+
+            // 背景图片加载
             图片URL = URL.createObjectURL(blob)
-            document.getElementById('html').style.cssText = 'background-image: url(' + 图片URL + ') !important;'
+            document.getElementById('背景图片').style.cssText = 'background-image: url(' + 图片URL + ') !important;opacity:0'
+            setTimeout(function () {
+                document.getElementById('背景图片').style.cssText += 'opacity:1'
+            }, 2500)
 
             // 图片背景色提取
             图片 = new Image();
@@ -130,8 +116,29 @@ function 背景图片加载() {
 
                 rgb颜色值 = `rgb(${平均颜色['红']},${平均颜色['绿']},${平均颜色['蓝']})`
                 localStorage.setItem('动态颜色值', rgb颜色值 + ' !important')
+
+                加载内容 = document.getElementById('加载内容')
+                加载内容.innerHTML = 加载内容.innerHTML + '<p> * 等待加载完毕</p>' + '<br>'
+
+
                 加载内容.innerHTML = 加载内容.innerHTML + '<p> > 动态取色完成</p>' + '<br>'
-                加载完成()
+                // 创建并检查iframe是否加载完毕
+
+                iframe = document.createElement('iframe')
+                iframe.src = '/index'
+                iframe.id = 'iframe_RandomPhoto'
+                iframe.style.cssText = 'z-index:2;top:30px;opacity:0;'
+                iframe.className = 'iframe_randomcall'
+                document.body.appendChild(iframe)
+                iframe.onload = () => {
+                        加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
+                        计时器状态.innerHTML = "false"
+                        RandomPhoto = document.getElementById('iframe_RandomPhoto')
+                        RandomPhoto.style.cssText = 'top:0;opacity:1;'
+                        启动图.style.cssText = 'display:none;'
+                        加载内容.style.cssText = 'display:none;'
+                        document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
+                }
             }
         })
 }
@@ -149,7 +156,6 @@ if ('connection' in navigator) {
         背景图片加载()
         console.log('当前使用 Wi-Fi 连接');
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接</p>' + '<br>'
-        加载完成()
     } else if (网络连接类型 === 'cellular') {
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
         console.log('当前使用数据流量连接');
@@ -157,13 +163,11 @@ if ('connection' in navigator) {
         背景图片加载()
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
         console.log('当前网络连接类型未知');
-        加载完成()
     }
 } else {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'
     背景图片加载()
     console.log('浏览器不支持获取网络连接信息');
-    加载完成()
 }
 
 

@@ -1,4 +1,9 @@
-html {
+.背景图片 {
+    transition: all 1s cubic-bezier(0.03, 0.39, 0, 1.16)
+}
+
+
+.背景图片 {
     /* 背景图垂直、水平均居中 */
     background-position: center center;
     /* 背景图不平铺 */
@@ -7,9 +12,15 @@ html {
     background-attachment: fixed;
     /* 让背景图基于容器大小伸缩 */
     background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 1px;
+    z-index: -1;
 }
 
-html::before {
+.背景图片::before {
     position: fixed;
     top: 0;
     display: block;

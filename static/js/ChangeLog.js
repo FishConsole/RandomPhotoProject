@@ -5,6 +5,7 @@ ChangeLog_数据源 = [
             '质量更新：加入了动态取色系统',
             '质量更新：main页面的css，js，html分离',
             '质量更新：全新设计了RandomPhtot的图标，图标的名称就是Ra',
+            '质量更新：重写main，优化了main的加载逻辑',
         ]
     },
     {
