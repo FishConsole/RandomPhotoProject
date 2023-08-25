@@ -1,0 +1,91 @@
+html {
+    /* 背景图垂直、水平均居中 */
+    background-position: center center;
+    /* 背景图不平铺 */
+    background-repeat: no-repeat;
+    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+    background-attachment: fixed;
+    /* 让背景图基于容器大小伸缩 */
+    background-size: cover;
+}
+
+html::before {
+    position: fixed;
+    top: 0;
+    display: block;
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgb(255 255 255 / 31%) 0%, #ffffff85);
+}
+
+body {
+    background: none;
+}
+
+@keyframes CircleAnimation {
+    0% {
+        stroke-dasharray: 0;
+    }
+    100% {
+        stroke-dasharray: 140;
+    }
+}
+
+@keyframes SvgAnimation {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+svg {
+    animation-duration: 3s;
+    animation-name: SvgAnimation;
+    animation-iteration-count: infinite;
+    width: 52px;
+    animation-timing-function: cubic-bezier(0.28, 0.27, 1, 1);
+    height: 52px;
+    transition: none;
+
+}
+
+circle {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.73);
+    stroke-width: 7px;
+    stroke-dasharray: 140;
+    stroke-linecap: round;
+    r: 22;
+    animation-duration: 10s;
+    animation-name: CircleAnimation;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+.加载内容 {
+    line-height: 0px;
+    font-weight: 100;
+    font-size: 7px;
+    position: fixed;
+    top: 0;
+    color: #00000099;
+    width: 42%;
+    height: 100vh;
+    overflow: hidden;
+    text-wrap: nowrap;
+    user-select: none;
+}
+
+.iframe_randomcall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border: none;
+    z-index: 1;
+    transition: all 0.5s;
+}
