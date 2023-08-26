@@ -286,7 +286,7 @@ body.mdui-loaded .mdui-drawer {
 }
 
 .mdui-panel-item-open>.mdui-panel-item-body{
-    height:40vh!important;
+    height:36vh!important;
     line-height:40px;
 }
 
@@ -308,4 +308,9 @@ body.mdui-loaded .mdui-drawer {
 
 a{
     color: #ff4b79;
+}
+
+.mdui-btn>img{
+    position: relative;
+    top: 3px;
 }

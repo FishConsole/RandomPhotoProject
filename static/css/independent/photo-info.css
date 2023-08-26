@@ -44,7 +44,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #ffffffe0;
     right: 0px;
     backdrop-filter: blur(2px);
     z-index: 2;

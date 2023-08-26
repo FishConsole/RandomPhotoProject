@@ -73,13 +73,35 @@
     transform: unset;
 }
 
+
+
+
+        @media (min-width: 0px) {
+            /*手机屏幕*/
+            .mdui-drawer{
+                background: #ffffffc2;
+                backdrop-filter: blur(30px);
+            }
+        }
+        @media (max-width: 1000px) {
+            /*大屏幕*/
+            .mdui-drawer{
+                background: #ffffffc2;
+                backdrop-filter: blur(30px);
+            }
+        }
 @media (min-width: 1024px) {
     /*电脑屏幕*/
     .抽屉栏{
         position: absolute;
         top: 30px;
+        background: none;
+        backdrop-filter: none;
     }
 }
+        .header{
+        background: none!important;
+    }
 
     </style>
     <title>RandomPhoto - 随机图片提供系统（已提供{{ 统计调用次数 }}次调用服务）By：鱼鱼</title>
@@ -111,35 +133,35 @@
             </div>
             <div>上传文件</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+        <li class="mdui-list-item mdui-ripple" onclick="snackbar('功能未开放')">
             <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(92 189 139 / 20%)">
                 <img src="../static/assats/settings.svg">
             </div>
-            <div>上传文件</div>
+            <div>程序设置</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+        <li class="mdui-list-item mdui-ripple" onclick="进入更新记录()">
             <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(53 114 255 / 20%)">
                 <img src="../static/assats/history_edu.svg">
             </div>
-            <div>上传文件</div>
+            <div>更新记录</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+        <li class="mdui-list-item mdui-ripple" onclick="输出文档()">
             <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(219 204 102 / 26%)">
                 <img src="../static/assats/help.svg">
             </div>
-            <div>上传文件</div>
+            <div>帮助文档</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+        <li class="mdui-list-item mdui-ripple" onclick="加入群组()">
             <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(219 102 151 / 26%)">
                 <img src="../static/assats/group_1.svg">
             </div>
-            <div>上传文件</div>
+            <div>加入群组</div>
         </li>
     </ul>
 
 
 
-    <div _ngcontent-cvu-c18="" class="squiggle"><svg _ngcontent-cvu-c18="" aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern _ngcontent-cvu-c18="" id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g _ngcontent-cvu-c18="" clip-path="url(#clip0_2426_11367)"><path _ngcontent-cvu-c18="" d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square"></path></g></pattern><rect _ngcontent-cvu-c18="" width="100%" height="100%" fill="url(#a)"></rect></svg></div>
+    <div _ngcontent-cvu-c18="" class="squiggle" style="position: relative;top: 4px;"><svg _ngcontent-cvu-c18="" aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern _ngcontent-cvu-c18="" id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g _ngcontent-cvu-c18="" clip-path="url(#clip0_2426_11367)"><path _ngcontent-cvu-c18="" d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="rgba(0,0,0,0.3)" stroke-linecap="square"></path></g></pattern><rect _ngcontent-cvu-c18="" width="100%" height="100%" fill="url(#a)"></rect></svg></div>
     <div class="mdui-panel" mdui-panel><div class="mdui-panel-item">
         <div class="mdui-panel-item-header">Friends</div>
         <div class="mdui-panel-item-body">

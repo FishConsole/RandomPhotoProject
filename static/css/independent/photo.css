@@ -11,7 +11,6 @@
     position: fixed;
     top: 0px;
     right: 0px;
-    background: none !important;
     animation-name: start;
     animation-duration: 3s;
     animation-fill-mode: forwards;
@@ -170,7 +169,6 @@ a {
     top: 0;
     z-index: 9;
     width: 100%;
-    backdrop-filter: blur(5px);
     align-items: center;
     justify-content: space-between;
 }
