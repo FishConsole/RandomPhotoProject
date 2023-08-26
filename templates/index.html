@@ -30,7 +30,58 @@
     <script src="../static/js/ChangeLog.js"></script>
     <script src="../static/js/静态资源集中管理部门.js"></script>
 
+    <style>
+        .mdui-list-item>div{
+            border-radius: 30px;
+            width: 40px!important;
+            height: 40px!important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .抽屉栏_图标{
+            left: -4px!important;
+        }
+
+.mdui-btn-icon>img,.mdui-list-item>div>img {
+    height: 27px !important;
+    width: 27px !important;
+}
+
+.mdui-btn-icon>img:hover,.mdui-list-item>img:hover{
+    transform: unset;
+}
+
+.悬浮搜素按钮>img:hover,.mdui-list-item>img:hover{
+    transform: unset;
+}
+
+.mdui-toolbar>.mdui-btn-icon {
+    height: unset !important;
+}
+
+.悬浮搜素按钮>img {
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: -2px;
+    left: -6px;
+}
+
+.抽屉栏_内容>li>div>img:hover{
+    transform: unset;
+}
+
+@media (min-width: 1024px) {
+    /*电脑屏幕*/
+    .抽屉栏{
+        position: absolute;
+        top: 30px;
+    }
+}
+
+    </style>
     <title>RandomPhoto - 随机图片提供系统（已提供{{ 统计调用次数 }}次调用服务）By：鱼鱼</title>
 </head>
 
@@ -42,64 +93,52 @@
 
 <div id="子页面_历史更新容器"></div>
 <div id="子页面_文件上传容器"></div>
-<div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
-    <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="开启抽屉栏()">
-        <i class="mdui-icon material-symbols-outlined">menu_open</i>
-    </a>
-    <a href="javascript:" class="mdui-typo-headline">
-        <span class="header-text">RandomPhoto</span>
-        <img src="../static/assats/photo.jpg" class="header-text-img">
-    </a>
-    <div class="mdui-toolbar-spacer"></div>
-    <a href="../index/{{ 上一页 }}" class="mdui-btn mdui-btn-icon">
-        <i class="mdui-icon material-symbols-outlined">arrow_back</i>
-    </a>
-    <a href="../index/{{ 下一页 }}" class="mdui-btn mdui-btn-icon">
-        <i class="mdui-icon material-symbols-outlined">arrow_forward</i>
-    </a>
 
-</div>
-<div class="mdui-drawer" id="drawer">
+<div class="mdui-drawer 抽屉栏" id="drawer">
     <div class="动画">
         <h1 class="抽屉栏_标题">Photo</h1>
         <div class="div"></div>
         <div class="div div_a"></div>
     </div>
 
+
+
+
     <ul class="mdui-list 抽屉栏_内容">
         <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
-            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
-               style="color:rgb(212, 117, 28)!important;background: rgba(189, 129, 92, 0.2)!important;">upload</i>
+            <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgba(189, 129, 92, 0.2)">
+                <img src="../static/assats/upload.svg">
+            </div>
             <div>上传文件</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="snackbar('功能未开放')">
-            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
-               style="color:rgb(92, 189, 139)!important;background: rgb(92 189 139 / 20%)!important;">settings</i>
-            <div>程序设置</div>
+        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+            <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(92 189 139 / 20%)">
+                <img src="../static/assats/settings.svg">
+            </div>
+            <div>上传文件</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="进入更新记录()">
-            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
-               style="color:rgb(53, 114, 255)!important;background: rgb(53 114 255 / 20%)!important;">history_edu</i>
-            <div>更新记录</div>
-
+        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+            <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(53 114 255 / 20%)">
+                <img src="../static/assats/history_edu.svg">
+            </div>
+            <div>上传文件</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="输出文档()">
-            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
-               style="color:rgb(233 206 26)!important;background: rgb(219 204 102 / 26%)!important;">help</i>
-            <div>帮助文档</div>
+        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+            <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(219 204 102 / 26%)">
+                <img src="../static/assats/help.svg">
+            </div>
+            <div>上传文件</div>
         </li>
-        <li class="mdui-list-item mdui-ripple" onclick="加入群组()">
-            <i class="mdui-list-item-icon mdui-icon material-symbols-outlined"
-               style="color:rgb(233, 26, 67)!important;background: rgb(219 102 151 / 26%)!important">group</i>
-            <div>加入群组</div>
+        <li class="mdui-list-item mdui-ripple" onclick="进入文件上传()">
+            <div class="mdui-list-item-icon 抽屉栏_图标" style="background: rgb(219 102 151 / 26%)">
+                <img src="../static/assats/group_1.svg">
+            </div>
+            <div>上传文件</div>
         </li>
-        <!--  <li class="mdui-list-item mdui-ripple" onclick="window.open('http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=-oliRT0JFze5-8MVoIuLMX9a1XAaVDsV&authKey=8uo%2FKb%2FcG5uVu25N8fkyfr0AzdKwWa9wBVnDSHdT2ErtSmam8AgQJN%2FmUZ2Bee4g&noverify=0&group_code=117907928', '_blank')">&ndash;&gt;-->
-        <!--                <i class="mdui-list-item-icon mdui-icon material-icons"-->
-        <!--                    style="color:rgb(233, 26, 67)!important;background: rgb(219 102 151 / 26%)!important">group</i>-->
-        <!--                <div>加入群组</div>-->
-        <!--            </li>-->
-        <li></li>
     </ul>
+
+
+
     <div _ngcontent-cvu-c18="" class="squiggle"><svg _ngcontent-cvu-c18="" aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern _ngcontent-cvu-c18="" id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g _ngcontent-cvu-c18="" clip-path="url(#clip0_2426_11367)"><path _ngcontent-cvu-c18="" d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square"></path></g></pattern><rect _ngcontent-cvu-c18="" width="100%" height="100%" fill="url(#a)"></rect></svg></div>
     <div class="mdui-panel" mdui-panel><div class="mdui-panel-item">
         <div class="mdui-panel-item-header">Friends</div>
@@ -118,10 +157,25 @@
 </div>
 
 
-    <div class="mdui-container container">
-        <div class="liubai">
-        </div>
+<div class="mdui-appbar-with-toolbar mg-app">
+    <div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
+    <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="开启抽屉栏()">
+        <img src="../static/assats/menu_open.svg" alt="">
+    </a>
+    <a href="javascript:" class="mdui-typo-headline">
+        <span class="header-text">RandomPhoto</span>
+        <img src="../static/assats/photo.jpg" class="header-text-img">
+    </a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="../index/{{ 上一页 }}" class="mdui-btn mdui-btn-icon">
+        <img src="../static/assats/arrow_back.svg" alt="">
+    </a>
+    <a href="../index/{{ 下一页 }}" class="mdui-btn mdui-btn-icon">
+        <img src="../static/assats/arrow_forward.svg" alt="">
+    </a>
 
+</div>
+    <div class="mdui-container container">
         <div class=xianzhi>
             <div class="限制"></div>
             <div class=time-before>
@@ -129,10 +183,12 @@
             </div>
         </div>
     </div>
-
     <div class="悬浮搜素按钮 mdui-ripple-black" onclick="搜索发动()">
-        <i class="mdui-icon material-symbols-outlined">manage_search</i>发动搜索
+        <img src="../static/assats/manage_search.svg" alt="">
+        发动搜索
     </div>
+</div>
+
 
 
     <script>

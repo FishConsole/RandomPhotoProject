@@ -22,24 +22,24 @@ iframe {
     will-change: left;
 }
 
-.child_page{
-    
+.child_page {
+
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
 }
 
-.page_blank{
+.page_blank {
     width: 100%;
     height: 60vh;
 }
 
-  ::-webkit-scrollbar {
-      display: none;
-  }
+::-webkit-scrollbar {
+    display: none;
+}
 
-  ::selection {
-      background: rgba(160, 178, 236, 0.17);
-  }
+::selection {
+    background: rgba(160, 178, 236, 0.17);
+}
 
 
 /*////////////////////////////////////////////////////////////////////////////*/
@@ -71,7 +71,7 @@ body.mdui-loaded .mdui-drawer {
     top: 2px;
 }
 
-.mdui-dialog>.mdui-dialog-title {
+.mdui-dialog > .mdui-dialog-title {
     padding: 36px 24px 20px 25px;
     margin-left: 33%;
     font-size: 24px;
@@ -98,7 +98,7 @@ body.mdui-loaded .mdui-drawer {
     color: white !important;
 }
 
-.mdui-dialog>.mdui-dialog-title {
+.mdui-dialog > .mdui-dialog-title {
     padding: 36px 24px 20px 25px;
 }
 
@@ -121,7 +121,7 @@ body.mdui-loaded .mdui-drawer {
 }
 
 
-.mdui-dialog>.mdui-dialog-title {
+.mdui-dialog > .mdui-dialog-title {
     padding: 36px 24px 20px 25px;
     margin-left: 33%;
     font-size: 24px;
@@ -164,7 +164,7 @@ body.mdui-loaded .mdui-drawer {
     z-index: 9999;
 }
 
-.mdui-dialog>.mdui-dialog-title {
+.mdui-dialog > .mdui-dialog-title {
     padding: 36px 24px 20px 25px;
 }
 
@@ -202,35 +202,35 @@ body.mdui-loaded .mdui-drawer {
     border-color: #598dce;
 }
 
-.mdui-textfield-input{
+.mdui-textfield-input {
     opacity: 1;
 }
 
-.mdui-fab,.mdui-fab-fixed{
+.mdui-fab, .mdui-fab-fixed {
     right: 30px;
     bottom: 30px;
     backdrop-filter: blur(8px);
 }
 
-.mdui-switch-icon{
+.mdui-switch-icon {
     height: 27px;
     width: 49px;
     border-radius: 80px;
     border: 2px solid white;
 }
 
-.mdui-switch-icon::before{
+.mdui-switch-icon::before {
     top: 3.7px;
     box-shadow: none;
     left: 4px;
 }
 
-.mdui-switch input[type=checkbox]:checked+.mdui-switch-icon::before{
-    left: 25px!important;
-    background-color: #ffffff!important;
+.mdui-switch input[type=checkbox]:checked + .mdui-switch-icon::before {
+    left: 25px !important;
+    background-color: #ffffff !important;
 }
 
-.mdui-switch input[type=checkbox]:checked+.mdui-switch-icon {
+.mdui-switch input[type=checkbox]:checked + .mdui-switch-icon {
     background-color: rgb(3 0 123 / 73%);
     border: 2px solid rgb(3 0 123 / 0%);
 }
@@ -265,3 +265,6 @@ body.mdui-loaded .mdui-drawer {
     left: 14px;
     animation-delay: 1.5s;
 }
+
+/*测试区*/
+

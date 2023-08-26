@@ -134,10 +134,12 @@ function 背景图片加载() {
                         加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
                         计时器状态.innerHTML = "false"
                         RandomPhoto = document.getElementById('iframe_RandomPhoto')
-                        RandomPhoto.style.cssText = 'top:0;opacity:1;'
-                        启动图.style.cssText = 'display:none;'
-                        加载内容.style.cssText = 'display:none;'
-                        document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
+                        setTimeout(() => {
+                            RandomPhoto.style.cssText = 'top:0;opacity:1;'
+                            启动图.style.cssText = 'display:none;'
+                            加载内容.style.cssText = 'display:none;'
+                            document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
+                        }, 2000);
                 }
             }
         })

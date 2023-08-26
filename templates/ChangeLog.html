@@ -15,7 +15,32 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
     <title>RandomPhoto - ChangeLog更新记录</title>
+    <style>
+        .mdui-btn-icon > img {
+    height: 27px !important;
+    width: 27px !important;
+}
 
+.mdui-btn-icon > img:hover {
+    transform: unset;
+}
+
+.mdui-btn-icon > img:hover {
+    transform: unset;
+}
+
+.mdui-toolbar > .mdui-btn-icon {
+    height: unset !important;
+}
+
+.悬浮搜素按钮 > img {
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: -2px;
+    left: -6px;
+}
+    </style>
 </head>
 <script>
     var $ = mdui.$;
@@ -27,8 +52,9 @@
 
 <!-- 顶栏 -->
 <div class="mdui-toolbar mdui-appbar-fixed applicationBar 应用栏" style="z-index: 1;backdrop-filter: blur(6px);">
-    <button class="drawer mdui-btn mdui-btn-icon mdui-ripple" onclick="parent.parent.返回('ChangeLog')"><i
-            class="mdui-icon material-icons">arrow_back</i></button>
+    <button class="drawer mdui-btn mdui-btn-icon mdui-ripple" onclick="parent.parent.返回('ChangeLog')">
+        <img src="../static/assats/arrow_back.svg" alt="">
+    </button>
     <a href="javascript:" class="mdui-typo-headline" onclick="滚动到页面最顶()">更新记录</a>
 </div>
 <div id="上滑偏移">
