@@ -118,15 +118,32 @@ function 加入群组() {
 
 
 function 关闭抽屉栏() {
+    console.log('关闭抽屉栏')
     if (window.screen.availWidth < 1000) {
-        var 抽屉栏_状态 = new mdui.Drawer('#drawer')
-        抽屉栏_状态.close()
+        setTimeout(() => {
+            var 抽屉栏_状态 = new mdui.Drawer('#drawer')
+            抽屉栏_状态.close()
+        }, 2000)
+
     }
 }
 
+function 启动模糊() {
+    setTimeout(() => {
+        document.getElementById('drawer').style.cssText = ''
+    }, 1000)
+}
+
+function 关闭模糊() {
+    document.getElementById('drawer').style.cssText = 'backdrop-filter: none;background:white;opactiy:0'
+}
+
 function 开启抽屉栏() {
+    console.log('开启抽屉栏')
+    关闭模糊()
     var 抽屉栏_状态 = new mdui.Drawer('#drawer');
     抽屉栏_状态.open();
+    启动模糊()
 }
 
 function 进入更新记录() {
@@ -165,17 +182,26 @@ parent.parent.返回 = function (data) {
     //加载来自config系统的配置
     //1 第一条配置：退出编辑器弹窗开关
     /////////////////////////////////////////
+    function 取消渲染() {
+        子页面_upload = document.getElementById('子页面_upload')
+        子页面_ChangeLog = document.getElementById('子页面_ChangeLog')
+        setTimeout(() => {
+            子页面_upload.style.display = 'none';
+            子页面_ChangeLog.style.display = 'none';
+        }, 600)
+    }
+
     if (data == 'upload') {
         子页面_upload = document.getElementById('子页面_upload')
         子页面_upload.style.cssText = 'left:100vw;'
         关闭overlay()
-
+        取消渲染()
     }
     if (data == 'ChangeLog') {
         子页面_ChangeLog = document.getElementById('子页面_ChangeLog')
         子页面_ChangeLog.style.cssText = 'left:100vw;'
         关闭overlay()
-
+        取消渲染()
     }
 }
 

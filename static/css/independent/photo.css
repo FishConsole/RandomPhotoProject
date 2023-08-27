@@ -68,7 +68,7 @@
     height: 250px;
     border-radius: 21px;
     margin: 20px;
-    box-shadow: -10px -6px 20px 0px #93a4b57d;
+    box-shadow: -10px 3px 20px 0px #dfdede;
     animation-name: start;
     animation-duration: 4s;
     animation-fill-mode: forwards;
@@ -200,6 +200,24 @@ a {
     align-content: space-around;
     flex-direction: row;
     margin-left: -16px;
+}
+@media (min-width: 1024px) {
+    /*手机屏幕*/
+    .限制 {
+        width: 100vw;
+    }
+}
+@media (max-width: 1000px) {
+    /*大屏幕*/
+    .限制 {
+        width: 100vw;
+    }
+}
+@media (min-width: 1024px) {
+    /*电脑屏幕*/
+    .限制 {
+        width: unset;
+    }
 }
 
 .限制>span:active{

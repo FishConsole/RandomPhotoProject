@@ -314,3 +314,22 @@ a{
     position: relative;
     top: 3px;
 }
+
+.mdui-dialog-title>div>img{
+    height: 47px;
+    width: 40px;
+    position: relative;
+    left: 17px;
+    top: -11px;
+    margin-top: 23px;
+}
+
+.mdui-dialog-title>div>img:hover{
+    transform: unset;
+}
+
+.mdui-dialog-alert{
+    max-width: 500px !important;
+    background: #ffffffe3;
+    backdrop-filter: blur(30px);
+}
