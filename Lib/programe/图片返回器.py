@@ -4,19 +4,19 @@ from urllib.parse import urlparse  # 获取链接中域名的一个库
 
 from flask import Blueprint, send_file, render_template, request
 
-from Lib.programe.调试模式 import 调试模式
-from Lib.programe.重新读取 import 图片信息资源管理器
-from Lib.回调中心 import 回调中心
-from Lib.密码工具 import 密码工具
-from Lib.文件读写器 import 文件读写器
-from Lib.路径控制 import 路径控制
-from .Random import Random
-from .home import home_, home_page_
+from Lib.依赖.运维相关.调试模式 import 调试模式
+from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
+from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.affiliate.密码工具 import 密码工具
+from Lib.依赖.杂项.文件读写器 import 文件读写器
+from Lib.依赖.运维相关.路径控制 import 路径控制
+from Lib.依赖.图片操作相关.随机图片发生器 import 随机图片发生器
+from Lib.依赖.图片操作相关.主页显示器 import home_, home_page_
 
 # from ..经纬度生成器 import Image_Location
 
-Random_bp = Blueprint('Random', __name__)
-Random_More_bp = Blueprint('Random', __name__)
+Random_bp = Blueprint('随机图片发生器', __name__)
+Random_More_bp = Blueprint('随机图片发生器', __name__)
 Random_NotCount_bp = Blueprint('Random_NotCount', __name__)
 Random_More_NotCount_bp = Blueprint('Random_NotCount', __name__)
 
@@ -157,7 +157,7 @@ def Random_More_Random(model):
     范围 = request.args.get('range')
     print(范围)
     # 从数据库中获得数据,要原图
-    图片 = Random(True, 图片信息资源管理器.获取指定_版式_压缩图片信息资源(model, 范围))
+    图片 = 随机图片发生器(True, 图片信息资源管理器.获取指定_版式_压缩图片信息资源(model, 范围))
     return send_file(图片, mimetype='image/jpg')
 
 
@@ -198,10 +198,10 @@ def Random_RandomNotCount():
 def Random_More_RandomNotCount(model):
     # 从数据库中获得数据
     if model == '横屏':
-        图片 = Random(False, 图片信息资源管理器.获取指定_版式_压缩图片信息资源('横屏'))
+        图片 = 随机图片发生器(False, 图片信息资源管理器.获取指定_版式_压缩图片信息资源('横屏'))
         return send_file(图片, mimetype='image/jpg')
     elif model == '竖屏':
-        图片 = Random(False, 图片信息资源管理器.获取指定_版式_压缩图片信息资源('竖屏'))
+        图片 = 随机图片发生器(False, 图片信息资源管理器.获取指定_版式_压缩图片信息资源('竖屏'))
         return send_file(图片, mimetype='image/jpg')
 
 

@@ -256,7 +256,7 @@ body.mdui-loaded .mdui-drawer {
     animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    animation-name: rotate;
+    animation-name: 旋转;
 }
 
 .div_a {

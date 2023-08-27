@@ -11,7 +11,7 @@ body::-webkit-scrollbar {
     background-color: rgb(255, 0, 0);
 }
 
-body.mdui-locked{
+body.mdui-locked {
     overflow: unset;
 }
 
@@ -25,6 +25,8 @@ iframe {
     border: medium none;
     will-change: left;
 }
+
+/*----------------------------------------------------------------------------------*/
 
 .child_page {
 
@@ -44,7 +46,6 @@ iframe {
 ::selection {
     background: rgba(160, 178, 236, 0.17);
 }
-
 
 /*////////////////////////////////////////////////////////////////////////////*/
 
@@ -159,7 +160,7 @@ body.mdui-loaded .mdui-drawer {
 
 .mdui-dialog,
 .mdui-dialog-alert {
-    border-radius: 30px!important;
+    border-radius: 30px !important;
     height: none !important;
 }
 
@@ -244,36 +245,8 @@ body.mdui-loaded .mdui-drawer {
     margin-top: 0 !important;
 }
 
-.对话框图标 {
-    font-size: 36px;
-    margin-left: 19px;
-    margin-top: 0px;
-    margin-bottom: 16px;
-}
-
-
 .mdui-overlay {
     background: rgb(37 32 86 / 40%) !important;
-}
-
-.div {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 7px;
-    left: 24px;
-    border-radius: 45%;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-name: rotate;
-}
-
-.div_a {
-    position: absolute;
-    top: 9px;
-    left: 14px;
-    animation-delay: 1.5s;
 }
 
 .mdui-toolbar > * {
@@ -281,36 +254,144 @@ body.mdui-loaded .mdui-drawer {
 }
 
 
-.mdui-panel-item-open>.mdui-panel-item-header{
+.mdui-panel-item-open > .mdui-panel-item-header {
     height: 50px;
 }
 
-.mdui-panel-item-open>.mdui-panel-item-body{
-    height:36vh!important;
-    line-height:40px;
+.mdui-panel-item-open > .mdui-panel-item-body {
+    height: 36vh !important;
+    line-height: 40px;
 }
 
-.mdui-panel-item-body::after, .mdui-panel-item-body::before{
+.mdui-panel-item-body::after, .mdui-panel-item-body::before {
     margin-top: 40px;
 }
 
 
-.mdui-panel-item{
-    box-shadow: none!important;
+.mdui-panel-item {
+    box-shadow: none !important;
     border-radius: 27px;
     width: 92%;
 }
 
-.mdui-panel{
+.mdui-panel {
     margin-top: 20px;
     margin-left: 16px;
 }
 
-a{
+a {
     color: #ff4b79;
 }
 
-.mdui-btn>img{
+.mdui-btn > img {
     position: relative;
     top: 3px;
+}
+
+.mdui-dialog-title > div > img {
+    height: 47px;
+    width: 40px;
+    position: relative;
+    left: 17px;
+    top: -11px;
+    margin-top: 23px;
+}
+
+.mdui-dialog-title > div > img:hover {
+    transform: unset;
+}
+
+.mdui-dialog-alert {
+    max-width: 500px !important;
+    background: #ffffffe3;
+    backdrop-filter: blur(30px);
+}
+
+.mdui-panel {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.mdui-panel-item-header {
+    display: flex;
+    justify-content: center;
+    background: none;
+}
+
+.mdui-panel-item-header:active {
+    background: none;
+}
+
+.mdui-toolbar > .mdui-btn-icon {
+    height: unset !important;
+}
+
+.mdui-list-item > div {
+    border-radius: 30px;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.mdui-btn-icon > img:hover, .mdui-list-item > img:hover {
+    transform: unset;
+}
+
+.mdui-btn-icon > img, .mdui-list-item > div > img {
+    height: 27px !important;
+    width: 27px !important;
+}
+
+
+.div {
+    width: 200px;
+    height: 200px;
+    border-radius: 45%;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: 旋转;
+    margin-left:-77px;
+}
+
+.div_a {
+    animation-delay: 1.5s;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
+.对话框图标 {
+    font-size: 36px;
+    margin-left: 19px;
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
+@media (min-width: 0px) {
+    /*手机屏幕*/
+    .mdui-drawer {
+        background: #ffffffc2;
+        backdrop-filter: blur(30px);
+    }
+}
+
+@media (max-width: 1000px) {
+    /*大屏幕*/
+    .mdui-drawer {
+        background: #ffffffc2;
+        backdrop-filter: blur(30px);
+    }
+}
+
+@media (min-width: 1024px) {
+    /*电脑屏幕*/
+    .mdui-drawer {
+        position: absolute;
+        top: 30px;
+        background: none;
+        backdrop-filter: none;
+    }
 }

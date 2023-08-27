@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from Lib.路径控制 import 路径控制
+from Lib.依赖.运维相关.路径控制 import 路径控制
 
 
 def 生成站点地图(资源):

@@ -113,7 +113,7 @@
     ajax_helper_main('get', `${官网地址}/survive`, formData, "Survive",
         成功函数 = function (data) {
             body = document.getElementById('body')
-            body.style.cssText = `background:url(${官网地址}/Random) center no-repeat;background-size: auto 110%;`;
+            body.style.cssText = `background:url(${官网地址}/随机图片发生器) center no-repeat;background-size: auto 110%;`;
             const 返回值 = ajax_helper_返回值解码(data);
             const 容器 = document.getElementById('容器');
             容器.innerHTML =

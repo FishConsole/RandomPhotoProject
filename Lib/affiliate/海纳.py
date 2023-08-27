@@ -3,7 +3,7 @@ import sqlite3
 
 from flask import Blueprint, jsonify
 
-from Lib.programe.重新读取 import 图片信息资源管理器
+from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
 
 ocss_page_bp = Blueprint('index_page', __name__)
 

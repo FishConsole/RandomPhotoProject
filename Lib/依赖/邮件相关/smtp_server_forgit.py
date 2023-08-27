@@ -3,7 +3,7 @@ import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
 
-from Lib.programe.调试模式 import 调试模式
+from Lib.依赖.运维相关.调试模式 import 调试模式
 
 
 def 发送邮件(内容):

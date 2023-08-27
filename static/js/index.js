@@ -5,8 +5,6 @@ function 组件生成(数据源) {
     加载状态.style.cssText = ''
     // 提取动态颜色值
     动态颜色值 = localStorage.getItem('动态颜色值')
-
-    console.log(数据源)
     数据源 = 数据源["Image_Data"]
     // 获取输出图片的位置
     限制 = document.querySelector('.限制')
@@ -59,7 +57,6 @@ function 搜索发动() {
             限制.style.cssText = 'opacity:0;'
             await ajax_helper_main('get', `/Search/${搜索内容}`, new FormData(), {}, function (responseText) {
                 responseText = ajax_helper_返回值解码(responseText)
-                console.log(responseText)
                 responseText = eval(responseText)
                 result = []
 
@@ -69,7 +66,6 @@ function 搜索发动() {
                 }
 
                 responseText = result
-                console.log(responseText)
                 if (responseText.length == 0) {
                     限制.style.cssText = 'opacity:1;'
                     snackbar('没有找到相关图片')
@@ -105,28 +101,31 @@ function 输出文档() {
 `);
 }
 
-
-function 加入群组() {
-    对话框(`
-<div class="mdui-typo">
-欢迎大家来到RandomPhoto的群组，我们很高兴能和大家一起讨论问题，分享图片，一起进步！<br><br>QQ群：<a class="mdui-typo" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=-oliRT0JFze5-8MVoIuLMX9a1XAaVDsV&authKey=8uo%2FKb%2FcG5uVu25N8fkyfr0AzdKwWa9wBVnDSHdT2ErtSmam8AgQJN%2FmUZ2Bee4g&noverify=0&group_code=117907928">加入QQ群</a>
-    <br><br>
-     QQ频道：<a class="mdui-typo" href="https://pd.qq.com/s/ewcec18hm">加入频道</a>
-   </div>
-`);
+function 关闭模糊() {
+    document.getElementById('drawer').style.cssText = 'backdrop-filter: none;background:white;opactiy:0'
 }
 
-
-function 关闭抽屉栏() {
-    if (window.screen.availWidth < 1000) {
-        var 抽屉栏_状态 = new mdui.Drawer('#drawer')
-        抽屉栏_状态.close()
-    }
+function 启动模糊() {
+    setTimeout(() => {
+        document.getElementById('drawer').style.cssText = ''
+    }, 1000)
 }
 
 function 开启抽屉栏() {
+    关闭模糊()
     var 抽屉栏_状态 = new mdui.Drawer('#drawer');
     抽屉栏_状态.open();
+    启动模糊()
+}
+
+function 关闭抽屉栏() {
+    if (window.screen.availWidth < 1000) {
+        setTimeout(() => {
+            var 抽屉栏_状态 = new mdui.Drawer('#drawer')
+            抽屉栏_状态.close()
+        }, 2000)
+
+    }
 }
 
 function 进入更新记录() {
@@ -165,24 +164,45 @@ parent.parent.返回 = function (data) {
     //加载来自config系统的配置
     //1 第一条配置：退出编辑器弹窗开关
     /////////////////////////////////////////
+    function 取消渲染() {
+        子页面_upload = document.getElementById('子页面_upload')
+        子页面_ChangeLog = document.getElementById('子页面_ChangeLog')
+        setTimeout(() => {
+            子页面_upload.style.display = 'none';
+            子页面_ChangeLog.style.display = 'none';
+        }, 600)
+    }
+
     if (data == 'upload') {
         子页面_upload = document.getElementById('子页面_upload')
         子页面_upload.style.cssText = 'left:100vw;'
         关闭overlay()
-
+        取消渲染()
     }
     if (data == 'ChangeLog') {
         子页面_ChangeLog = document.getElementById('子页面_ChangeLog')
         子页面_ChangeLog.style.cssText = 'left:100vw;'
         关闭overlay()
-
+        取消渲染()
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+function 加入群组() {
+    对话框(`
+<div class="mdui-typo">
+欢迎大家来到RandomPhoto的群组，我们很高兴能和大家一起讨论问题，分享图片，一起进步！<br><br>QQ群：<a class="mdui-typo" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=-oliRT0JFze5-8MVoIuLMX9a1XAaVDsV&authKey=8uo%2FKb%2FcG5uVu25N8fkyfr0AzdKwWa9wBVnDSHdT2ErtSmam8AgQJN%2FmUZ2Bee4g&noverify=0&group_code=117907928">加入QQ群</a>
+    <br><br>
+     QQ频道：<a class="mdui-typo" href="https://pd.qq.com/s/ewcec18hm">加入频道</a>
+   </div>
+`);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 子页面_历史更新容器 = document.getElementById('子页面_历史更新容器')
 子页面_文件上传容器 = document.getElementById('子页面_文件上传容器')
-console.log(子页面_历史更新容器)
-console.log(子页面_文件上传容器)
 
 setTimeout(function () {
     子页面_历史更新容器.innerHTML = '<iframe src="../ChangeLog" id="子页面_ChangeLog" style="display:none" class="child_page"></iframe>'
