@@ -4,9 +4,9 @@ from datetime import datetime
 
 from flask import request, Blueprint
 
-from Lib.smtp_server import 发送邮件
-from Lib.回调中心 import 回调中心
-from Lib.路径控制 import 路径控制
+from Lib.依赖.邮件相关.smtp_server import 发送邮件
+from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.运维相关.路径控制 import 路径控制
 
 upload_bp = Blueprint('upload', __name__)
 

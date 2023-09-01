@@ -4,13 +4,13 @@ import time
 
 import jieba
 
-from Lib.smtp_server import 发送邮件
-from Lib.回调中心 import 回调中心
-from Lib.图片压缩库 import ResizeImage
-from Lib.图片路径提取 import 图片路径提取
-from .重新读取 import 图片信息资源管理器
-from ..图片大小检测 import 图片大小检测
-from ..路径控制 import *
+from Lib.依赖.邮件相关.smtp_server import 发送邮件
+from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.图片操作相关.图片压缩库 import ResizeImage
+from Lib.依赖.图片操作相关.图片路径提取 import 图片路径提取
+from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
+from Lib.依赖.图片操作相关.图片大小检测 import 图片大小检测
+from Lib.依赖.运维相关.路径控制 import *
 
 
 def 随机数发生器(length):

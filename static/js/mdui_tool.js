@@ -8,7 +8,6 @@ function 对话框(内容) {
 
 
 function 文本对话框(内容, 执行函数) {
-
     mdui.prompt(内容, '<div><i class="mdui-icon material-icons 对话框图标">all_out</i></div>', function (value) {
         执行函数(value)
     });

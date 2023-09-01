@@ -3,8 +3,8 @@ import os
 from flask import Blueprint, render_template
 
 from Lib.programe.审核系统 import 审核, 删除审核图片, 通过审核图片
-from Lib.programe.调试模式 import 调试模式
-from Lib.自动图像标签生成器 import 二次元图片标签自动生成
+from Lib.依赖.运维相关.调试模式 import 调试模式
+from Lib.依赖.图片操作相关.自动图像标签生成器 import 二次元图片标签自动生成
 
 admin_page_bp = Blueprint('admin_page', __name__)
 admin_AutoTag_page_bp = Blueprint('admin_AutoTag_page', __name__)

@@ -31,79 +31,10 @@
     <script src="../static/js/静态资源集中管理部门.js"></script>
 
     <style>
-        .mdui-list-item>div{
-            border-radius: 30px;
-            width: 40px!important;
-            height: 40px!important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
-        .抽屉栏_图标{
-            left: -4px!important;
-        }
-
-.mdui-btn-icon>img,.mdui-list-item>div>img {
-    height: 27px !important;
-    width: 27px !important;
-}
-
-.mdui-btn-icon>img:hover,.mdui-list-item>img:hover{
-    transform: unset;
-}
-
-.悬浮搜素按钮>img:hover,.mdui-list-item>img:hover{
-    transform: unset;
-}
-
-.mdui-toolbar>.mdui-btn-icon {
-    height: unset !important;
-}
-
-.悬浮搜素按钮>img {
-    width: 27px;
-    height: 27px;
-    position: relative;
-    top: -2px;
-    left: -6px;
-}
-
-.抽屉栏_内容>li>div>img:hover{
-    transform: unset;
-}
-
-
-
-
-        @media (min-width: 0px) {
-            /*手机屏幕*/
-            .mdui-drawer{
-                background: #ffffffc2;
-                backdrop-filter: blur(30px);
-            }
-        }
-        @media (max-width: 1000px) {
-            /*大屏幕*/
-            .mdui-drawer{
-                background: #ffffffc2;
-                backdrop-filter: blur(30px);
-            }
-        }
-@media (min-width: 1024px) {
-    /*电脑屏幕*/
-    .抽屉栏{
-        position: absolute;
-        top: 30px;
-        background: none;
-        backdrop-filter: none;
-    }
-}
-        .header{
-        background: none!important;
-    }
 
     </style>
+
     <title>RandomPhoto - 随机图片提供系统（已提供{{ 统计调用次数 }}次调用服务）By：鱼鱼</title>
 </head>
 
@@ -117,10 +48,10 @@
 <div id="子页面_文件上传容器"></div>
 
 <div class="mdui-drawer 抽屉栏" id="drawer">
-    <div class="动画">
+    <div class="涟漪动画">
         <h1 class="抽屉栏_标题">Photo</h1>
-        <div class="div"></div>
-        <div class="div div_a"></div>
+            <div class="div"></div>
+            <div class="div div_a"></div>
     </div>
 
 
@@ -162,7 +93,7 @@
 
 
     <div _ngcontent-cvu-c18="" class="squiggle" style="position: relative;top: 4px;"><svg _ngcontent-cvu-c18="" aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg"><pattern _ngcontent-cvu-c18="" id="a" width="91" height="8" patternUnits="userSpaceOnUse"><g _ngcontent-cvu-c18="" clip-path="url(#clip0_2426_11367)"><path _ngcontent-cvu-c18="" d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="rgba(0,0,0,0.3)" stroke-linecap="square"></path></g></pattern><rect _ngcontent-cvu-c18="" width="100%" height="100%" fill="url(#a)"></rect></svg></div>
-    <div class="mdui-panel" mdui-panel><div class="mdui-panel-item">
+    <div class="mdui-panel" mdui-panel style="width: 260px"><div class="mdui-panel-item">
         <div class="mdui-panel-item-header">Friends</div>
         <div class="mdui-panel-item-body">
             {# 这个千万不能用js做，搜索引擎是不看的 #}
@@ -197,19 +128,81 @@
     </a>
 
 </div>
-    <div class="mdui-container container">
+<div class="mdui-container container">
+
         <div class=xianzhi>
-            <div class="限制"></div>
-            <div class=time-before>
-                <span>END</span>
-            </div>
+
+        <div class="mdui-panel 音乐播放器" mdui-panel id="音乐播放器" style="width: 70vw;">
+            <div class="mdui-panel-item" style="background: none" id="mdui-panel-item">
+                <div class="mdui-panel-item-header">
+                    <audio controls id="audio_player">
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                </div>
+        <div class="mdui-panel-item-body" id="mdui-panel-item-body" style="font-size: 16px;font-weight: bold;">
+            <ul id="播放列表">
+            </ul>
+        </div>
+        <script>
+    audio_list = document.getElementById('播放列表').getElementsByTagName('a');
+    console.log(audio_list);
+    function 关闭音乐播放器折叠栏(){
+        // 关闭折叠栏
+        mduipanelitem = document.getElementById('mdui-panel-item')
+        mduipanelitembody = document.getElementById('mdui-panel-item-body')
+
+        console.log(mduipanelitem)
+        console.log(mduipanelitembody)
+
+        mduipanelitem.classList.remove("mdui-panel-item-open");/*删除样式*/
+        mduipanelitembody.style.cssText = 'font-size: 16px; font-weight: bold;'
+    }
+    fetch("/music")
+        .then((response) => response.json())
+        .then((data) => {
+            // 全部加上检测，发现按下就触发alert
+            if (data['状态'] === '成功') {
+                播放列表 = document.getElementById('播放列表')
+                for (i = 0; i < data['内容'].length; i++) {
+                    // 字符处理
+                    歌名 = data['内容'][i].split('\\')
+                    歌名 = 歌名[歌名.length-1]
+                    console.log(歌名)
+                    {#歌名 = 歌名.split('.')[0]#}
+
+                    播放列表.innerHTML += `<li onclick="关闭音乐播放器折叠栏()"><a href="#" data-src="${data['内容'][i]}">${歌名}</a></li>`
+                }
+                for (i = 0; i < audio_list.length; i++) {
+                    audio_list[i].addEventListener('click', function (e) {
+                        e.preventDefault();
+                        // 获取并暂停播放器
+                        audio_player = document.getElementById('audio_player')
+                        audio_player.pause();
+                        // 修改链接
+                        audio_url = this.getAttribute('data-src');
+                        // 重新播放
+                        audio_player.setAttribute('src', audio_url);
+                        audio_player.play();
+                    });
+                }
+            }
+        });
+
+</script>
+    </div>
+    </div>
+        <div class="限制"></div>
+        <div class="备案信息 time-before">
+            <a href="http://www.beian.gov.cn/">渝ICP备2023009528号</a>
         </div>
     </div>
-    <div class="悬浮搜素按钮 mdui-ripple-black" onclick="搜索发动()">
+    </div>
+    <div class="悬浮搜索按钮 mdui-ripple-black" onclick="搜索发动()">
         <img src="../static/assats/manage_search.svg" alt="">
         发动搜索
     </div>
 </div>
+
 
 
 

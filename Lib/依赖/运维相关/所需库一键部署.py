@@ -2,7 +2,7 @@
 import os
 import platform
 import sys
-from Lib.programe.调试模式 import 调试模式
+from Lib.依赖.运维相关.调试模式 import 调试模式
 
 当前操作系统 = platform.system().split('_')[0]
 当前PIP目录 = os.path.join(os.path.dirname(sys.executable), 'Scripts')
@@ -18,6 +18,7 @@ python_version = f"{sys.version_info.major}.{sys.version_info.minor}"
     'exifread': 'exifread',
     'requests': 'requests',
     'Pillow': 'PIL',
+    'selenium': 'selenium',
     # 'tensorflow': 'tensorflow',
     # 'deepdanbooru': 'deepdanbooru',
 }

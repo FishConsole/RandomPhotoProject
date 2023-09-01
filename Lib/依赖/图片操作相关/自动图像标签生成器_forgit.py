@@ -51,7 +51,7 @@ def 二次元图片标签自动生成(图片路径: list = None) -> Union[Dict[s
     :param 图片路径: 给出一个有效的图片路径，可以是绝对路径或相对路径
     :return: 指定图片的标签数组
     """
-    from ..Lib.programe.调试模式 import 自动标签生成器开关
+    from Lib.依赖.运维相关.调试模式 import 自动标签生成器开关
 
     if 自动标签生成器开关:
         from deepdanbooru import commands
@@ -156,5 +156,5 @@ def 二次元图片标签自动生成(图片路径: list = None) -> Union[Dict[s
             return json.dumps(输出的内容, ensure_ascii=False)
     else:
         return json.dumps({'error': True, 'message': '自动标签生成器开关未开启'}, ensure_ascii=False)
-# 输出内容 = 二次元图片标签自动生成(['../img/主站压缩图片/test.jpg'])
+# 输出内容 = 二次元图片标签自动生成(['../img/主站压缩图片/test.html.jpg'])
 # print(输出内容)

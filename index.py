@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from Lib.所需库一键部署 import 所需库一键部署
-from Lib.programe.调试模式 import 调试模式
+from Lib.依赖.运维相关.所需库一键部署 import 所需库一键部署
+from Lib.依赖.运维相关.调试模式 import 调试模式
 
 所需库一键部署()
 
-from Lib.版本号提取 import 版本号提取
+from Lib.依赖.运维相关.版本号提取 import 版本号提取
 
 if not 调试模式():
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [业务模式]')
@@ -19,13 +19,14 @@ from flask import Flask, make_response
 from flask_cors import CORS, cross_origin  # 跨域访问限制
 from flask_sslify import SSLify
 
-from Lib.programe.admin import *
+from Lib.programe.管理员系统 import *
 from Lib.programe.图片返回器 import *
 from Lib.programe.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
 from Lib.programe.文件上传器 import upload_bp
-from Lib.programe.重新读取 import 重新读取_
-from Lib.smtp_server import 发送邮件
-from Lib.路径控制 import 路径控制
+from Lib.programe.bgm池 import 网易云爬虫_bp
+from Lib.依赖.运维相关.重新读取 import 重新读取_
+from Lib.依赖.邮件相关.smtp_server import 发送邮件
+from Lib.依赖.运维相关.路径控制 import 路径控制
 
 from Lib.affiliate.海纳 import ocss_page_bp
 
@@ -33,6 +34,8 @@ main = Flask(__name__)
 sslify = SSLify(main)
 
 CORS(main, resources={r"/static/*": {"origins": "https://www.root-a.top"}})
+
+main.register_blueprint(网易云爬虫_bp, name='网易云爬虫')
 
 main.register_blueprint(img_bp, name='img')
 
@@ -71,7 +74,9 @@ main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 @main.route('/')
 def zhuye():
     return render_template('main.html', 域名=路径控制.启动位置.域名())
-
+@main.route('/test')
+def test():
+    return render_template('test.html')
 
 @main.route('/ChangeLog')
 def ChangeLog():
@@ -91,11 +96,12 @@ def survive():
 
 ######################################################################
 # 自动死亡机制
-def 自动死亡线程(调试模式):
+def 自动死亡线程():
     # 自动死亡机制的意思就是自己访问自己
     # 当然是访问存活报告，如果访问不了那么就说明自己在外网上已经死了
     # 那么就自觉的退出，让系统重启自己
     import requests
+    from Lib.依赖.运维相关.调试模式 import 调试模式
     print(' * 自动死亡线程：自动死亡线程启动')
     if not 调试模式:
         while True:
@@ -115,8 +121,8 @@ def 自动死亡线程(调试模式):
 
 @main.route('/sitemap', methods=['GET'])
 def sitemap():
-    from Lib.站点地图生成器 import 生成站点地图
-    from Lib.programe.重新读取 import 图片信息资源管理器
+    from Lib.依赖.运维相关.站点地图生成器 import 生成站点地图
+    from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
 
     生成的XML = 生成站点地图([
         {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息(), '优先级': '0.5', '分类': 'info'},
@@ -138,7 +144,7 @@ if __name__ == "__main__":
 
     b = threading.Thread(target=审核队列_重新读取, daemon=True)
     c = threading.Thread(target=审核系统缩略图生成器, daemon=True)
-    d = threading.Thread(target=自动死亡线程, daemon=True, kwargs={'调试模式': 调试模式()})
+    d = threading.Thread(target=自动死亡线程, daemon=True)
     a = threading.Thread(target=重新读取_, daemon=True)
 
     b.start()
