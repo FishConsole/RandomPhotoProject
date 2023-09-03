@@ -127,7 +127,6 @@ a {
 }
 
 
-
 .页面切换 {
     font-weight: 600;
 }
@@ -148,7 +147,7 @@ a {
     flex-wrap: wrap;
     justify-content: center;
     align-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
     margin-left: -16px;
 }
 
@@ -281,12 +280,24 @@ a {
     font-size: 10px !important;
     position: relative;
     left: 20px;
-    top: -20px;
+    top: 20px;
 }
 
 .备案信息 > a {
     color: rgba(0, 0, 0, 0.61)
 }
+
+#图片展示器 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#音乐播放器{
+    display: flex;
+    justify-content: center;
+}
+
 
 /*----------------------------------------------------------------------------------*/
 
@@ -303,6 +314,13 @@ a {
 }
 
 /*----------------------------------------------------------------------------------*/
+
+@media (max-width: 300px) {
+    /*小手机屏幕*/
+    .大标题{
+        display: none;
+    }
+}
 
 
 @media (min-width: 1024px) {
@@ -322,7 +340,7 @@ a {
 @media (min-width: 1024px) {
     /*电脑屏幕*/
     .限制 {
-        width: unset;
+        width: 100% !important;
     }
 
     .img {
@@ -332,10 +350,6 @@ a {
     span > a > img {
         width: 184px !important;
 
-    }
-
-    .限制 {
-        width: 100% !important;
     }
 
     .mdui-toolbar {

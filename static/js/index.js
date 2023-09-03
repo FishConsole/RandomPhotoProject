@@ -7,7 +7,7 @@ function 组件生成(数据源) {
     动态颜色值 = localStorage.getItem('动态颜色值')
     数据源 = 数据源["Image_Data"]
     // 获取输出图片的位置
-    限制 = document.querySelector('.限制')
+    限制 = document.getElementById('图片展示器')
 
     for (a in 数据源) {
         图片地址 = 数据源[a][0]
