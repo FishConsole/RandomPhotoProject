@@ -9,8 +9,9 @@ import requests
 from selenium import webdriver
 # 定位元素的方式，用于定位网页元素
 from selenium.webdriver.common.by import By
-# Edge浏览器特定的选项配置
-from selenium.webdriver.edge.options import Options
+# chrome浏览器特定的选项配置
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options
 # 用于等待特定条件的模块
 from selenium.webdriver.support.ui import WebDriverWait
 # 预期条件，用于等待特定的元素状态
@@ -44,13 +45,13 @@ def 下载歌曲(直链, 歌名):
     路径 = 路径控制.背景音乐_路径.背景音乐_路径_后端()
     print('网易云爬虫：获取路径')
     首选项 = {"profile.managed_default_content_settings.images": 2, 'permissions.default.stylesheet': 2}
-    Edge选项 = Options()
-    print('网易云爬虫：装备Edge选项')
+    chrome选项 = Options()
+    print('网易云爬虫：装备chrome选项')
 
     # 不打开窗口
-    Edge选项.add_argument('--headless')
-    Edge选项.add_experimental_option("prefs", 首选项)
-    驱动程序 = webdriver.Edge(options=Edge选项)
+    chrome选项.add_argument('--headless')
+    chrome选项.add_experimental_option("prefs", 首选项)
+    驱动程序 = webdriver.Chrome(options=chrome选项)
     print('网易云爬虫：获取目标')
 
     驱动程序.get(直链)
@@ -74,12 +75,12 @@ def 下载歌曲(直链, 歌名):
 
 def 网易云爬虫_音乐下载器():
     print('网易云爬虫：等待直链池')
-    Edge选项 = Options()
-    Edge选项.page_load_strategy = 'eager'
-    # Edge选项.add_argument('--headless')
+    chrome选项 = Options()
+    chrome选项.page_load_strategy = 'eager'
+    chrome选项.add_argument('--headless')
     首选项 = {"profile.managed_default_content_settings.images": 2, 'permissions.default.stylesheet': 2}
-    Edge选项.add_experimental_option("prefs", 首选项)
-    驱动程序 = webdriver.Edge(options=Edge选项)
+    chrome选项.add_experimental_option("prefs", 首选项)
+    驱动程序 = webdriver.Chrome(options=chrome选项)
 
     try:
         直链池, 上一个爬虫 = 网易云爬虫_直链提供器(驱动程序)
@@ -94,6 +95,9 @@ def 网易云爬虫_音乐下载器():
 
 def 网易云爬虫_本地音乐提供器():
     路径 = 路径控制.背景音乐_路径.背景音乐_路径_后端()
+    文件夹存在检测 = os.path.exists(路径)
+    if not 文件夹存在检测:
+        os.makedirs(os.path.join(路径))
     文件组 = os.listdir(os.path.join('static', 'bgm'))
     结果 = []
     if len(文件组) == 0:

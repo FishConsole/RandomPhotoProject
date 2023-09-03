@@ -2,7 +2,7 @@
 import os
 import platform
 import sys
-from Lib.依赖.运维相关.调试模式 import 调试模式
+from Lib.依赖.运维相关.调试模式 import *
 
 当前操作系统 = platform.system().split('_')[0]
 当前PIP目录 = os.path.join(os.path.dirname(sys.executable), 'Scripts')
@@ -23,7 +23,10 @@ python_version = f"{sys.version_info.major}.{sys.version_info.minor}"
     # 'deepdanbooru': 'deepdanbooru',
 }
 
-镜像 = ''
+if 调试模式_国内模式():
+    镜像 = ' -i https://pypi.tuna.tsinghua.edu.cn/simple'
+else:
+    镜像 = ''
 
 print(f' * 所需库一键部署: 开始，当前调用镜像: {镜像},如果你的服务器不在中国境内，请删除这段代码')
 print(
@@ -51,10 +54,10 @@ def 所需库一键部署():
                     if 计数器 != 10:
                         print('所需库一键部署: 缺少库：', i, '正在安装', 计数器)
                         if 当前操作系统 == 'Windows':
-                            print(f'{os.path.join(当前PIP目录, "pip")} install {i} {镜像}')
-                            os.system(f'{os.path.join(当前PIP目录, "pip")} install {i} {镜像}')
+                            print(f'{os.path.join(当前PIP目录, "pip")} install  {镜像} {i}')
+                            os.system(f'{os.path.join(当前PIP目录, "pip")} install  {镜像} {i}')
                         else:
-                            os.system(f'pip{python_version} install {i} {镜像}')
+                            os.system(f'pip{python_version} install  {镜像} {i}')
                         计数器 += 1
                     else:
                         print('所需库一键部署: 安装库：', i, '超过10次，跳过')
