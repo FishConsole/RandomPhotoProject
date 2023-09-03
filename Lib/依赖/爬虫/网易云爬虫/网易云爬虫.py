@@ -18,7 +18,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Lib.依赖.运维相关.路径控制 import 路径控制
 
-
 def 网易云爬虫_直链提供器(驱动程序):
     print("网易云爬虫：读取源码")
     驱动程序.get('https://music.163.com/playlist?id=7569174381')
@@ -101,11 +100,16 @@ def 网易云爬虫_本地音乐提供器():
     文件组 = os.listdir(os.path.join('static', 'bgm'))
     结果 = []
     if len(文件组) == 0:
-        网易云爬虫_音乐下载器()
-        网易云爬虫_本地音乐提供器()
+        try:
+            网易云爬虫_音乐下载器()
+            网易云爬虫_本地音乐提供器()
+        except Exception as e:
+            print(f'网易云爬虫：服务器环境异常，可能是因为Chrome和Chromedriver不存在，请将其安装以激活网易云音乐爬虫服务，如无视该错误，将会放慢index页面加载速度。你也可以上传一个MP3'
+                  f'文件到static/bgm文件夹中以忽略该错误：{e}')
+            return []
     else:
         for i in 文件组:
             结果.append(os.path.join('..',路径, i))
-        if 结果 == None:
+        if 结果 is None:
             return []
         return 结果

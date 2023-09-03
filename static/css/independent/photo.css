@@ -127,7 +127,6 @@ a {
 }
 
 
-
 .页面切换 {
     font-weight: 600;
 }
@@ -281,7 +280,7 @@ a {
     font-size: 10px !important;
     position: relative;
     left: 20px;
-    top: -20px;
+    top: 20px;
 }
 
 .备案信息 > a {
@@ -300,6 +299,10 @@ a {
 .涟漪动画 {
     overflow: hidden;
     height: 100px;
+}
+
+#图片展示器 {
+    display: contents;
 }
 
 /*----------------------------------------------------------------------------------*/

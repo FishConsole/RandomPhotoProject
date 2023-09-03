@@ -162,12 +162,12 @@ if ('connection' in navigator) {
 
     if (网络连接类型 === 'wifi') {
         背景图片加载()
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接</p>' + '<br>'
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接，加载图片开始</p>' + '<br>'
     } else if (网络连接类型 === 'cellular') {
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接，禁止加载图片</p>' + '<br>'
     } else {
         背景图片加载()
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接，加载图片开始</p>' + '<br>'
     }
 } else {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'
