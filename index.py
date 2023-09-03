@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from Lib.依赖.运维相关.所需库一键部署 import 所需库一键部署
 from Lib.依赖.运维相关.调试模式 import 调试模式
 
@@ -11,19 +10,23 @@ if not 调试模式():
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [业务模式]')
 else:
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [调试模式]')
+
 print('-' * 90)
 
 import threading
 
 from flask import Flask, make_response
+
 from flask_cors import CORS, cross_origin  # 跨域访问限制
+
 from flask_sslify import SSLify
 
-from Lib.programe.管理员系统 import *
+from Lib.programe.管理员系统.管理员系统 import *
 from Lib.programe.图片返回器 import *
-from Lib.programe.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
 from Lib.programe.文件上传器 import upload_bp
 from Lib.programe.bgm池 import 网易云爬虫_bp
+
+from Lib.依赖.图片操作相关.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
 from Lib.依赖.运维相关.重新读取 import 重新读取_
 from Lib.依赖.邮件相关.smtp_server import 发送邮件
 from Lib.依赖.运维相关.路径控制 import 路径控制
@@ -74,9 +77,12 @@ main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 @main.route('/')
 def zhuye():
     return render_template('main.html', 域名=路径控制.启动位置.域名())
+
+
 @main.route('/test')
 def test():
     return render_template('test.html')
+
 
 @main.route('/ChangeLog')
 def ChangeLog():
