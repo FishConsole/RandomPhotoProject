@@ -13,31 +13,7 @@ setTimeout(function () {
 
 // 静态文件准备
 静态资源集中管理部门([
-    //////////////////////////////////////////////
-    '../static/css/independent/main/启动图.css',
-    '../static/css/independent/main/子页面相关.css',
-    '../static/css/independent/main/渐变入场.css',
-    '../static/css/independent/main/组件.css',
-    //////////////////////////////////////////////
-    '../static/css/independent/photo.css',
-    //////////////////////////////////////////////
-    "../static/css/independent/upload.css",
-    //////////////////////////////////////////////
-    "../static/js/ChangeLog.js",
-    "../static/css/independent/ChangeLog/项目范围.css",
-    "../static/css/independent/ChangeLog/正文.css",
-    //////////////////////////////////////////////
-    "../static/js/independent/shenghe.js",
-    //////////////////////////////////////////////
-    "../static/js/independent/upload.js",
-    //////////////////////////////////////////////
-    "../static/js/ajax_helper.js",
-    '../static/js/index.js',
-    "../static/js/mdui_tool.js",
-    //////////////////////////////////////////////
-    '../static/css/theme/light.css',
-    '../static/css/RandomPhoto_style.css',
-    //////////////////////////////////////////////
+
 ], true)
 
 
