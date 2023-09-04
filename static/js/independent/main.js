@@ -171,8 +171,8 @@ if ('connection' in navigator) {
         加载完成()
     } else {
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接，加载图片开始</p>' + '<br>'
-        // 背景图片加载()
-        加载完成()
+        背景图片加载()
+        
     }
 } else {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'

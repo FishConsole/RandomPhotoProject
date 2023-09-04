@@ -113,10 +113,7 @@
     }
 
     iframe {
-        position: fixed;
-        left: 0vw;
-        top: 8vh;
-        transition: all 0.45s cubic-bezier(0.42, 0.28, 0, 1.01);;
+        transition: all 0.45s cubic-bezier(0.42, 0.28, 0, 1.01);
     }
 
     .iframe-off {
@@ -184,9 +181,6 @@
 </head>
 
 <body>
-<div class="mdui-progress">
-    <div class="mdui-progress-determinate" style="width: 0;opacity: 0" id="进度条"></div>
-</div>
 <div class="顶栏">
 
     <div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header"
@@ -206,6 +200,7 @@
 <div>
     <iframe src="/admin~/{{ token }}/shenhe" class="iframe-on" id="shenhe"></iframe>
     <iframe src="/admin~/{{ token }}/autotag" class="iframe-off" id="autotag"></iframe>
+    <iframe src="/admin~/{{ token }}/edittag" class="iframe-off" id="edittag"></iframe>
 </div>
 
 
@@ -218,7 +213,7 @@
         <i class="mdui-icon material-symbols-outlined" id="显示_自动生成tag_图标" style="margin-top:20px">Autostop</i>
         <span id="显示_自动生成tag_文字" style="opacity: 0;">自动生成tag</span>
     </a>
-    <a href="javascript:;" class="mdui-ripple" onclick="显示_修改标签()">
+    <a href="javascript:;" class="mdui-ripple" onclick="显示_修改标签();admin_启动子页面(3)">
         <i class="mdui-icon material-symbols-outlined" id="显示_修改标签_图标"  style="margin-top:20px">auto_fix_normal</i>
         <span id="显示_修改标签_文字" style="opacity: 0;">修改标签</span>
     </a>
@@ -269,11 +264,20 @@
                 document.getElementById("shenhe").className = "iframe-on";
                 setTimeout(() => {
                     document.getElementById("autotag").className = "iframe-off";
+                    document.getElementById("edittag").className = "iframe-off"
                 }, 90)
-            } else {
+            } else if(页面 == 2) {
                 document.getElementById("autotag").className = "iframe-on";
                 setTimeout(() => {
                     document.getElementById("shenhe").className = "iframe-off";
+                    document.getElementById("edittag").className = "iframe-off"
+                }, 90)
+            } else if(页面 == 3) {
+                document.getElementById("edittag").className = "iframe-on";
+                setTimeout(() => {
+                    document.getElementById("shenhe").className = "iframe-off";
+                    document.getElementById("autotag").className = "iframe-off";
+
                 }, 90)
             }
         }

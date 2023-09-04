@@ -46,7 +46,13 @@
             <span class="header-text">Photo</span>
             <img src="../static/assats/photo.jpg" class="header-img">
         </a>
-        <a onclick="对话框('这是标签重构控件')" class="mdui-btn mdui-btn-icon">
+        <a onclick="文本对话框('输入你要添加的内容',()=>{
+            ajax_helper_main('post','/universal/<test>',FormData,(data)=>{
+                console.log(`成功${data}`)
+            },(data)=>{
+                console.log(`失败${data}`)
+            })
+        })" class="mdui-btn mdui-btn-icon">
         <i class="mdui-icon material-symbols-outlined">edit</i>
     </a>
     </div>
@@ -75,7 +81,9 @@
 <script>
     静态资源集中管理部门([
         "../../static/js/mdui_tool.js",
+        "../../static/js/ajax_helper.js",
         "../../static/css/RandomPhoto_style.css",
+
     ])
 
 </script>

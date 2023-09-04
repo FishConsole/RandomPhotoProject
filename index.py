@@ -21,10 +21,14 @@ from flask_cors import CORS, cross_origin  # 跨域访问限制
 
 from flask_sslify import SSLify
 
-from Lib.programe.管理员系统.管理员系统 import *
 from Lib.programe.图片返回器 import *
 from Lib.programe.文件上传器 import upload_bp
 from Lib.programe.bgm池 import 网易云爬虫_bp
+
+from Lib.programe.管理员系统.管理员系统 import *
+from Lib.programe.管理员系统.主程序.Tag生成器.Tag生成器 import *
+from Lib.programe.管理员系统.主程序.图片审核系统.图片审核系统 import *
+from Lib.programe.管理员系统.主程序.Tag重构器.Tag重构器 import admin_edittag_page_bp
 
 from Lib.依赖.图片操作相关.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
 from Lib.依赖.运维相关.重新读取 import 重新读取_
@@ -32,11 +36,13 @@ from Lib.依赖.邮件相关.smtp_server import 发送邮件
 from Lib.依赖.运维相关.路径控制 import 路径控制
 
 from Lib.affiliate.海纳 import ocss_page_bp
-
+from Lib.依赖.运维相关.万能测试接口 import universal_bp
 main = Flask(__name__)
 sslify = SSLify(main)
 
 CORS(main, resources={r"/static/*": {"origins": "https://www.root-a.top"}})
+
+main.register_blueprint(universal_bp,name='万能测试接口')
 
 main.register_blueprint(网易云爬虫_bp, name='网易云爬虫')
 
@@ -62,6 +68,8 @@ main.register_blueprint(admin_AutoTag_page_bp, name='admin_AutoTag_page')
 main.register_blueprint(admin_shenhe_page_bp, name='admin_Shenghe_page')
 main.register_blueprint(admin_DeletePhoto_bp, name='admin_DeletePhoto')
 main.register_blueprint(admin_PassPhoto_bp, name='admin_PassPhoto')
+main.register_blueprint(admin_edittag_page_bp, name='admin_edittag_page')
+
 main.register_blueprint(admin_AutoTag_bp, name='admin_AutoTag')
 
 main.register_blueprint(ocss_page_bp, name='ocss_page')
