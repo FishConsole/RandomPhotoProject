@@ -3,15 +3,20 @@ import time
 from urllib.parse import urlparse  # 获取链接中域名的一个库
 
 from flask import Blueprint, send_file, render_template, request
-
-from Lib.依赖.运维相关.调试模式 import 调试模式
-from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
-from Lib.依赖.回调相关.回调中心 import 回调中心
-from Lib.affiliate.密码工具 import 密码工具
-from Lib.依赖.杂项.文件读写器 import 文件读写器
-from Lib.依赖.运维相关.路径控制 import 路径控制
 from Lib.依赖.图片操作相关.随机图片发生器 import 随机图片发生器
 from Lib.依赖.图片操作相关.主页显示器 import home_, home_page_
+
+from Lib.依赖.运维相关.调试模式 import 调试模式
+
+from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
+
+from Lib.依赖.回调相关.回调中心 import 回调中心
+
+from Lib.依赖.杂项.文件读写器 import 文件读写器
+
+from Lib.依赖.运维相关.路径控制 import 路径控制
+
+from Lib.affiliate.密码工具 import 密码工具
 
 # from ..经纬度生成器 import Image_Location
 
@@ -158,6 +163,10 @@ def Random_More_Random(model):
     print(范围)
     # 从数据库中获得数据,要原图
     图片 = 随机图片发生器(True, 图片信息资源管理器.获取指定_版式_压缩图片信息资源(model, 范围))
+    if not 调试模式():
+        上一次统计 = int(文件读写器('上一次统计.txt').读取())
+        文件读写器('上一次统计.txt').写入(str(上一次统计 + 1))
+
     return send_file(图片, mimetype='image/jpg')
 
 
@@ -210,11 +219,12 @@ def Random_More_RandomNotCount(model):
 
 @Select_bp.route('/Select/<filename>')
 def Select_select(filename):
-    上一次统计 = int(文件读写器('上一次统计.txt').读取())
     # 从数据库中获得数据
     压缩图片信息资源 = 图片信息资源管理器.获取指定_压缩_图片信息资源(filename)
     if 压缩图片信息资源 != []:
-        文件读写器('上一次统计.txt').写入(str(上一次统计 + 1))
+        if not 调试模式():
+            上一次统计 = int(文件读写器('上一次统计.txt').读取())
+            文件读写器('上一次统计.txt').写入(str(上一次统计 + 1))
         return send_file(os.path.join(路径控制.主站原始图片_路径(), filename))
     else:
         return 回调中心.图片返回器.返回选择的图片_失败()
