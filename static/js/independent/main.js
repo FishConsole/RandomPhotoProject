@@ -13,29 +13,32 @@ setTimeout(function () {
 
 // 静态文件准备
 静态资源集中管理部门([
-
+    //////////////////////////////////////////////
+    '../static/css/independent/main/启动图.css',
+    '../static/css/independent/main/子页面相关.css',
+    '../static/css/independent/main/渐变入场.css',
+    '../static/css/independent/main/组件.css',
+    //////////////////////////////////////////////
+    '../static/css/independent/photo.css',
+    //////////////////////////////////////////////
+    "../static/css/independent/upload.css",
+    //////////////////////////////////////////////
+    "../static/js/ChangeLog.js",
+    "../static/css/independent/ChangeLog/项目范围.css",
+    "../static/css/independent/ChangeLog/正文.css",
+    //////////////////////////////////////////////
+    "../static/js/independent/shenghe.js",
+    //////////////////////////////////////////////
+    "../static/js/independent/upload.js",
+    //////////////////////////////////////////////
+    "../static/js/ajax_helper.js",
+    '../static/js/index.js',
+    "../static/js/mdui_tool.js",
+    //////////////////////////////////////////////
+    '../static/css/theme/light.css',
+    '../static/css/RandomPhoto_style.css',
+    //////////////////////////////////////////////
 ], true)
-
-
-function 加载完成(){
-    iframe = document.createElement('iframe')
-    iframe.src = '/index'
-    iframe.id = 'iframe_RandomPhoto'
-    iframe.style.cssText = 'z-index:2;top:30px;opacity:0;'
-    iframe.className = 'iframe_RandomPhoto'
-    document.body.appendChild(iframe)
-    iframe.onload = () => {
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
-        计时器状态.innerHTML = "false"
-        RandomPhoto = document.getElementById('iframe_RandomPhoto')
-        setTimeout(() => {
-            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-            启动图.style.cssText = 'display:none;'
-            加载内容.style.cssText = 'display:none;'
-            document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
-        }, 2000);
-    }
-}
 
 
 // 归位，因为默认是这个颜色值
@@ -125,7 +128,25 @@ function 背景图片加载() {
 
 
                 加载内容.innerHTML = 加载内容.innerHTML + '<p> > 动态取色完成</p>' + '<br>'
-                加载完成()
+                // 创建并检查iframe是否加载完毕
+
+                iframe = document.createElement('iframe')
+                iframe.src = '/index'
+                iframe.id = 'iframe_RandomPhoto'
+                iframe.style.cssText = 'z-index:2;top:30px;opacity:0;'
+                iframe.className = 'iframe_RandomPhoto'
+                document.body.appendChild(iframe)
+                iframe.onload = () => {
+                        加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
+                        计时器状态.innerHTML = "false"
+                        RandomPhoto = document.getElementById('iframe_RandomPhoto')
+                        setTimeout(() => {
+                            RandomPhoto.style.cssText = 'top:0;opacity:1;'
+                            启动图.style.cssText = 'display:none;'
+                            加载内容.style.cssText = 'display:none;'
+                            document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
+                        }, 2000);
+                }
             }
         })
 }
@@ -140,15 +161,13 @@ if ('connection' in navigator) {
     const 网络连接类型 = connection.type;
 
     if (网络连接类型 === 'wifi') {
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接，加载图片开始</p>' + '<br>'
         背景图片加载()
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接</p>' + '<br>'
     } else if (网络连接类型 === 'cellular') {
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据连接，立即加载</p>' + '<br>'
-        加载完成()
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
     } else {
-        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接，加载图片开始</p>' + '<br>'
         背景图片加载()
-        
+        加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
     }
 } else {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'

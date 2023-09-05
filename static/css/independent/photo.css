@@ -312,6 +312,11 @@ a {
     overflow: hidden;
     height: 100px;
 }
+
+#图片展示器>span{
+    transition: none!important;
+}
+
 /*----------------------------------------------------------------------------------*/
 
 @media (max-width: 300px) {
