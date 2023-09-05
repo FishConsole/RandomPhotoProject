@@ -291,9 +291,10 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    transition: none;
 }
 
-#音乐播放器{
+#音乐播放器 {
     display: flex;
     justify-content: center;
 }
@@ -313,15 +314,15 @@ a {
     height: 100px;
 }
 
-#图片展示器>span{
-    transition: none!important;
+#图片展示器 > span {
+    transition: none !important;
 }
 
 /*----------------------------------------------------------------------------------*/
 
 @media (max-width: 300px) {
     /*小手机屏幕*/
-    .大标题{
+    .大标题 {
         display: none;
     }
 }

@@ -101,21 +101,9 @@ function 输出文档() {
 `);
 }
 
-function 关闭模糊() {
-    document.getElementById('drawer').style.cssText = 'backdrop-filter: none;background:white;opactiy:0'
-}
-
-function 启动模糊() {
-    setTimeout(() => {
-        document.getElementById('drawer').style.cssText = ''
-    }, 1000)
-}
-
 function 开启抽屉栏() {
-    关闭模糊()
     var 抽屉栏_状态 = new mdui.Drawer('#drawer');
-    抽屉栏_状态.open();
-    启动模糊()
+    抽屉栏_状态.open()
 }
 
 function 关闭抽屉栏() {
