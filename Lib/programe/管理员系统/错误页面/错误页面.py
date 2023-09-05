@@ -16,7 +16,7 @@ def 错误页面():
             if (用户输入 == '') return 0;
             else {
                 localStorage.setItem("token", 用户输入);
-                window.location.href = "../shenhe/"+用户输入;
+                window.location.href = "../"+用户输入+"/main";
             }
         }
 

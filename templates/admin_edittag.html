@@ -2,17 +2,17 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
 
     <title>文件上传</title>
     <link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
-        integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+          integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
-        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
-        crossorigin="anonymous"></script>
+            integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+            crossorigin="anonymous"></script>
 
     <script src="../../../static/js/静态资源集中管理部门.js"></script>
     <style>
@@ -57,7 +57,7 @@
             align-content: flex-start;
         }
 
-        .浮动操作栏>div {
+        .浮动操作栏 > div {
             color: white;
             border: 2px solid white;
             width: min-content;
@@ -71,7 +71,7 @@
             margin-left: 12px;
         }
 
-        .浮动操作栏>span::before {
+        .浮动操作栏 > span::before {
             display: block;
             width: 20px;
             height: 20px;
@@ -90,7 +90,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             box-shadow: 4px 3px 13px #00000030;
-            z-index:1;
+            z-index: 1;
         }
 
         .浮动操作按钮_框架 {
@@ -120,12 +120,17 @@
             background: #474d6d;
         }
 
+        .新标签{
+            border: 2px solid #234b88!important;
+        }
+
         @media (max-width: 800px) {
 
             /*手机屏幕*/
-            *{
-                transition: none!important;
+            * {
+                transition: none !important;
             }
+
             .范围_edittag {
                 transition: none;
                 flex-direction: column-reverse;
@@ -152,7 +157,6 @@
             }
 
 
-
             .图片展示栏_范围 {
                 transition: none;
                 position: relative;
@@ -162,94 +166,102 @@
                 height: 60vw;
             }
         }
-
-        @media (max-width: 1000px) {
-            /*大屏幕*/
-        }
-
-        @media (min-width: 1024px) {
-            /*电脑屏幕*/
-
-        }
     </style>
 
 </head>
 
 <body>
 
-    <div class="范围_edittag">
-        <div class="浮动操作栏_范围">
-            <div class="浮动操作栏" id="浮动操作栏"></div>
-        </div>
-        <div class="图片展示栏_范围" style="background-image:url('../../../Random');"></div>
+<div class="范围_edittag">
+    <div class="浮动操作栏_范围">
+        <div class="浮动操作栏" id="浮动操作栏"></div>
     </div>
+    <div class="图片展示栏_范围" style="background-image:url('../../../Random');"></div>
+</div>
 
-    <div class="浮动操作按钮_框架">
-        <div class="浮动操作按钮 浮动操作按钮_1" onclick="取消更改()">取消更改</div>
-        <div class="浮动操作按钮 浮动操作按钮_2" onclick="加入tag()">加入TAG</div>
-        <div class="浮动操作按钮 浮动操作按钮_3" onclick="载入数据库()">下一张图片</div>
-    </div>
-    <div style="display: none;" id="计数器">0</div>
-    <script>
-        function 删除tag(id) {
-            目标 = document.getElementById(id)
-            目标.remove()
+<div class="浮动操作按钮_框架">
+    <div class="浮动操作按钮 浮动操作按钮_1" onclick="取消更改()">取消更改</div>
+    <div class="浮动操作按钮 浮动操作按钮_2" onclick="加入tag()">加入TAG</div>
+    <div class="浮动操作按钮 浮动操作按钮_3" onclick="载入数据库()">下一张图片</div>
+</div>
+<div style="display: none;" id="ID计数器">0</div>
+<script>
+    function 删除tag(id) {
+        目标 = document.getElementById(id)
+        目标.remove()
+    }
+
+    function 取消更改() {
+        console.log('取消更改，清理数据库的相关记录')
+        ajax_helper_main('post', '/universal/<test>', FormData, 成功函数 = (data) => {
+            console.log(`成功：${data}`)
+        }, 失败函数 = (data) => {
+            console.log(`失败：${data}`)
+        })
+    }
+
+
+    function 加入tag() {
+        ID计数器 = document.getElementById('ID计数器')
+        浮动操作栏 = document.getElementById('浮动操作栏')
+        文本对话框('输入tag', (data) => {
+            console.log(data)
+            浮动操作栏.innerHTML += `<div onclick="删除tag('tag_${ID计数器_值}')" id="tag_${ID计数器_值}">${data}</div>`
+            ID计数器.innerHTML = parseInt(ID计数器) + 1
+            ID计数器_值 = ID计数器.innerHTML
+        })
+    }
+
+    function 生成数据(原始标签,新标签,图片路径) {
+        浮动操作栏 = document.getElementById('浮动操作栏')
+        ID计数器 = document.getElementById('ID计数器')
+        ID计数器_值 = ID计数器.innerHTML
+        ID计数器_值 = parseInt(ID计数器_值)
+        图片展示栏_范围 = document.querySelector('.图片展示栏_范围')
+        图片展示栏_范围.style.cssText = `background-image:url('${图片路径}');`
+        for (a = 0; a < 新标签.length; a++) {
+            ID计数器_值 += 1
+            浮动操作栏.innerHTML += `<div class='新标签' onclick="删除tag('tag_${ID计数器_值}')" id="tag_${ID计数器_值}">${新标签[a]}</div>`
         }
-
-        function 取消更改(){
-            console.log('取消更改，清理数据库的相关记录')
-            ajax_helper_main('post','/universal/<test>',FormData,成功函数 = (data)=>{
-                console.log(`成功：${data}`)
-            },失败函数 = (data) => {
-                console.log(`失败：${data}`)
-            })
+        for (a = 0; a < 原始标签.length; a++) {
+            ID计数器_值 += 1
+            浮动操作栏.innerHTML += `<div onclick="删除tag('tag_${ID计数器_值}')" id="tag_${ID计数器_值}">${原始标签[a]}</div>`
         }
+        ID计数器.innerHTML = ID计数器_值
+    }
 
-        function 加入tag() {
-            计数器 = document.getElementById('计数器')
-            浮动操作栏 = document.getElementById('浮动操作栏')
-            文本对话框('输入tag', (data) => {
-                console.log(data)
-                浮动操作栏.innerHTML += `<div onclick="删除tag('tag_${计数器_值}')" id="tag_${计数器_值}">${data}</div>`
-                计数器.innerHTML = parseInt(计数器) + 1
-                计数器_值 = 计数器.innerHTML
-            })
+    function 载入数据库() {
+        浮动操作栏 = document.getElementById('浮动操作栏')
+        所有的子节点 = 浮动操作栏.children
+        目标文本 = ''
+        for (a = 0; a <= 所有的子节点.length - 1; a++) {
+            目标文本 += 所有的子节点[a].innerHTML
         }
+        ajax_helper_main('post', '/universal/<test>', FormData, 成功函数 = (data) => {
+        }, 失败函数 = (data) => {
+            json = ajax_helper_返回值解码(data)
+            if (json['状态'] === '成功') {
+                浮动操作栏 = document.getElementById('浮动操作栏')
+                浮动操作栏.innerHTML = ''
 
-        function 载入数据库() {
-            浮动操作栏 = document.getElementById('浮动操作栏')
-            所有的子节点 = 浮动操作栏.children
-            目标文本 = ''
-            for (a = 0; a <= 所有的子节点.length - 1; a++) {
-                目标文本 += 所有的子节点[a].innerHTML
+                原始标签 = json['原始标签']
+                新标签 = json['新标签']
+                图片路径 = json['图片路径']
+
+                原始标签 = 原始标签.split(',')
+                新标签 = 新标签.split(',')
+                console.loga(原始标签)
+                console.log(图片路径)
+
+                生成数据(原始标签,新标签,图片路径)
+            }else{
+                对话框('操作执行失败')
             }
-            ajax_helper_main('post','/universal/<test>',FormData,成功函数 = (data)=>{
-                console.log(`成功：${data}`)
-            },失败函数 = (data) => {
-                console.log(`失败：${data}`)
-            })
-        }
-
-        function 生成数据() {
-            浮动操作栏 = document.getElementById('浮动操作栏')
-            目标数据源 = ['123', '123421', '14214', '123', '123421', '14214']
-            计数器 = document.getElementById('计数器')
-            计数器_值 = 计数器.innerHTML
-            计数器_值 = parseInt(计数器_值)
-            for (a = 0; a < 目标数据源.length; a++) {
-                计数器_值 += 1
-                浮动操作栏.innerHTML += `<div onclick="删除tag('tag_${计数器_值}')" id="tag_${计数器_值}">${目标数据源[a]}</div>`
-                console.log(计数器_值)
-            }
-            计数器.innerHTML = 计数器_值
-        }
-        生成数据()
+        })
+    }
 
 
-
-
-        
-    </script>
+</script>
 
 </body>
 <script>

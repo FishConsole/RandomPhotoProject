@@ -46,12 +46,22 @@
             <span class="header-text">Photo</span>
             <img src="../static/assats/photo.jpg" class="header-img">
         </a>
-        <a onclick="文本对话框('输入你要添加的内容',()=>{
-            ajax_helper_main('post','/universal/<test>',FormData,(data)=>{
+        <a onclick="文本对话框('输入你要添加的内容',(输入数据)=>{
+            if(输入数据.length>2){
+                ajax_helper_main('post','/universal/<test>',FormData,(data)=>{
                 console.log(`成功${data}`)
-            },(data)=>{
-                console.log(`失败${data}`)
-            })
+                },(data)=>{
+                    data = ajax_helper_返回值解码(data)
+                    if(data['状态']==='成功'){
+                        console.log(data)
+                        对话框('您的tag修改请求已提交到审核队列')
+                    }else{
+                        snackbar(`失败: ${data['内容']}`)
+                    }
+                })
+            }else{
+                对话框('至少输入一个词')
+            }
         })" class="mdui-btn mdui-btn-icon">
         <i class="mdui-icon material-symbols-outlined">edit</i>
     </a>
@@ -81,8 +91,8 @@
 <script>
     静态资源集中管理部门([
         "../../static/js/mdui_tool.js",
+        "../../static/js/ajax_helper.js",
         "../../static/css/RandomPhoto_style.css",
-
     ])
 
 </script>

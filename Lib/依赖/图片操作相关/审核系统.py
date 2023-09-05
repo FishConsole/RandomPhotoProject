@@ -12,7 +12,7 @@ from Lib.依赖.图片操作相关.图片压缩库 import ResizeImage
 from Lib.依赖.图片操作相关.图片路径提取 import 图片路径提取
 from Lib.依赖.图片操作相关.图片大小检测 import 图片大小检测
 
-from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
+from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 from Lib.依赖.运维相关.路径控制 import *
 
 

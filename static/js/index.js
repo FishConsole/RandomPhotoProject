@@ -112,7 +112,6 @@ function 关闭抽屉栏() {
             var 抽屉栏_状态 = new mdui.Drawer('#drawer')
             抽屉栏_状态.close()
         }, 2000)
-
     }
 }
 

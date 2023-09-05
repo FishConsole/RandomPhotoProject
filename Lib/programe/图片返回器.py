@@ -5,7 +5,7 @@ from urllib.parse import urlparse  # 获取链接中域名的一个库
 from flask import Blueprint, send_file, render_template, request
 
 from Lib.依赖.运维相关.调试模式 import 调试模式
-from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
+from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 from Lib.依赖.回调相关.回调中心 import 回调中心
 from Lib.affiliate.密码工具 import 密码工具
 from Lib.依赖.杂项.文件读写器 import 文件读写器
@@ -110,7 +110,7 @@ def PhotoInfo(id):
 
     标签 = 图片信息资源管理器.获取指定_压缩_图片信息资源(id)[0][1]
 
-    return render_template('PhotoInfo.html', 时间=标签, 路径=路径, 域名=路径控制.启动位置.域名())
+    return render_template('PhotoInfo.html', 时间=标签[:10], 路径=路径, 域名=路径控制.启动位置.域名())
 
 
 ########################################################################################

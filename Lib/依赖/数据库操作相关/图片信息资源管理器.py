@@ -3,6 +3,7 @@ import os
 import sqlite3
 import jieba
 
+
 class 图片信息资源管理器:
 
     @staticmethod
@@ -146,8 +147,10 @@ class 图片信息资源管理器:
     def 获取指定_版式_压缩图片信息资源(model, 范围=None):
 
         # 如果range中没有任何内容，就不生成对应的查询字符串
-        if 范围 is None: 查询字符串_range = ''
-        else: 查询字符串_range = f" and 标签 like '%{范围}%'"
+        if 范围 is None:
+            查询字符串_range = ''
+        else:
+            查询字符串_range = f" and 标签 like '%{范围}%'"
 
         conn = sqlite3.connect(os.path.join('数据库', '图片信息资源.db'))
         # 创建游标对象

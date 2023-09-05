@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Lib.依赖.运维相关.所需库一键部署 import 所需库一键部署
-from Lib.依赖.运维相关.调试模式 import 调试模式
+from Lib.依赖.运维相关.调试模式 import *
 
 所需库一键部署()
 
@@ -136,7 +136,7 @@ def 自动死亡线程():
 @main.route('/sitemap', methods=['GET'])
 def sitemap():
     from Lib.依赖.运维相关.站点地图生成器 import 生成站点地图
-    from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
+    from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 
     生成的XML = 生成站点地图([
         {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息(), '优先级': '0.5', '分类': 'info'},
@@ -166,6 +166,5 @@ if __name__ == "__main__":
     d.start()
     a.start()
 
-    # main.run(host=路径控制.启动位置.启动位置(), port=443, threaded=False,
-    main.run(host='0.0.0.0', port=443, threaded=False,
+    main.run(host=路径控制.启动位置.启动位置(), port=443, threaded=False,
              ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))

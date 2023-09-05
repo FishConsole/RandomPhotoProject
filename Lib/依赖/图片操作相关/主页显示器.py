@@ -1,6 +1,6 @@
 from flask import render_template
 
-from Lib.依赖.运维相关.数据库操作 import 图片信息资源管理器
+from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 from Lib.依赖.运维相关.路径控制 import 路径控制
 
 def home_(压缩图片信息资源):
@@ -19,6 +19,10 @@ def home_(压缩图片信息资源):
 
     # 把压缩图片信息资源中的元组数据类型全部换成列表
     压缩图片信息资源 = [list(i) for i in 压缩图片信息资源]
+    for i in range(len(压缩图片信息资源)):
+        压缩图片信息资源[i][1] = 压缩图片信息资源[i][1][:10]
+        print(压缩图片信息资源[i][1])
+    print(压缩图片信息资源)
     return render_template('index.html', 统计调用次数=上一次统计, Image_Count=len(压缩图片信息资源),
                            图片信息资源={"Image_Count": len(压缩图片信息资源),
                                          "Image_Data": 压缩图片信息资源},
@@ -52,7 +56,9 @@ def home_page_(page, 压缩图片信息资源):
 
         # 把压缩图片信息资源中的元组数据类型全部换成列表
         压缩图片信息资源 = [list(i) for i in 压缩图片信息资源]
-
+        for i in range(len(压缩图片信息资源)):
+            压缩图片信息资源[i][1] = 压缩图片信息资源[i][1][:10]
+            print(压缩图片信息资源[i][1])
         return render_template('index.html', 统计调用次数=上一次统计, Image_Count=len(压缩图片信息资源),
                                图片信息资源={"Image_Count": len(压缩图片信息资源),
                                              "Image_Data": 压缩图片信息资源},
