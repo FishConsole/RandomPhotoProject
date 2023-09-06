@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 
-from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.回调相关.回调基本模板 import 回调器基本模板
 
 universal_bp = Blueprint('universal_bp', __name__)
 
@@ -14,7 +14,7 @@ def universal(test):
     # print(参数)
     print(test)
     print('-' * 20)
-    a = 回调中心.回调器基本模板.成功返回模板()
+    a = 回调器基本模板.成功返回模板()
     a['图片路径'] = '/Random'
     a['原始标签'] = ['123', '456', '789']
     a['新标签'] = ['000', '111', '222']

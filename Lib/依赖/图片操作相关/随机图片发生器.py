@@ -2,12 +2,12 @@ import os
 import random
 
 from Lib.依赖.运维相关.路径控制 import 路径控制
-from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.回调相关.图片返回器 import 图片返回器
 
 
 def 随机图片发生器(model, 图片信息资源):
     if len(图片信息资源) == 0:
-        return 回调中心.图片返回器.随机选择的图片_失败()
+        return 图片返回器.随机选择的图片_失败()
     else:
         随机抽取 = random.sample(图片信息资源, 1)
         print(随机抽取)

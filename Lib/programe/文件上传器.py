@@ -5,7 +5,10 @@ from datetime import datetime
 from flask import request, Blueprint
 
 from Lib.依赖.邮件相关.smtp_server import 发送邮件
-from Lib.依赖.回调相关.回调中心 import 回调中心
+
+# from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.回调相关.文件上传器 import 文件上传器
+
 from Lib.依赖.运维相关.路径控制 import 路径控制
 
 upload_bp = Blueprint('upload', __name__)
@@ -26,7 +29,7 @@ def upload_start():
             发送邮件(f"RandomPhoto上传中心：审核队列已满，请立即处理")
         except:
             pass
-        return 回调中心.文件上传器.审核队列_满()
+        return 文件上传器.审核队列_满()
 
     def 是否为允许的文件类型(文件名):
         扩展名验证 = 文件名.split(".")[-1] in 允许的扩展名
@@ -39,18 +42,18 @@ def upload_start():
         return 文件大小
 
     if 'file' not in request.files:
-        return 回调中心.文件上传器.没有文件部分()
+        return 文件上传器.没有文件部分()
 
     if 文件.filename == '':
-        return 回调中心.文件上传器.未选择文件()
+        return 文件上传器.未选择文件()
 
     if not 是否为允许的文件类型(文件.filename):
-        return 回调中心.文件上传器.无效的文件类型()
+        return 文件上传器.无效的文件类型()
 
     文件大小 = 获取文件大小(文件)
     最大文件大小 = 20 * 1024 * 1024  # 20MB
     if 文件大小 > 最大文件大小:
-        return 回调中心.文件上传器.文件大小限制(文件.filename)
+        return 文件上传器.文件大小限制(文件.filename)
 
     # 使用当前时间戳构造文件名
     time.sleep(0.001)
@@ -79,4 +82,4 @@ def upload_start():
     except:
         pass
 
-    return 回调中心.文件上传器.文件上传成功(新文件名)
+    return 文件上传器.文件上传成功(新文件名)

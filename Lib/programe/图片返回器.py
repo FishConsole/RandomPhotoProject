@@ -10,7 +10,8 @@ from Lib.依赖.运维相关.调试模式 import 调试模式
 
 from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 
-from Lib.依赖.回调相关.回调中心 import 回调中心
+# from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.回调相关.图片返回器 import 图片返回器
 
 from Lib.依赖.杂项.文件读写器 import 文件读写器
 
@@ -227,7 +228,7 @@ def Select_select(filename):
             文件读写器('上一次统计.txt').写入(str(上一次统计 + 1))
         return send_file(os.path.join(路径控制.主站原始图片_路径(), filename))
     else:
-        return 回调中心.图片返回器.返回选择的图片_失败()
+        return 图片返回器.返回选择的图片_失败()
 
 
 @Select_NotCount_bp.route('/SelectNotCount/<filename>')
@@ -237,7 +238,7 @@ def Select_SelectNotCount(filename):
     if 压缩图片信息资源 != []:
         return send_file(os.path.join(路径控制.主站原始图片_路径(), filename))
     else:
-        return 回调中心.图片返回器.返回选择的图片_失败()
+        return 图片返回器.返回选择的图片_失败()
 
 
 ########################################################################################

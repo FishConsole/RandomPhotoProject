@@ -6,7 +6,7 @@ import jieba
 
 from Lib.依赖.邮件相关.smtp_server import 发送邮件
 
-from Lib.依赖.回调相关.回调中心 import 回调中心
+from Lib.依赖.回调相关.审核系统 import 图片审核
 
 from Lib.依赖.图片操作相关.图片压缩库 import ResizeImage
 from Lib.依赖.图片操作相关.图片路径提取 import 图片路径提取
@@ -75,9 +75,9 @@ def 删除审核图片(ImageName):
 
         os.remove(源路径)
         os.remove(压缩路径)
-        return 回调中心.审核系统.删除审核图片.删除审核图片_成功(ImageName)
+        return 图片审核.删除审核图片.删除审核图片_成功(ImageName)
     except OSError as 错误:
-        return 回调中心.审核系统.删除审核图片.删除审核图片_失败(ImageName, 错误)
+        return 图片审核.删除审核图片.删除审核图片_失败(ImageName, 错误)
 
 
 def 通过审核图片(图片名字, 负载):
@@ -99,10 +99,10 @@ def 通过审核图片(图片名字, 负载):
         shutil.move(源路径, 目标路径)
         os.remove(压缩路径)
 
-        return 回调中心.审核系统.通过审核图片.通过审核图片_成功(图片名字)
+        return 图片审核.通过审核图片.通过审核图片_成功(图片名字)
 
     except Exception as e:
-        return 回调中心.审核系统.通过审核图片.通过审核图片_失败(图片名字, e)
+        return 图片审核.通过审核图片.通过审核图片_失败(图片名字, e)
 
 
 def 审核():

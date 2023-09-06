@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 
 from ..依赖.爬虫.网易云爬虫.网易云爬虫 import *
-from ..依赖.回调相关.回调中心 import 回调中心
+# from ..依赖.回调相关.回调中心 import 回调中心
+from ..依赖.回调相关.bgm池 import bgm池
 from ..依赖.运维相关.缓存相关.配置文件管理器 import 配置文件管理器
 
 网易云爬虫_bp = Blueprint('网易云爬虫', __name__)
@@ -14,7 +15,7 @@ def 网易云爬虫():
         缓存对象 = 配置文件管理器('爬虫')
         缓存对象.插入文件({'网易云爬虫_启动状态': True})
         print('提取2', 提取)
-        回调 = 回调中心.bgm池.网易云爬虫_成功(提取)
+        回调 = bgm池.网易云爬虫_成功(提取)
         缓存对象.插入文件({'网易云爬虫_启动状态': False})
         print('回调', 回调)
         return 回调
