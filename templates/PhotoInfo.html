@@ -52,9 +52,10 @@
                 img_path = img.getAttribute('src')
                 img_path = img_path.split('/')
                 img_path = img_path[img_path.length-1]
-                console.log(img_path)
+
                 fromdata = {'img_path':img_path,'content':输入数据.slice(0,500)}
-                ajax_helper_main('get',`../info_thing/Upload`,负载字符串 = fromdata,(data)=>{
+                console.log(fromdata)
+                ajax_helper_main('get',`../info_thing/Upload`,'',fromdata,(data)=>{
                     console.log(`成
                     功${data}`)
                     data = ajax_helper_返回值解码(data)

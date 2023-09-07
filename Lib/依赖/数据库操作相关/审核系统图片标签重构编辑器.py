@@ -31,10 +31,11 @@ class 审核系统图片标签重构编辑器:
     @staticmethod
     def 提交请求(路径, 新tag):
         游标对象, 连接器 = 审核系统图片标签重构编辑器.基本框架()
-
-        原始图片tag = 审核系统图片标签重构编辑器.获取原始图片标签(路径)[0][0]
+        try:
+            原始图片tag = 审核系统图片标签重构编辑器.获取原始图片标签(路径)[0][0]
+        except IndexError:
+            return {'内容': '服务端错误'}
         原始新tag = list(jieba.cut(新tag))
-        print(原始图片tag)
         新tag列表_垃圾处理 = []
         新tag列表_回调字符串 = ''
         for i in 原始新tag:
@@ -43,14 +44,14 @@ class 审核系统图片标签重构编辑器:
         for i in 新tag列表_垃圾处理:
             新tag列表_回调字符串 = 新tag列表_回调字符串 + i
 
-        try:
-            游标对象.execute(f"INSERT INTO 审核系统图片标签重资源(路径,原始tag,等待审核tag) VALUES (?, ?, ?)",
-                             (路径, 原始图片tag, 新tag列表_回调字符串))
-            连接器.commit()
-            连接器.close()
-        except:
-            回调数据 = tag审核.提交请求.提交请求_失败("目标图片已在审核队列中")
-            return 回调数据
+        print(路径)
+        print(原始图片tag)
+        print(新tag列表_回调字符串)
+
+        游标对象.execute(f"INSERT INTO 审核系统图片标签重资源(路径,原始tag,等待审核tag) VALUES (?, ?, ?)",
+                         (路径, 原始图片tag, 新tag列表_回调字符串))
+        连接器.commit()
+        连接器.close()
 
         回调数据 = tag审核.提交请求.提交请求_成功(路径)
         回调数据['原始图片tag'] = 原始图片tag
@@ -104,4 +105,3 @@ class 审核系统图片标签重构编辑器:
             正式环境_连接器.close()
             重构编辑器_游标对象.close()
             重构编辑器_连接器.close()
-

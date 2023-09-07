@@ -1,9 +1,7 @@
-async function ajax_helper_main(方法, 地址, 表单数据, 成功函数 = function () {}, 错误函数 = function () {}) {
+async function ajax_helper_main(方法, 地址, 表单数据, 负载, 成功函数 = function () {}, 错误函数 = function () {}) {
     阻止异步请求 = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        console.log(表单数据)
-        负载字符串 = new URLSearchParams(表单数据).toString()
-        xhr.open(方法, 地址 + '?' + 负载字符串);
+        xhr.open(方法, 地址 + '?' + new URLSearchParams(负载).toString());
 
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {

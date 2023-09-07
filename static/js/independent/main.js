@@ -165,23 +165,6 @@ if ('connection' in navigator) {
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 Wi-Fi 连接</p>' + '<br>'
     } else if (网络连接类型 === 'cellular') {
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
-        iframe = document.createElement('iframe')
-                iframe.src = '/index'
-                iframe.id = 'iframe_RandomPhoto'
-                iframe.style.cssText = 'z-index:2;top:30px;opacity:0;'
-                iframe.className = 'iframe_RandomPhoto'
-                document.body.appendChild(iframe)
-                iframe.onload = () => {
-                        加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
-                        计时器状态.innerHTML = "false"
-                        RandomPhoto = document.getElementById('iframe_RandomPhoto')
-                        setTimeout(() => {
-                            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-                            启动图.style.cssText = 'display:none;'
-                            加载内容.style.cssText = 'display:none;'
-                            document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
-                        }, 2000);
-                }
     } else {
         背景图片加载()
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
