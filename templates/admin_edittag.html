@@ -120,8 +120,8 @@
             background: #474d6d;
         }
 
-        .新标签{
-            border: 2px solid #234b88!important;
+        .新标签 {
+            border: 2px solid #234b88 !important;
         }
 
         @media (max-width: 800px) {
@@ -176,7 +176,9 @@
     <div class="浮动操作栏_范围">
         <div class="浮动操作栏" id="浮动操作栏"></div>
     </div>
-    <div class="图片展示栏_范围" style="background-image:url('../../../Random');"></div>
+    <div id="当前图片" style="display: none"></div>
+    <div class="图片展示栏_范围" id="图片展示栏_范围"
+         style="background-image:url('../../../static/assats/猫.gif');"></div>
 </div>
 
 <div class="浮动操作按钮_框架">
@@ -212,13 +214,17 @@
         })
     }
 
-    function 生成数据(原始标签,新标签,图片路径) {
+    function 生成数据(原始标签, 新标签, 图片路径) {
         浮动操作栏 = document.getElementById('浮动操作栏')
+
+        图片展示栏_范围 = document.querySelector('.图片展示栏_范围')
+        当前图片 = document.getElementById('当前图片')
+        console.log(图片路径)
+        图片展示栏_范围.style.cssText = `background-image:url('../../SelectNotCount/${图片路径}');`
+        当前图片.innerHTML = 图片路径
         ID计数器 = document.getElementById('ID计数器')
         ID计数器_值 = ID计数器.innerHTML
         ID计数器_值 = parseInt(ID计数器_值)
-        图片展示栏_范围 = document.querySelector('.图片展示栏_范围')
-        图片展示栏_范围.style.cssText = `background-image:url('${图片路径}');`
         for (a = 0; a < 新标签.length; a++) {
             ID计数器_值 += 1
             浮动操作栏.innerHTML += `<div class='新标签' onclick="删除tag('tag_${ID计数器_值}')" id="tag_${ID计数器_值}">${新标签[a]}</div>`
@@ -234,29 +240,41 @@
         浮动操作栏 = document.getElementById('浮动操作栏')
         所有的子节点 = 浮动操作栏.children
         目标文本 = ''
+        当前图片 = document.getElementById('当前图片').innerHTML
+
         for (a = 0; a <= 所有的子节点.length - 1; a++) {
             目标文本 += 所有的子节点[a].innerHTML
         }
-        ajax_helper_main('post', '/universal/<test>', FormData, 成功函数 = (data) => {
-        }, 失败函数 = (data) => {
+
+        if(目标文本.length==0)首次加载=true
+        else 首次加载=false
+        ajax_helper_main('get', `/info_thing/next`, {'content':目标文本,'img_name':当前图片,'first':首次加载}, 成功函数 = (data) => {
             json = ajax_helper_返回值解码(data)
             if (json['状态'] === '成功') {
-                浮动操作栏 = document.getElementById('浮动操作栏')
+                alert('您的数据已经提交，业务环境数据已经更新')
+                数据 = json['数据']
+                数据 = 数据.split(',')
+                console.log(数据)
                 浮动操作栏.innerHTML = ''
 
-                原始标签 = json['原始标签']
-                新标签 = json['新标签']
-                图片路径 = json['图片路径']
+                图片路径 = 数据[0]
+                原始标签 = 数据[1]
+                新标签 = 数据[2]
 
-                原始标签 = 原始标签.split(',')
-                新标签 = 新标签.split(',')
-                console.loga(原始标签)
+                原始标签 = 原始标签.split('|')
+                新标签 = 新标签.split('|')
+
+                console.group()
+                console.log(原始标签)
+                console.log(新标签)
                 console.log(图片路径)
-
-                生成数据(原始标签,新标签,图片路径)
-            }else{
-                对话框('操作执行失败')
+                console.groupEnd()
+                生成数据(原始标签, 新标签, 图片路径)
+            } else {
+                data = ajax_helper_返回值解码(data)
+                对话框(`操作执行失败：${data['内容']}`)
             }
+        }, 失败函数 = (data) => {
         })
     }
 

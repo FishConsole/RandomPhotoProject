@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <script src="../static/js/静态资源集中管理部门.js"></script>
+    <script src="../static/js/ajax_helper.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
@@ -47,23 +48,33 @@
             <img src="../static/assats/photo.jpg" class="header-img">
         </a>
         <a onclick="文本对话框('输入你要添加的内容',(输入数据)=>{
-            if(输入数据.length>2){
-                ajax_helper_main('post','/universal/<test>',FormData,(data)=>{
-                console.log(`成功${data}`)
-                },(data)=>{
+            if(输入数据.length>1){
+                img = document.getElementById('img')
+                img_path = img.getAttribute('src')
+                img_path = img_path.split('/')
+                img_path = img_path[img_path.length-1]
+                console.log(img_path)
+                fromdata = {'img_path':img_path,'content':输入数据.slice(0,500)}
+                ajax_helper_main('get',`../info_thing/Upload`,负载字符串 = fromdata,(data)=>{
+                    console.log(`成
+                    功${data}`)
                     data = ajax_helper_返回值解码(data)
                     if(data['状态']==='成功'){
                         console.log(data)
-                        对话框('您的tag修改请求已提交到审核队列')
+                        对话框(`您的tag修改请求已提交到审核队列:${data['内容']}`)
                     }else{
                         snackbar(`失败: ${data['内容']}`)
                     }
+                },(data)=>{
+                        snackbar(`失败: ${data['内容']}`)
                 })
             }else{
                 对话框('至少输入一个词')
             }
         })" class="mdui-btn mdui-btn-icon">
-        <i class="mdui-icon material-symbols-outlined">edit</i>
+        <i class="mdui-icon">
+            <img src="../static/assats/edit_note.svg" alt="">
+        </i>
     </a>
     </div>
 
@@ -91,7 +102,6 @@
 <script>
     静态资源集中管理部门([
         "../../static/js/mdui_tool.js",
-        "../../static/js/ajax_helper.js",
         "../../static/css/RandomPhoto_style.css",
     ])
 

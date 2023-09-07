@@ -136,6 +136,13 @@ img {
     }
 }
 
+@media (min-width: 600px){
+    .main {
+        width: 100%;
+        height: 52vh;
+    }
+}
+
 @media (max-width: 1000px) {
     /*大屏幕*/
     .main {
@@ -144,16 +151,17 @@ img {
     }
 
     .main > img {
-        height: auto;
-        width: 100%;
+        height: 90%;
+        width: auto;
     }
 }
 
 @media (min-width: 1024px) {
     /*电脑屏幕*/
-    .main{
+    .main {
         height: 20vh;
     }
+
     .main > img {
         height: 30vw;
         width: auto;
@@ -190,4 +198,5 @@ img {
         color: white;
     }
 }
+
 /*----------------------------------------------------------------------------------*/

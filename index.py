@@ -28,7 +28,7 @@ from Lib.programe.bgm池 import 网易云爬虫_bp
 from Lib.programe.管理员系统.管理员系统 import *
 from Lib.programe.管理员系统.主程序.Tag生成器.Tag生成器 import *
 from Lib.programe.管理员系统.主程序.图片审核系统.图片审核系统 import *
-from Lib.programe.管理员系统.主程序.Tag重构器.Tag重构器 import admin_edittag_page_bp
+from Lib.programe.管理员系统.主程序.Tag重构器.Tag重构器 import *
 
 from Lib.依赖.图片操作相关.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
 from Lib.依赖.运维相关.重新读取 import 重新读取_
@@ -37,6 +37,9 @@ from Lib.依赖.运维相关.路径控制 import 路径控制
 
 from Lib.affiliate.海纳 import ocss_page_bp
 from Lib.依赖.运维相关.万能测试接口 import universal_bp
+
+from Lib.依赖.回调相关.存活报告 import 存活报告
+
 main = Flask(__name__)
 sslify = SSLify(main)
 
@@ -69,6 +72,9 @@ main.register_blueprint(admin_shenhe_page_bp, name='admin_Shenghe_page')
 main.register_blueprint(admin_DeletePhoto_bp, name='admin_DeletePhoto')
 main.register_blueprint(admin_PassPhoto_bp, name='admin_PassPhoto')
 main.register_blueprint(admin_edittag_page_bp, name='admin_edittag_page')
+main.register_blueprint(admin_edittag_execute_photoinfo_upload_bp, name='admin_edittag_execute_photoinfo_upload')
+main.register_blueprint(admin_edittag_execute_photoinfo_next_bp, name='admin_edittag_execute_photoinfo_next')
+main.register_blueprint(admin_edittag_execute_photoinfo_cancel_bp, name='admin_edittag_execute_photoinfo_cancel')
 
 main.register_blueprint(admin_AutoTag_bp, name='admin_AutoTag')
 
@@ -105,7 +111,7 @@ def 文件上传中心():
 @main.route('/survive')
 @cross_origin()
 def survive():
-    return 回调中心.存活报告()
+    return 存活报告.存活报告()
 
 
 ######################################################################

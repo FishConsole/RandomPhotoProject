@@ -27,6 +27,9 @@ p {
     font-weight: 550;
     position: relative;
     top: -30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 i {
