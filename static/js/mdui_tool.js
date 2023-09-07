@@ -1,9 +1,9 @@
 function 程序名() {
-    return 'Photos'
+    return 'RandomPhotos'
 }
 
 function 对话框(内容) {
-    mdui.alert(内容, '<div><img src="../../static/assats/randomphoto.svg"></div>' + 程序名());
+    mdui.alert(内容, `<div><img src="../../static/assats/randomphoto.svg"></div><div class="对话框文字">${程序名()}</div>`);
 }
 
 

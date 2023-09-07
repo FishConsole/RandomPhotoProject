@@ -78,7 +78,7 @@ body.mdui-loaded .mdui-drawer {
 
 .mdui-dialog > .mdui-dialog-title {
     padding: 36px 24px 20px 25px;
-    margin-left: 33%;
+    margin-left: 38%;
     font-size: 24px;
     font-weight: 400;
 }
@@ -103,9 +103,7 @@ body.mdui-loaded .mdui-drawer {
     color: white !important;
 }
 
-.mdui-dialog > .mdui-dialog-title {
-    padding: 36px 24px 20px 25px;
-}
+
 
 .mdui-dialog-actions {
     -webkit-box-sizing: border-box;
@@ -124,14 +122,6 @@ body.mdui-loaded .mdui-drawer {
     margin-right: 8px;
     margin-bottom: 16px;
     margin-top: 0 !important;
-}
-
-
-.mdui-dialog > .mdui-dialog-title {
-    padding: 36px 24px 20px 25px;
-    margin-left: 33%;
-    font-size: 24px;
-    font-weight: 400;
 }
 
 .mdui-drawer-close {
@@ -170,9 +160,7 @@ body.mdui-loaded .mdui-drawer {
     z-index: 9999;
 }
 
-.mdui-dialog > .mdui-dialog-title {
-    padding: 36px 24px 20px 25px;
-}
+
 
 .mdui-dialog-actions {
     -webkit-box-sizing: border-box;
@@ -365,6 +353,11 @@ a {
     margin-left: 19px;
     margin-top: 0px;
     margin-bottom: 16px;
+}
+
+.对话框文字{
+    position: relative;
+    left: -55px;
 }
 
 /*----------------------------------------------------------------------------------*/
