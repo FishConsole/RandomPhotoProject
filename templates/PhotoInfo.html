@@ -7,14 +7,13 @@
     <meta name="description" content="{{ 时间 }}">
     <link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/independent/photo-info.css" type="text/css">
-
-    <script src="../static/js/静态资源集中管理部门.js"></script>
-    <script src="../static/js/ajax_helper.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
-    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../static/css/RandomPhoto_style.css">
     <link rel="canonical" href="{{ 域名 }}\Photoinfo\{{ 路径 }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
 
+    <script src="../static/js/ajax_helper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+    <script src="../../static/js/mdui_tool.js"></script>
     <title>RandomPhoto - PhotoInfo：{{ 时间 }}</title>
 
 </head>
@@ -99,11 +98,4 @@
         <div class=message>{{ 内容 }}</div>
     </div>
 </body>
-<script>
-    静态资源集中管理部门([
-        "../../static/js/mdui_tool.js",
-        "../../static/css/RandomPhoto_style.css",
-    ])
-
-</script>
 </html>
