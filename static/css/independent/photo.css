@@ -66,6 +66,7 @@ a {
     animation-name: start;
     animation-duration: 3s;
     animation-fill-mode: forwards;
+    transition: none;
 }
 
 .header-text {
