@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
 
     <title>文件上传</title>
-    <link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
+    <link href="../../../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
@@ -13,8 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
             integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../../static/css/independent/upload.css">
+    <link rel="stylesheet" href="../../../static/css/RandomPhoto_style.css">
+    <script src="../../../static/js/mdui_tool.js"></script>
+    <script src="../../../static/js/ajax_helper.js"></script>
 
-    <script src="../../../static/js/静态资源集中管理部门.js"></script>
     <style>
         body {
             display: flex;
@@ -194,12 +197,17 @@
     }
 
     function 取消更改() {
-        console.log('取消更改，清理数据库的相关记录')
-        ajax_helper_main('post', '/universal/<test>', FormData, 成功函数 = (data) => {
-            console.log(`成功：${data}`)
-        }, 失败函数 = (data) => {
-            console.log(`失败：${data}`)
-        })
+        当前图片 = document.getElementById('当前图片').innerHTML
+        fetch(`/info_thing/cancel/${encodeURIComponent(当前图片)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data['状态'] === '成功') {
+                    对话框('操作执行成功')
+                } else {
+                    对话框(`${data['内容']}`)
+                }
+            })
+            .catch(error => console.error(error));
     }
 
 
@@ -219,7 +227,6 @@
 
         图片展示栏_范围 = document.querySelector('.图片展示栏_范围')
         当前图片 = document.getElementById('当前图片')
-        console.log(图片路径)
         图片展示栏_范围.style.cssText = `background-image:url('../../SelectNotCount/${图片路径}');`
         当前图片.innerHTML = 图片路径
         ID计数器 = document.getElementById('ID计数器')
@@ -246,51 +253,39 @@
             目标文本 += 所有的子节点[a].innerHTML
         }
 
-        if(目标文本.length==0)首次加载=true
-        else 首次加载=false
-        ajax_helper_main('get', `/info_thing/next`, {'content':目标文本,'img_name':当前图片,'first':首次加载}, 成功函数 = (data) => {
-            json = ajax_helper_返回值解码(data)
-            if (json['状态'] === '成功') {
-                alert('您的数据已经提交，业务环境数据已经更新')
-                数据 = json['数据']
-                数据 = 数据.split(',')
-                console.log(数据)
-                浮动操作栏.innerHTML = ''
+        if (目标文本.length == 0) 首次加载 = true
+        else 首次加载 = false
+        console.log(`首次加载 ${首次加载}`)
 
-                图片路径 = 数据[0]
-                原始标签 = 数据[1]
-                新标签 = 数据[2]
+        fetch(`/info_thing/next?content=${encodeURIComponent(目标文本)}&img_name=${encodeURIComponent(当前图片)}&first=${encodeURIComponent(首次加载)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data['状态'] === '成功') {
+                    alert('您的数据已经提交，业务环境数据已经更新')
+                    数据 = data['数据']
+                    console.log(数据)
+                    浮动操作栏.innerHTML = ''
 
-                原始标签 = 原始标签.split('|')
-                新标签 = 新标签.split('|')
+                    图片路径 = 数据[0]
+                    原始标签 = 数据[1]
+                    新标签 = 数据[2]
 
-                console.group()
-                console.log(原始标签)
-                console.log(新标签)
-                console.log(图片路径)
-                console.groupEnd()
-                生成数据(原始标签, 新标签, 图片路径)
-            } else {
-                data = ajax_helper_返回值解码(data)
-                对话框(`操作执行失败：${data['内容']}`)
-            }
-        }, 失败函数 = (data) => {
-        })
+                    原始标签 = 原始标签.split('|')
+                    新标签 = 新标签.split('|')
+
+                    console.group()
+                    console.log(原始标签)
+                    console.log(新标签)
+                    console.log(图片路径)
+                    console.groupEnd()
+                    生成数据(原始标签, 新标签, 图片路径)
+                } else {
+                    对话框(`操作执行失败：${data['内容']}`)
+                }
+            })
     }
 
 
 </script>
-
 </body>
-<script>
-    静态资源集中管理部门([
-        "../static/js/mdui_tool.js",
-        "../static/js/ajax_helper.js",
-        "../static/css/independent/upload.css",
-        "../static/css/RandomPhoto_style.css",
-        "../static/js/independent/upload.js",
-    ])
-
-</script>
-
 </html>

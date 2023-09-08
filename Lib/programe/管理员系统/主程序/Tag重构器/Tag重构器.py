@@ -23,6 +23,7 @@ def edittag_page(token):
 def admin_edittag_execute_photoinfo_upload():
     图片名字 = request.args.get('img_path')
     新的tag = request.args.get('content')
+    新的tag = 新的tag[:500]
     result = 审核系统图片标签重构编辑器.提交请求(图片名字, 新的tag)
     return result
 
@@ -32,6 +33,7 @@ def admin_edittag_execute_photoinfo_next():
     content = request.args.get('content')
     img_name = request.args.get('img_name')
     first = request.args.get('first')
+    print(f'first:{first}')
     result = 审核系统图片标签重构编辑器.下一张图片(content, img_name, first)
     return result
 
