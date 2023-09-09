@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // arrayBuffer()：将响应体解析为一个ArrayBuffer对象。
+        // blob()：将响应体解析为一个Blob对象。
+        // clone()：克隆Response对象，用于多次使用响应数据。
+        // formData()：将响应体解析为一个FormData对象。
+        // text()：将响应体解析为文本字符串。
+        // Response()：Response构造函数，用于创建Response对象。
+        // Symbol(Symbol.toStringTag)：用于标识Response对象的类型。
+        // body()：用于获取响应体，可以与上述arrayBuffer(), blob(), formData(), text()等方法一起使用。
+        // bodyUsed()：一个只读属性，指示响应体是否已经被读
+        // headers()：用于获取响应头的Headers对象。
+        // ok()：一个只读属性，指示响应是否成功（状态码在200到299之间）。
+        // redirected()：一个只读属性，指示响应是否是一个重定向响应。
+        // status()：用于获取HTTP状态码（例如，200表示成功，404表示未找到等）。
+        // statusText()：用于获取HTTP状态文本（例如，OK表示成功，Not Found表示未找到等）。
+        // type()：一个只读属性，指示响应的类/型（例如，basic、cors、error等）。
+        // url()：用于获取响应的URL。
+
+        fetch("https://dog.ceo/api/breeds/image/random")
+            .then(response=>response.text())
+            .then(dataasd => console.log(dataasd))
+    </script>
+</body>
+</html>

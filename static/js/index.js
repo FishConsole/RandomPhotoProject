@@ -8,7 +8,7 @@ function 组件生成(数据源) {
     数据源 = 数据源["Image_Data"]
     // 获取输出图片的位置
     限制 = document.getElementById('图片展示器')
-
+    console.log(限制)
     for (a in 数据源) {
         图片地址 = 数据源[a][0]
         图片简介 = 数据源[a][1]
@@ -53,7 +53,7 @@ function 搜索发动() {
             if (搜索内容.length > 100) {
                 搜索内容 = 搜索内容.slice(0, 100)
             }
-            限制 = document.querySelector('.限制')
+            限制 = document.getElementById('图片展示器')
             限制.style.cssText = 'opacity:0;'
             await ajax_helper_main('get', `/Search/${搜索内容}`, new FormData(), {}, function (responseText) {
                 responseText = ajax_helper_返回值解码(responseText)

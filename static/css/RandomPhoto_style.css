@@ -49,6 +49,10 @@ iframe {
 
 /*////////////////////////////////////////////////////////////////////////////*/
 
+.mdui-progress-indeterminate{
+    background: white;
+}
+
 .mdui-drawer {
     border-radius: 30px;
     left: -17px;
@@ -328,7 +332,6 @@ a {
     height: 27px !important;
     width: 27px !important;
 }
-
 
 .div {
     width: 200px;
