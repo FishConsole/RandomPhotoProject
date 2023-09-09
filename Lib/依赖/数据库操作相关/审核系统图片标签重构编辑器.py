@@ -2,6 +2,7 @@ import os
 import sqlite3
 import jieba
 from Lib.依赖.回调相关.审核系统.tag审核 import tag审核
+from Lib.依赖.邮件相关.smtp_server import 发送邮件
 
 
 class 审核系统图片标签重构编辑器:
@@ -49,6 +50,14 @@ class 审核系统图片标签重构编辑器:
         游标对象.execute(f"INSERT INTO 审核系统图片标签重资源(路径,原始tag,等待审核tag) VALUES (?, ?, ?)",
                          (路径, 原始图片tag, 新tag列表_回调字符串))
         连接器.commit()
+        try:
+            with open('shenhe_token', 'r') as f:
+                随机数发生器_生成的数字 = f.read()
+                f.close()
+                发送邮件(
+                    f"<h2>RandomPhoto审核系统</h2>有用户提交了tag修改请求，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
+        except:
+            pass
         return 回调数据
 
     @staticmethod
