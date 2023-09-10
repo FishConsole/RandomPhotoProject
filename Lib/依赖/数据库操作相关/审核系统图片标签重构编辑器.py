@@ -47,17 +47,20 @@ class 审核系统图片标签重构编辑器:
         print(f'原始图片tag - {原始图片tag}')
         print(f'新tag列表_回调字符串 - {新tag列表_回调字符串}')
         回调数据 = tag审核.提交请求.提交请求_成功(路径)
-        游标对象.execute(f"INSERT INTO 审核系统图片标签重资源(路径,原始tag,等待审核tag) VALUES (?, ?, ?)",
-                         (路径, 原始图片tag, 新tag列表_回调字符串))
-        连接器.commit()
         try:
-            with open('shenhe_token', 'r') as f:
-                随机数发生器_生成的数字 = f.read()
-                f.close()
-                发送邮件(
-                    f"<h2>RandomPhoto审核系统</h2>有用户提交了tag修改请求，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
-        except:
-            pass
+            游标对象.execute(f"INSERT INTO 审核系统图片标签重资源(路径,原始tag,等待审核tag) VALUES (?, ?, ?)",
+                             (路径, 原始图片tag, 新tag列表_回调字符串))
+            连接器.commit()
+            try:
+                with open('shenhe_token', 'r') as f:
+                    随机数发生器_生成的数字 = f.read()
+                    f.close()
+                    发送邮件(
+                        f"<h2>RandomPhoto审核系统</h2>有用户提交了tag修改请求，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
+            except:
+                pass
+        except sqlite3.IntegrityError as e:
+            回调数据 = tag审核.提交请求.提交请求_失败(e)
         return 回调数据
 
     @staticmethod

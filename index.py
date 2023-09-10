@@ -92,6 +92,13 @@ main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 def zhuye():
     return render_template('main.html', 域名=路径控制.启动位置.域名())
 
+@main.route('/baidu_verify_codeva-b8U4HkFtUO.html')
+def baidusearchtool():
+    return '26b65257dc54a668432117dd10a11fc3'
+
+@main.route('/sogousiteverification.txt')
+def sougousearchtool():
+    return '2BiIHwawrq'
 
 @main.route('/test')
 def test():
@@ -139,7 +146,7 @@ def 自动死亡线程():
         print(' * 自动死亡线程：调试模式启动，线程退出')
 
 
-@main.route('/sitemap', methods=['GET'])
+@main.route('/sitemap.xml', methods=['GET'])
 def sitemap():
     from Lib.依赖.运维相关.站点地图生成器 import 生成站点地图
     from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器

@@ -15,7 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
     <script src="../../static/js/mdui_tool.js"></script>
     <title>RandomPhoto - PhotoInfo：{{ 时间 }}</title>
-
+    <style>
+        .mdui-progress{
+            z-index: 10;
+        }
+    </style>
 </head>
 <script>
 
@@ -37,6 +41,9 @@
 </script>
 
 <body style="background: #ffffff99;">
+    <div class="mdui-progress" id="进度条" style="display: none">
+      <div class="mdui-progress-indeterminate"></div>
+    </div>
     <div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
         <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="window.history.back()">
             <img src="../static/assats/arrow_back.svg" alt="">
@@ -54,19 +61,21 @@
 
                 fromdata = {'img_path':img_path,'content':输入数据.slice(0,500)}
                 console.log(fromdata)
-                ajax_helper_main('get',`../info_thing/Upload`,'',fromdata,(data)=>{
-                    console.log(`成
-                    功${data}`)
-                    data = ajax_helper_返回值解码(data)
-                    if(data['状态']==='成功'){
-                        console.log(data)
-                        对话框(`您的tag修改请求已提交到审核队列:${data['内容']}`)
-                    }else{
-                        snackbar(`失败: ${data['内容']}`)
-                    }
-                },(data)=>{
-                        snackbar(`失败: ${data['内容']}`)
-                })
+                进度条 = document.getElementById('进度条')
+                进度条.style.cssText = ''
+                fetch(`../info_thing/Upload?img_path=${img_path}&content=${输入数据.slice(0,500)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(`成功${data}`)
+                        if(data['状态']==='成功'){
+                            console.log(data)
+                            对话框(`您的tag修改请求已提交到审核队列:${data['内容']}`)
+                        }else{
+                            snackbar(`失败: ${data['内容']}`)
+                        }
+                        进度条.style.cssText = 'display:none'
+                    })
+                    .catch(error => 对话框('服务端出错', error));
             }else{
                 对话框('至少输入一个词')
             }
