@@ -1,5 +1,5 @@
 import os
-from Lib.依赖.运维相关.调试模式 import *
+from Lib.依赖.运维相关.调试模式.调试模式 import *
 
 
 class 路径控制:

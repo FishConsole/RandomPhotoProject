@@ -2,7 +2,7 @@
 import os
 import platform
 import sys
-from Lib.依赖.运维相关.调试模式 import *
+from Lib.依赖.运维相关.调试模式.调试模式 import *
 
 当前操作系统 = platform.system().split('_')[0]
 当前PIP目录 = os.path.join(os.path.dirname(sys.executable), 'Scripts')

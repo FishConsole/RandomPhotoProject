@@ -83,11 +83,11 @@ a {
 }
 
 .header-text-img {
-    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 2s;
-    width: 40px;
-    height: 40px;
+    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1s;
+    width: 35px;
+    height: 35px;
     position: relative;
-    top: 8px;
+    top: 6px;
 }
 
 .time {

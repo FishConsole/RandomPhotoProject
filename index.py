@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Lib.依赖.运维相关.所需库一键部署 import 所需库一键部署
-from Lib.依赖.运维相关.调试模式 import *
+from Lib.依赖.运维相关.调试模式.调试模式 import *
 
 所需库一键部署()
 
@@ -45,7 +45,7 @@ sslify = SSLify(main)
 
 CORS(main, resources={r"/static/*": {"origins": "https://www.root-a.top"}})
 
-main.register_blueprint(universal_bp,name='万能测试接口')
+main.register_blueprint(universal_bp, name='万能测试接口')
 
 main.register_blueprint(网易云爬虫_bp, name='网易云爬虫')
 
@@ -90,15 +90,20 @@ main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 
 @main.route('/')
 def zhuye():
-    return render_template('main.html', 域名=路径控制.启动位置.域名())
+    return render_template('main.html',
+                           域名=路径控制.启动位置.域名(),
+                           调试模式=main_调试模式())
+
 
 @main.route('/baidu_verify_codeva-b8U4HkFtUO.html')
 def baidusearchtool():
     return '26b65257dc54a668432117dd10a11fc3'
 
+
 @main.route('/sogousiteverification.txt')
 def sougousearchtool():
     return '2BiIHwawrq'
+
 
 @main.route('/test')
 def test():
@@ -107,12 +112,16 @@ def test():
 
 @main.route('/ChangeLog')
 def ChangeLog():
-    return render_template('ChangeLog.html', 域名=路径控制.启动位置.域名())
+    return render_template('ChangeLog.html',
+                           域名=路径控制.启动位置.域名(),
+                           调试模式=ChangeLog_页面调试模式())
 
 
 @main.route('/Upload')
 def 文件上传中心():
-    return render_template('upload.html', 域名=路径控制.启动位置.域名())
+    return render_template('upload.html',
+                           域名=路径控制.启动位置.域名(),
+                           调试模式=upload_调试模式())
 
 
 @main.route('/survive')

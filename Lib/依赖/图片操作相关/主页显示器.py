@@ -2,6 +2,8 @@ from flask import render_template
 
 from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 from Lib.依赖.运维相关.路径控制 import 路径控制
+from Lib.依赖.运维相关.调试模式.调试模式_前端 import *
+
 
 def home_(压缩图片信息资源):
     with open('上一次统计.txt', 'r') as f:
@@ -25,7 +27,8 @@ def home_(压缩图片信息资源):
                            下一页=2,
                            上一页=1,
                            强制返回='false',
-                           域名=路径控制.启动位置.域名(), )
+                           域名=路径控制.启动位置.域名(),
+                           调试模式=index页面_调试模式())
 
 
 def home_page_(page, 压缩图片信息资源):
@@ -58,8 +61,7 @@ def home_page_(page, 压缩图片信息资源):
                                下一页=下一页,
                                上一页=上一页,
                                强制返回=强制返回器,
-                               域名=路径控制.启动位置.域名())
+                               域名=路径控制.启动位置.域名(),
+                               调试模式=index页面_调试模式())
     except ValueError:
         return ''
-
-
