@@ -30,48 +30,44 @@ function 通过审核图片(文件名) {
         }
         进度条.style.cssText = 'width: 40%;';
 
-        await ajax_helper_main('get', `../../admin_thing~/shenhe/Accept/${value}/${文件名}`, new FormData(), {}, function (responseText) {
-            进度条.style.cssText = 'width: 80%;';
+        fetch(`../../admin_thing~/shenhe/Accept/${value}/${文件名}`)
+            .then(response => response.json())
+            .then(data => {
+                进度条.style.cssText = 'width: 80%;';
+                snackbar(`${data['内容']}`)
+                目标标签 = document.getElementById(`Photo_${文件名}`)
+                console.log(目标标签)
+                目标标签.style.cssText = 'height:0px;opacity:0;width:100%!important;scale: 1.2;'
+                setTimeout(function () {
+                    目标标签.parentNode.parentNode.style.cssText = 'width:0px;opacity:0;'
+                    进度条.style.cssText = 'width: 100%;';
 
-            data = ajax_helper_返回值解码(responseText)
+                    setTimeout(function () {
+                        目标标签.parentNode.parentNode.style.cssText = 'display:none'
+                        进度条.style.cssText = 'width: 0;opacity: 0';
+                    }, 500)
+                }, 700)
+            })
+    })
+
+}
+
+function 删除审核图片(文件名) {
+    fetch(`../../admin_thing~/shenhe/Delete/${文件名}`)
+        .then(response => response.json())
+        .then(data => {
             snackbar(`${data['内容']}`)
             目标标签 = document.getElementById(`Photo_${文件名}`)
-            console.log(目标标签)
             目标标签.style.cssText = 'height:0px;opacity:0;width:100%!important;scale: 1.2;'
             setTimeout(function () {
                 目标标签.parentNode.parentNode.style.cssText = 'width:0px;opacity:0;'
-                进度条.style.cssText = 'width: 100%;';
-
                 setTimeout(function () {
                     目标标签.parentNode.parentNode.style.cssText = 'display:none'
-                    进度条.style.cssText = 'width: 0;opacity: 0';
                 }, 500)
             }, 700)
-        }, function (responseText) {
+            console.log(目标标签)
         })
-    })
 }
-
-async function 删除审核图片(文件名) {
-    await ajax_helper_main('get', `../../admin_thing~/shenhe/Delete/${文件名}`, new FormData(), {}, function (responseText) {
-        data = ajax_helper_返回值解码(responseText)
-        snackbar(`${data['内容']}`)
-        目标标签 = document.getElementById(`Photo_${文件名}`)
-        目标标签.style.cssText = 'height:0px;opacity:0;width:100%!important;scale: 1.2;'
-        setTimeout(function () {
-            目标标签.parentNode.parentNode.style.cssText = 'width:0px;opacity:0;'
-            setTimeout(function () {
-                目标标签.parentNode.parentNode.style.cssText = 'display:none'
-            }, 500)
-        }, 700)
-        console.log(目标标签)
-
-    }, function (responseText) {
-        data = ajax_helper_返回值解码(responseText)
-        alert(`${data['内容']}`)
-    })
-}
-
 
 function 查看大图(文件名) {
     // 创建一个模态框

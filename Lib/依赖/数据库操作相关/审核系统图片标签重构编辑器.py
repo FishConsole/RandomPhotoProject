@@ -33,7 +33,7 @@ class 审核系统图片标签重构编辑器:
         try:
             原始图片tag = 审核系统图片标签重构编辑器.获取原始图片标签(路径)[0][0]
         except IndexError:
-            result = tag审核.提交请求.提交请求_失败(f'获取原始图片标签失败：{路径}')
+            result = tag审核.tag审核_失败(f'提交请求失败：获取原始图片标签失败：{路径}')
             return result
         原始新tag = list(jieba.cut(新tag))
         新tag列表_垃圾处理 = []
@@ -46,21 +46,18 @@ class 审核系统图片标签重构编辑器:
         print(f'路径 - {路径}')
         print(f'原始图片tag - {原始图片tag}')
         print(f'新tag列表_回调字符串 - {新tag列表_回调字符串}')
-        回调数据 = tag审核.提交请求.提交请求_成功(路径)
+        回调数据 = tag审核.tag审核_成功(f"提交请求成功：{路径}")
         try:
             游标对象.execute(f"INSERT INTO 审核系统图片标签重资源(路径,原始tag,等待审核tag) VALUES (?, ?, ?)",
                              (路径, 原始图片tag, 新tag列表_回调字符串))
             连接器.commit()
-            try:
-                with open('shenhe_token', 'r') as f:
-                    随机数发生器_生成的数字 = f.read()
-                    f.close()
-                    发送邮件(
-                        f"<h2>RandomPhoto审核系统</h2>有用户提交了tag修改请求，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
-            except:
-                pass
+            with open('shenhe_token', 'r') as f:
+                随机数发生器_生成的数字 = f.read()
+                f.close()
+                发送邮件(
+                    f"<h2>RandomPhoto审核系统</h2>有用户提交了tag修改请求，请尽快审核<br>）<br>这里是审核的网址：https://www.root-a.top/admin~/{随机数发生器_生成的数字}/main")
         except sqlite3.IntegrityError as e:
-            回调数据 = tag审核.提交请求.提交请求_失败(e)
+            回调数据 = tag审核.tag审核_失败(f"提交请求失败：{e}")
         return 回调数据
 
     @staticmethod
@@ -71,50 +68,59 @@ class 审核系统图片标签重构编辑器:
             连接器.commit()
             游标对象.close()
             连接器.close()
-            result = tag审核.取消更改.取消更改成功()
+            result = tag审核.tag审核_成功(f"取消更改成功：{名字}")
             return result
         except Exception as e:
-            result = tag审核.提交请求.提交请求_失败(e)
+            result = tag审核.tag审核_失败(e)
             return result
 
     @staticmethod
     def 下一张图片(重构tag, img_name, 第一次加载):
-
-        重构编辑器_游标对象, 重构编辑器_连接器 = 审核系统图片标签重构编辑器.基本框架()
-        查询结果 = 重构编辑器_游标对象.execute('SELECT * from 审核系统图片标签重资源 LIMIT 1')
-        查询结果 = 查询结果.fetchall()
-
         正式环境_连接器 = sqlite3.connect(os.path.join('数据库', '图片信息资源.db'))
         正式环境_游标对象 = 正式环境_连接器.cursor()
+        重构编辑器_游标对象, 重构编辑器_连接器 = 审核系统图片标签重构编辑器.基本框架()
+        result = tag审核.tag审核_成功(img_name)
 
-        result = tag审核.提交请求.提交请求_成功('')
-        try:
-            查询结果 = 查询结果[0]
-            路径 = 查询结果[0]
-            原始tag = list(jieba.cut(查询结果[1]))
-            新tag = list(jieba.cut(查询结果[2]))
-            原始tag_字符串 = ''
-            新tag_字符串 = ''
-            for i in 原始tag:
-                原始tag_字符串 = 原始tag_字符串 + '|' + i
-            for i in 新tag:
-                新tag_字符串 = 新tag_字符串 + '|' + i
-            result['数据'] = [路径, 原始tag_字符串, 新tag_字符串]
-            print(img_name)
-            if 第一次加载 != 'true':
-                正式环境_游标对象.execute('UPDATE 压缩图片信息资源 SET 标签=? where 路径=?', (重构tag, img_name))
-                正式环境_连接器.commit()
-                重构编辑器_游标对象.execute('delete from 审核系统图片标签重资源 where 路径 = ?', (img_name,))
-                print('解决')
-                重构编辑器_连接器.commit()
-            return result
-        except IndexError:
-            # 这个情况是因为队列里面没有数据了
-            result = tag审核.下一张图片.审核队列已空()
-            return result
-        finally:
-            # 关闭游标和连接
+        def 返回剩下的图片():
+            try:
+                查询结果 = 重构编辑器_游标对象.execute('SELECT * from 审核系统图片标签重资源 LIMIT 1')
+                查询结果 = 查询结果.fetchall()
+                查询结果 = 查询结果[0]
+                路径 = 查询结果[0]
+                原始tag = list(jieba.cut(查询结果[1]))
+                新tag = list(jieba.cut(查询结果[2]))
+                原始tag_字符串 = ''
+                新tag_字符串 = ''
+                for i in 原始tag:
+                    原始tag_字符串 = 原始tag_字符串 + '|' + i
+                for i in 新tag:
+                    新tag_字符串 = 新tag_字符串 + '|' + i
+                result['数据'] = [路径, 原始tag_字符串, 新tag_字符串]
+                print(f'result:{result}')
+                return result
+            except IndexError:
+                # 这个情况是因为队列里面没有数据了
+                result_e = tag审核.tag审核_失败("审核队列已空")
+                return result_e
+
+        def 删除数据():
+            正式环境_游标对象.execute('UPDATE 压缩图片信息资源 SET 标签=? where 路径=?', (重构tag, img_name))
+            正式环境_连接器.commit()
+            重构编辑器_游标对象.execute('delete from 审核系统图片标签重资源 where 路径 = ?', (img_name,))
+            重构编辑器_连接器.commit()
+
+        def 关闭数据库():
             正式环境_游标对象.close()
             正式环境_连接器.close()
             重构编辑器_游标对象.close()
             重构编辑器_连接器.close()
+
+        if 第一次加载 == 'true':
+            result = 返回剩下的图片()
+            关闭数据库()
+            return result
+        else:
+            删除数据()
+            result = 返回剩下的图片()
+            关闭数据库()
+            return result

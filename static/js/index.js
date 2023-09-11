@@ -55,31 +55,20 @@ function 搜索发动() {
             }
             限制 = document.getElementById('图片展示器')
             限制.style.cssText = 'opacity:0;'
-            await ajax_helper_main('get', `/Search/${搜索内容}`, new FormData(), {}, function (responseText) {
-                responseText = ajax_helper_返回值解码(responseText)
-                responseText = eval(responseText)
-                result = []
 
-                for (a in responseText) {
-                    // 把每一个数组中的数据按逗号分割，变成嵌套数组
-                    result.unshift(responseText[a].split(','))
-                }
-
-                responseText = result
-                if (responseText.length == 0) {
-                    限制.style.cssText = 'opacity:1;'
-                    snackbar('没有找到相关图片')
-                } else {
-                    限制.innerHTML = ''
-                    responseText = {'Image_Data': responseText}
-                    组件生成(responseText)
-                    限制.style.cssText = 'opacity:1;'
-
-                }
-
-            }, function () {
-                snackbar('关键词错误或网络错误')
-            })
+            fetch(`/Search/${搜索内容}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        限制.style.cssText = 'opacity:1;'
+                        snackbar('没有找到相关图片')
+                    } else {
+                        限制.innerHTML = ''
+                        data = {'Image_Data': data}
+                        组件生成(data)
+                        限制.style.cssText = 'opacity:1;'
+                    }
+                })
         }
     })
 }
