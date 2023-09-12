@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from Lib.依赖.运维相关.所需库一键部署 import 所需库一键部署
 from Lib.依赖.运维相关.调试模式.调试模式 import *
-
-所需库一键部署()
+from Lib.依赖.运维相关.调试模式.调试模式_广播站 import 调试模式_广播站
 
 from Lib.依赖.运维相关.版本号提取 import 版本号提取
 
@@ -10,8 +9,9 @@ if not 调试模式():
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [业务模式]')
 else:
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [调试模式]')
-
 print('-' * 90)
+调试模式_广播站()
+所需库一键部署()
 
 import threading
 

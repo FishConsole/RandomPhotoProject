@@ -23,6 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
             integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
             crossorigin="anonymous"></script>
+    <script></script>
     <link rel="canonical" href="{{ 域名 }}">
 
     <link rel="stylesheet" href="../static/css/RandomPhoto_style.css">
@@ -154,7 +155,7 @@
                                 </audio>
                             </div>
                             <div class="mdui-panel-item-body" id="mdui-panel-item-body"
-                                 style="font-size: 16px;font-weight: bold;">
+                                 style="font-size: 16px;font-weight: bold;padding-bottom: 20px">
                                 <ul id="播放列表">
                                 </ul>
                             </div>
@@ -228,23 +229,16 @@
 
 
 <script>
-
-    setTimeout(function () {
-        // 参数传递器将会此处传递参数，因此无视这个报错
-        数据源 = {{ 图片信息资源 | safe }}
-            组件生成(数据源)
-    }, 1000)
-
-</script>
-<script>
-    强制返回 =
-    {{ 强制返回 | safe }}
-    if (强制返回) {
-        setTimeout(function () {
+    window.onload=function () {
+        强制返回 = {{ 强制返回 | safe }}
+        if (强制返回) {
             window.history.go(-1)
-        }, 500)
+        }
+        // 参数传递器将会此处传递参数，因此无视这个报错
+        setTimeout(function (){
+            组件生成({{ 图片信息资源 | safe }})
+        },500)
     }
-
 </script>
 <script src="../static/js/mdui_tool.js"></script>
 <script src="../static/js/index.js"></script>

@@ -31,9 +31,9 @@ def 错误页面():
             用户输入 = localStorage.getItem("token");
             if (用户输入 == null) return 0;
             else{
-                window.location.href = "../shenhe/"+用户输入;
+                window.location.href = "../"+用户输入+"/main";
             }
-        }, 4  * 1000)
+        }, 15  * 1000)
     </script>
 
                     """

@@ -44,7 +44,7 @@ search_bp = Blueprint('admin', __name__)
 def img(filename, model):
     # model的意思是模式，这里的意思就是说：这里有五个路径，因此有五个model
     # filename的意思是文件名，这里的意思就是说：指定的路径名
-    认可的来源 = ['www.root-a.top', 'root-a.top', '[::1]']
+    认可的来源 = ['www.root-a.top', 'root-a.top', '[::1]', b'']
     本次来源 = request.headers.get('Referer')
     本次来源 = urlparse(本次来源).netloc
 
@@ -65,7 +65,6 @@ def img(filename, model):
             else:
                 os.system('cls')
     else:
-
         if 本次来源 not in 认可的来源:
             return send_file(os.path.join(路径控制.反跨源回调图片_路径(), "fankuayuan.png"))
 
@@ -135,21 +134,21 @@ def Random_Random():
     # 如果是windows或者mac
     if 'Windows' in ua or 'Macintosh' in ua:
         return Random_More_Random('横屏')
-    
+
     # 如果是安卓
     elif 'Android' in ua:
         if 'Tablet' in ua:
             return Random_More_Random('平板')
         else:
             return Random_More_Random('竖屏')
-    
+
     # 如果是鸿蒙
     elif 'Harmony' in ua:
         if 'Tablet' in ua:
             return Random_More_Random('平板')
         else:
             return Random_More_Random('竖屏')
-    
+
     # 如果是ios
     elif 'iPhone' in ua or 'iPad' in ua:
         if 'Tablet' in ua:
@@ -185,21 +184,21 @@ def Random_RandomNotCount():
     # 如果是windows或者mac
     if 'Windows' in ua or 'Macintosh' in ua:
         return Random_More_RandomNotCount('横屏')
-    
+
     # 如果是安卓
     elif 'Android' in ua:
         if 'Tablet' in ua:
             return Random_More_RandomNotCount('平板')
         else:
             return Random_More_RandomNotCount('竖屏')
-    
+
     # 如果是鸿蒙
     elif 'Harmony' in ua:
         if 'Tablet' in ua:
             return Random_More_RandomNotCount('平板')
         else:
             return Random_More_RandomNotCount('竖屏')
-    
+
     # 如果是ios
     elif 'iPhone' in ua or 'iPad' in ua:
         if 'Tablet' in ua:

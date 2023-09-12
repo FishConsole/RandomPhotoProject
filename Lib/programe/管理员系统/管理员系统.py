@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from Lib.依赖.运维相关.调试模式 import 调试模式
+from Lib.依赖.运维相关.调试模式.调试模式 import 调试模式
 from Lib.programe.管理员系统.错误页面.错误页面 import 错误页面
 
 admin_page_bp = Blueprint('admin_page', __name__)

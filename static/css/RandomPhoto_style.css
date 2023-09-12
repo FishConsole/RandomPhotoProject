@@ -250,9 +250,8 @@ body.mdui-loaded .mdui-drawer {
     height: 50px;
 }
 
-.mdui-panel-item-open > .mdui-panel-item-body {
-    height: 36vh !important;
-    line-height: 40px;
+.mdui-panel-item-body>p{
+    line-height: 2.5em;
 }
 
 .mdui-panel-item-body::after, .mdui-panel-item-body::before {

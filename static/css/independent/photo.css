@@ -84,10 +84,10 @@ a {
 
 .header-text-img {
     animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1s;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     position: relative;
-    top: 6px;
+    top: 3px;
 }
 
 .time {
@@ -143,6 +143,7 @@ a {
 .页面切换:active {
     border-bottom: 2px solid black;
     color: #4bc2ff;
+
 }
 
 
