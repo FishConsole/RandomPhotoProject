@@ -83,7 +83,7 @@ a {
 }
 
 .header-text-img {
-    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1s;
+    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1.5s;
     width: 30px;
     height: 30px;
     position: relative;

@@ -62,7 +62,6 @@ img {
 
 .header-text {
     position: relative;
-    top: -7px;
 }
 
 .main {
@@ -124,6 +123,14 @@ img {
     animation-delay: 1.1s;
     animation-duration: 2s;
     animation-fill-mode: forwards;
+}
+
+.header-text-img {
+    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1.5s;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 7px;
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -193,6 +200,16 @@ img {
 
     100% {
         color: white;
+    }
+}
+
+@keyframes 旋转 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }
 
