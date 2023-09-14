@@ -340,13 +340,6 @@ a {
     }
 }
 
-@media (max-width: 1000px) {
-    /*大屏幕*/
-    .限制 {
-        width: 100vw;
-    }
-}
-
 @media (min-width: 1024px) {
     /*电脑屏幕*/
     .限制 {

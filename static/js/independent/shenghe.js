@@ -11,7 +11,8 @@ function 文本拷贝(text) {
     snackbar(`文件名:${text}复制成功`)
 }
 
-function 通过审核图片(文件名) {
+function 通过审核图片(文件名,ID) {
+    console.log(文件名)
     进度条 = document.getElementById("进度条")
     文本对话框("一句话描述这个图片", async function (value) {
         // 如果value这个字符串中没有任何内容，则后面的函数不进行
@@ -35,61 +36,45 @@ function 通过审核图片(文件名) {
             .then(data => {
                 进度条.style.cssText = 'width: 80%;';
                 snackbar(`${data['内容']}`)
-                目标标签 = document.getElementById(`Photo_${文件名}`)
+                目标标签 = document.getElementById(ID)
                 console.log(目标标签)
-                目标标签.style.cssText = 'height:0px;opacity:0;width:100%!important;scale: 1.2;'
-                setTimeout(function () {
-                    目标标签.parentNode.parentNode.style.cssText = 'width:0px;opacity:0;'
-                    进度条.style.cssText = 'width: 100%;';
-
-                    setTimeout(function () {
-                        目标标签.parentNode.parentNode.style.cssText = 'display:none'
-                        进度条.style.cssText = 'width: 0;opacity: 0';
-                    }, 500)
-                }, 700)
+                目标标签.style.cssText = 'display:none'
             })
     })
 
 }
 
-function 删除审核图片(文件名) {
+function 删除审核图片(文件名,ID) {
     fetch(`../../admin_thing~/shenhe/Delete/${文件名}`)
         .then(response => response.json())
         .then(data => {
             snackbar(`${data['内容']}`)
-            目标标签 = document.getElementById(`Photo_${文件名}`)
-            目标标签.style.cssText = 'height:0px;opacity:0;width:100%!important;scale: 1.2;'
-            setTimeout(function () {
-                目标标签.parentNode.parentNode.style.cssText = 'width:0px;opacity:0;'
-                setTimeout(function () {
-                    目标标签.parentNode.parentNode.style.cssText = 'display:none'
-                }, 500)
-            }, 700)
-            console.log(目标标签)
+            目标标签 = document.getElementById(ID)
+            目标标签.style.cssText = 'display:none'
         })
 }
 
 function 查看大图(文件名) {
     // 创建一个模态框
     var 标签 = document.createElement('div');
+    标签.setAttribute('class', '查看大图')
     标签.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 64%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
         `
 
     // 创建一个图片元素
     var 图片元素 = document.createElement('img');
-    图片元素.src = `/img/temp_files/${文件名}`;
-    图片元素.style.cssText = 'width: 90vw!important; height: auto;margin-top: -130px;';
+    图片元素.src = `/img/Temp_File_Start/${文件名}`;
+    图片元素.style.cssText = 'margin-top: -50px;border-radius: 20px;';
 
     // 将图片元素添加到模态框中
     标签.appendChild(图片元素);

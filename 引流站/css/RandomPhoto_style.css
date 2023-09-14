@@ -6,10 +6,6 @@
     /* padding: 0; */
 }
 
-body::-webkit-scrollbar {
-    /*隐藏进度条*/
-    background-color: rgba(255, 0, 0, 0);
-}
 
 iframe {
     position: fixed;
@@ -31,14 +27,6 @@ iframe {
 .page_blank {
     width: 100%;
     height: 60vh;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-::selection {
-    background: rgba(160, 178, 236, 0.17);
 }
 
 

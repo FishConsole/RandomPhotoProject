@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 
 from Lib.programe.管理员系统.错误页面.错误页面 import 错误页面
 from Lib.依赖.数据库操作相关.审核系统图片标签重构编辑器 import 审核系统图片标签重构编辑器
-from Lib.依赖.运维相关.调试模式 import 调试模式
+from Lib.依赖.运维相关.调试模式.调试模式 import 调试模式
 
 admin_edittag_page_bp = Blueprint('admin_edittag_page', __name__)
 admin_edittag_execute_photoinfo_upload_bp = Blueprint('admin_edittag_execute_photoinfo_upload', __name__)
