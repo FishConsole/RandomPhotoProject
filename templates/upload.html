@@ -9,7 +9,6 @@
 
     <title>RandomPhoto - 文件上传</title>
     <link rel="stylesheet" href="" type="text/css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
           integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
     <link rel="canonical" href="{{ 域名 }}/Upload">
@@ -49,6 +48,26 @@
     top: -2px;
     left: -6px;
 }
+
+.header-text-img {
+    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1.5s;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 7px;
+}
+
+@keyframes 旋转 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
     </style>
 
 </head>
@@ -60,8 +79,9 @@
         <img src="../static/assats/arrow_back.svg" alt="">
     </a>
     <a href="javascript:" class="mdui-typo-headline">
-        <span class="header-text">Photo</span>
-        <img src="../static/assats/photo.jpg" class="header-img">
+        <span class="header-text">upload</span>
+        <svg t="1694421163222" class="icon header-text-img" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4610" data-spm-anchor-id="a313x.search_index.0.i10.59383a81hODNfy" width="200" height="200"><path d="M808.986483 254.142188c0-243.909126-284.562011-243.909126-284.562011-243.909126l0 487.817228C524.426519 498.049267 808.986483 498.049267 808.986483 254.142188L808.986483 254.142188z" fill="#4081ec" p-id="4611" data-spm-anchor-id="a313x.search_index.0.i2.59383a81hODNfy" class=""></path><path d="M254.642073 213.488279c-243.909126 0-243.909126 284.560988-243.909126 284.560988l487.817228 0C498.549152 498.049267 498.549152 213.488279 254.642073 213.488279L254.642073 213.488279z" fill="#e24034" p-id="4612" data-spm-anchor-id="a313x.search_index.0.i1.59383a81hODNfy" class=""></path><path d="M213.989187 767.835759c0 243.908102 284.560988 243.908102 284.560988 243.908102L498.550175 523.924587C498.549152 523.927657 213.989187 523.927657 213.989187 767.835759L213.989187 767.835759z" fill="#fabd03" p-id="4613" data-spm-anchor-id="a313x.search_index.0.i4.59383a81hODNfy" class="selected"></path><path d="M768.334621 808.486598c243.908102 0 243.908102-284.562011 243.908102-284.562011L524.423449 523.924587C524.426519 523.927657 524.426519 808.486598 768.334621 808.486598L768.334621 808.486598z" fill="#34a853" p-id="4614" data-spm-anchor-id="a313x.search_index.0.i3.59383a81hODNfy" class=""></path></svg>
+
     </a>
 </div>
 
@@ -72,7 +92,7 @@
 
 
 <div class="范围">
-    <i class="mdui-icon material-icons" style="font-size: 50px;">cloud_upload</i>
+    <img src="../static/assats/cloud_upload.svg" style="width: 50px;height: 50px;">
     <h1>上传文件</h1>
     <form method="POST" enctype="multipart/form-data" id="uploadForm">
         <input id="文件上传" type="file" name="file" class="file-input" multiple=true style="display: none">

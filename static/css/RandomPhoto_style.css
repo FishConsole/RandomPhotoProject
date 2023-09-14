@@ -47,6 +47,10 @@ iframe {
     box-shadow: none !important;
 }
 
+.mdui-drawer::-webkit-scrollbar{
+    display: none;
+}
+
 body.mdui-loaded .mdui-drawer {
     will-change: transition;
 }
