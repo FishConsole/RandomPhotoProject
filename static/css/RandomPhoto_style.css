@@ -15,7 +15,7 @@ iframe {
     left: 100vw;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    height: 95vh;
     z-index: 5001;
     border: medium none;
     will-change: left;
