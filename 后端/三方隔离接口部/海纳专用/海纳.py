@@ -3,7 +3,7 @@ import sqlite3
 
 from flask import Blueprint, jsonify
 
-from 后端.后端执行与回调部.执行部门.数据库操作相关 import 图片信息资源管理器
+from 后端.后端执行与回调部.执行部门.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
 
 ocss_page_bp = Blueprint('index_page', __name__)
 
