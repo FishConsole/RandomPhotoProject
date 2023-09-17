@@ -31,7 +31,7 @@ def 删除审核图片(ImageName):
 
 def 通过审核图片(图片名字, 负载):
     try:
-        jieba.load_userdict(os.path.join('Lib', 'programe', '分词包', 'dict.txt'))
+        jieba.load_userdict(os.path.join('后端', '后端执行与回调部', '执行部门', '图片操作相关', '分词包', 'dict.txt'))
         初始标签集合 = list(jieba.cut(负载))
         # 去掉长度为1的内容
         标签集合 = [x for x in 初始标签集合 if len(x) > 1]
