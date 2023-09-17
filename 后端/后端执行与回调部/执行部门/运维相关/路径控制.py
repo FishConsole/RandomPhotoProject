@@ -16,6 +16,7 @@ class 路径控制:
         def 域名():
             return 'www.root-a.top'
 
+
     @staticmethod
     def 反跨源回调图片_路径():
         return os.path.join('', 'img', '反跨源回调图片')
