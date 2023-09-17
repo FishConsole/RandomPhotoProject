@@ -52,4 +52,4 @@ class 路径控制:
     class 缓存目录:
         @staticmethod
         def 缓存目录():
-            return os.path.join("Lib", "依赖", "运维相关", "缓存相关")
+            return os.path.join('后端', '后端执行与回调部', '执行部门', '运维相关', '缓存相关')
