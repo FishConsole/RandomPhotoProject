@@ -15,7 +15,7 @@
   <component name="PyNamespacePackagesService">
     <option name="namespacePackageFolders">
       <list>
-        <option value="$MODULE_DIR$/Lib" />
+        <option value="$MODULE_DIR$/后端" />
       </list>
     </option>
   </component>

@@ -14,6 +14,8 @@ setTimeout(function () {
 // 归位，因为默认是这个颜色值
 localStorage.setItem('动态颜色值', '#a9b5d8 !important')
 
+///////////////////////////////////////////////////////////////////////////////////////////
+
 // 背景图片控制工具
 function 背景图片加载() {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> > 等待背景图片</p>' + '<br>'
@@ -107,19 +109,21 @@ function 背景图片加载() {
                 iframe.className = 'iframe_RandomPhoto'
                 document.body.appendChild(iframe)
                 iframe.onload = () => {
-                        加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
-                        计时器状态.innerHTML = "false"
-                        RandomPhoto = document.getElementById('iframe_RandomPhoto')
-                        setTimeout(() => {
-                            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-                            启动图.style.cssText = 'display:none;'
-                            加载内容.style.cssText = 'display:none;'
-                            document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
-                        }, 2000);
+                    加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
+                    计时器状态.innerHTML = "false"
+                    RandomPhoto = document.getElementById('iframe_RandomPhoto')
+                    setTimeout(() => {
+                        RandomPhoto.style.cssText = 'top:0;opacity:1;'
+                        启动图.style.cssText = 'display:none;'
+                        加载内容.style.cssText = 'display:none;'
+                        document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
+                    }, 2000);
                 }
             }
         })
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
 // 流量节省工具
@@ -136,22 +140,22 @@ if ('connection' in navigator) {
     } else if (网络连接类型 === 'cellular') {
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 数据 连接</p>' + '<br>'
         iframe = document.createElement('iframe')
-                iframe.src = '/index'
-                iframe.id = 'iframe_RandomPhoto'
-                iframe.style.cssText = 'z-index:2;top:30px;opacity:0;'
-                iframe.className = 'iframe_RandomPhoto'
-                document.body.appendChild(iframe)
-                iframe.onload = () => {
-                        加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
-                        计时器状态.innerHTML = "false"
-                        RandomPhoto = document.getElementById('iframe_RandomPhoto')
-                        setTimeout(() => {
-                            RandomPhoto.style.cssText = 'top:0;opacity:1;'
-                            启动图.style.cssText = 'display:none;'
-                            加载内容.style.cssText = 'display:none;'
-                            document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
-                        }, 2000);
-                }
+        iframe.src = '/index'
+        iframe.id = 'iframe_RandomPhoto'
+        iframe.style.cssText = 'z-index:2;top:30px;opacity:0;'
+        iframe.className = 'iframe_RandomPhoto'
+        document.body.appendChild(iframe)
+        iframe.onload = () => {
+            加载内容.innerHTML = 加载内容.innerHTML + '<p> > 加载完毕</p>' + '<br>'
+            计时器状态.innerHTML = "false"
+            RandomPhoto = document.getElementById('iframe_RandomPhoto')
+            setTimeout(() => {
+                RandomPhoto.style.cssText = 'top:0;opacity:1;'
+                启动图.style.cssText = 'display:none;'
+                加载内容.style.cssText = 'display:none;'
+                document.getElementById('index').style.cssText = 'background-color:rgb(255,255,255);'
+            }, 2000);
+        }
     } else {
         背景图片加载()
         加载内容.innerHTML = 加载内容.innerHTML + '<p> * 当前使用 未知 连接</p>' + '<br>'
@@ -160,3 +164,13 @@ if ('connection' in navigator) {
     加载内容.innerHTML = 加载内容.innerHTML + '<p> * 流量节省程序 - 背景图控制不受支持</p>' + '<br>'
     背景图片加载()
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+const 错位纠正 = () => {
+    iframe_RandomPhoto = document.getElementById('iframe_RandomPhoto')
+    iframe_RandomPhoto.style.height = `${window.innerHeight}px`
+};
+
+window.addEventListener('resize', 错位纠正);
+

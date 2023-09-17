@@ -235,7 +235,7 @@ a {
     height: 55px;
     width: 142px;
     position: fixed;
-    top:85vh;
+    bottom: 20px;
     background: rgb(255, 255, 255);
     box-shadow: 0px 2px 3px 0px #00000040;
     right: 13px;

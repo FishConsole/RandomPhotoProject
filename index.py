@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from Lib.依赖.运维相关.所需库一键部署 import 所需库一键部署
-from Lib.依赖.运维相关.调试模式.调试模式 import *
-from Lib.依赖.运维相关.调试模式.调试模式_广播站 import 调试模式_广播站
+from 后端.后端执行与回调部.执行部门.运维相关.所需库一键部署 import 所需库一键部署
+from 后端.后端执行与回调部.执行部门.运维相关.调试模式.调试模式_广播站 import *
+from 后端.后端执行与回调部.执行部门.运维相关.调试模式 import 调试模式
+from 后端.后端执行与回调部.执行部门.运维相关.版本号提取 import 版本号提取
 
-from Lib.依赖.运维相关.版本号提取 import 版本号提取
 
-if not 调试模式():
+if not 调试模式.调试模式():
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [业务模式]')
 else:
     print(f' * RandomPhoto_当前版本: {版本号提取()} - [调试模式]')
@@ -14,179 +14,87 @@ print('-' * 90)
 所需库一键部署()
 
 import threading
-
-from flask import Flask, make_response
-
-from flask_cors import CORS, cross_origin  # 跨域访问限制
-
+from flask import Flask
+from flask_cors import CORS  # 跨域访问限制
 from flask_sslify import SSLify
 
-from Lib.programe.图片返回器 import *
-from Lib.programe.文件上传器 import upload_bp
-from Lib.programe.bgm池 import 网易云爬虫_bp
+from 后端.前端输入与输出部.接口部门.图片返回相关.图片返回器 import *
+from 后端.前端输入与输出部.接口部门.文件上传相关.文件上传器 import upload_bp
+from 后端.前端输入与输出部.接口部门.背景音乐相关.背景音乐 import 网易云爬虫_bp
+from 后端.前端输入与输出部.接口部门.管理员系统相关.Tag生成器 import *
+from 后端.前端输入与输出部.接口部门.管理员系统相关.图片审核系统 import *
+from 后端.前端输入与输出部.接口部门.管理员系统相关.Tag重构器 import *
+from 后端.前端输入与输出部.接口部门.图片返回相关.图片搜索接口.图片搜索接口 import search_bp
+from 后端.前端输入与输出部.接口部门.图片返回相关.指定图片接口.指定图片接口 import *
+from 后端.前端输入与输出部.接口部门.图片返回相关.随机图片接口.随机图片接口 import *
 
-from Lib.programe.管理员系统.管理员系统 import *
-from Lib.programe.管理员系统.主程序.Tag生成器.Tag生成器 import *
-from Lib.programe.管理员系统.主程序.图片审核系统.图片审核系统 import *
-from Lib.programe.管理员系统.主程序.Tag重构器.Tag重构器 import *
+from 后端.前端输入与输出部.模板部门.管理员系统相关.管理员系统 import *
+from 后端.前端输入与输出部.模板部门.index页面.index页面 import *
+from 后端.前端输入与输出部.模板部门.photoinfo页面.photoinfo页面 import PhotoInfo_bp
+from 后端.前端输入与输出部.模板部门.根页面.根页面 import root_bp
+from 后端.前端输入与输出部.模板部门.upload页面.upload页面 import upload_page_bp
+from 后端.前端输入与输出部.模板部门.ChangeLog页面.ChangeLog页面 import ChangeLog_bp
 
-from Lib.依赖.图片操作相关.审核系统 import 审核队列_重新读取, 审核系统缩略图生成器
-from Lib.依赖.运维相关.重新读取 import 重新读取_
-from Lib.依赖.邮件相关.smtp_server import 发送邮件
-from Lib.依赖.运维相关.路径控制 import 路径控制
+from 后端.并发控制部.图片一致性维护.图片一致性维护_审核系统 import 图片一致性维护_审核队列
+from 后端.并发控制部.审核系统缩略图生成器.审核系统缩略图生成器 import 审核系统缩略图生成器
+from 后端.并发控制部.图片一致性维护.图片一致性维护_业务环境 import 图片一致性维护
 
-from Lib.affiliate.海纳 import ocss_page_bp
-from Lib.依赖.运维相关.万能测试接口 import universal_bp
+from 后端.后端执行与回调部.执行部门.运维相关.路径控制 import 路径控制
+from 后端.后端执行与回调部.执行部门.运维相关.万能测试接口 import universal_bp
 
-from Lib.依赖.回调相关.存活报告 import 存活报告
+from 后端.三方隔离接口部.海纳专用.海纳 import ocss_page_bp
+
+from 后端.并发控制部.自动死亡线程.自动死亡线程 import 自动死亡线程
 
 main = Flask(__name__)
 sslify = SSLify(main)
 
 CORS(main, resources={r"/static/*": {"origins": "https://www.root-a.top"}})
 
-main.register_blueprint(universal_bp, name='万能测试接口')
+main.register_blueprint(universal_bp)
 
-main.register_blueprint(网易云爬虫_bp, name='网易云爬虫')
+main.register_blueprint(网易云爬虫_bp)
 
-main.register_blueprint(img_bp, name='img')
+main.register_blueprint(img_bp)
 
-main.register_blueprint(upload_bp, name='upload')
+main.register_blueprint(upload_bp)
+main.register_blueprint(upload_page_bp)
 
 main.register_blueprint(Random_bp)
-main.register_blueprint(Random_More_bp, name='Random_More')
-main.register_blueprint(Random_NotCount_bp, name='Random_NotCount')
-main.register_blueprint(Random_More_NotCount_bp, name='Random_More_NotCount')
-main.register_blueprint(Select_bp, name='Select')
-main.register_blueprint(Select_NotCount_bp, name='Select_NotCount')
-main.register_blueprint(search_bp, name='search_bp')
+main.register_blueprint(Select_bp)
 
-main.register_blueprint(index_bp, name='index')
-main.register_blueprint(index_page_bp, name='index_page')
+main.register_blueprint(search_bp)
 
-main.register_blueprint(PhotoInfo_bp, name='PhotoInfo')
+main.register_blueprint(index_bp)
 
-main.register_blueprint(admin_page_bp, name='admin_page')
-main.register_blueprint(admin_AutoTag_page_bp, name='admin_AutoTag_page')
-main.register_blueprint(admin_shenhe_page_bp, name='admin_Shenghe_page')
-main.register_blueprint(admin_DeletePhoto_bp, name='admin_DeletePhoto')
-main.register_blueprint(admin_PassPhoto_bp, name='admin_PassPhoto')
-main.register_blueprint(admin_edittag_page_bp, name='admin_edittag_page')
-main.register_blueprint(admin_edittag_execute_photoinfo_upload_bp, name='admin_edittag_execute_photoinfo_upload')
-main.register_blueprint(admin_edittag_execute_photoinfo_next_bp, name='admin_edittag_execute_photoinfo_next')
-main.register_blueprint(admin_edittag_execute_photoinfo_cancel_bp, name='admin_edittag_execute_photoinfo_cancel')
+main.register_blueprint(PhotoInfo_bp)
 
-main.register_blueprint(admin_AutoTag_bp, name='admin_AutoTag')
+main.register_blueprint(admin_page_bp)
+main.register_blueprint(admin_DeletePhoto_bp)
+main.register_blueprint(admin_PassPhoto_bp)
+main.register_blueprint(admin_edittag_execute_photoinfo_bp)
+main.register_blueprint(admin_AutoTag_bp)
 
-main.register_blueprint(ocss_page_bp, name='ocss_page')
+main.register_blueprint(ocss_page_bp)
+
+main.register_blueprint(root_bp,name='root_bp')
+
+main.register_blueprint(ChangeLog_bp)
+
+############################################################
 
 main.config['SSL_CERTIFICATE'] = 'ssl/root-a.top_bundle.crt'
 main.config['SSL_PRIVATE_KEY'] = 'ssl/root-a.top.key'
 
 main.config['MAX_CONTENT_LENGTH'] = 40 * 1024 * 1024
 
-
-# 这个东西到时候要给第一个路由使用
-
-@main.route('/')
-def zhuye():
-    return render_template('main.html',
-                           域名=路径控制.启动位置.域名(),
-                           调试模式=main_调试模式())
-
-
-@main.route('/baidu_verify_codeva-b8U4HkFtUO.html')
-def baidusearchtool():
-    return '26b65257dc54a668432117dd10a11fc3'
-
-
-@main.route('/sogousiteverification.txt')
-def sougousearchtool():
-    return '2BiIHwawrq'
-
-
-@main.route('/test')
-def test():
-    return render_template('test.html')
-
-
-@main.route('/ChangeLog')
-def ChangeLog():
-    return render_template('ChangeLog.html',
-                           域名=路径控制.启动位置.域名(),
-                           调试模式=ChangeLog_页面调试模式())
-
-
-@main.route('/Upload')
-def 文件上传中心():
-    return render_template('upload.html',
-                           域名=路径控制.启动位置.域名(),
-                           调试模式=upload_调试模式())
-
-
-@main.route('/survive')
-@cross_origin()
-def survive():
-    return 存活报告.存活报告()
-
-
-######################################################################
-# 自动死亡机制
-def 自动死亡线程():
-    # 自动死亡机制的意思就是自己访问自己
-    # 当然是访问存活报告，如果访问不了那么就说明自己在外网上已经死了
-    # 那么就自觉的退出，让系统重启自己
-    import requests
-    from Lib.依赖.运维相关.调试模式 import 调试模式
-    print(' * 自动死亡线程：自动死亡线程启动')
-    if not 调试模式:
-        while True:
-            try:
-                requests.get('https://root-a.top/survive')
-            except:
-                print(' * 自动死亡线程：自动死亡机制启动,程序关闭，等待服务端重启')
-                # 官方库的重启函数
-                if not 调试模式:
-                    发送邮件('RandomPhoto主程序：服务器准备重启')
-                os.system("sh 重启.sh")
-                os._exit(0)
-            time.sleep(60 * 2)
-    else:
-        print(' * 自动死亡线程：调试模式启动，线程退出')
-
-
-@main.route('/sitemap.xml', methods=['GET'])
-def sitemap():
-    from Lib.依赖.运维相关.站点地图生成器 import 生成站点地图
-    from Lib.依赖.数据库操作相关.图片信息资源管理器 import 图片信息资源管理器
-
-    生成的XML = 生成站点地图([
-        {'图片信息资源': 图片信息资源管理器.站点地图生成器_获取全部图片信息(), '优先级': '0.5', '分类': 'info'},
-    ])
-
-    response = make_response(生成的XML)
-    response.headers["Content-Type"] = "application/xml"
-
-    return response
-
-
-@main.route('/robots.txt', methods=['GET'])
-def robots():
-    return 'User-agent: *'
-
-
 if __name__ == "__main__":
     main.config['上一次统计'] = {}
 
-    b = threading.Thread(target=审核队列_重新读取, daemon=True)
-    c = threading.Thread(target=审核系统缩略图生成器, daemon=True)
-    d = threading.Thread(target=自动死亡线程, daemon=True)
-    a = threading.Thread(target=重新读取_, daemon=True)
-
-    b.start()
-    c.start()
-    d.start()
-    a.start()
+    threading.Thread(target=图片一致性维护_审核队列, daemon=True).start()
+    threading.Thread(target=审核系统缩略图生成器, daemon=True).start()
+    threading.Thread(target=自动死亡线程, daemon=True).start()
+    threading.Thread(target=图片一致性维护, daemon=True).start()
 
     main.run(host=路径控制.启动位置.启动位置(), port=443, threaded=False,
              ssl_context=(main.config['SSL_CERTIFICATE'], main.config['SSL_PRIVATE_KEY']))

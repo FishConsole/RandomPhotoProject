@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/Lib/依赖/数据库操作相关/审核系统图片标签重构编辑器.py" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/后端/后端执行与回调部/执行部门/数据库操作相关/审核系统图片标签重构编辑器.py" dialect="SQLite" />
   </component>
 </project>
