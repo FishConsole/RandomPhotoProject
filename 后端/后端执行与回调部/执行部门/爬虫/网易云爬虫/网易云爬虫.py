@@ -100,7 +100,7 @@ def 网易云爬虫_本地音乐提供器():
     文件夹存在检测 = os.path.exists(路径)
     if not 文件夹存在检测:
         os.makedirs(os.path.join(路径))
-    文件组 = os.listdir(os.path.join('static', 'bgm'))
+    文件组 = os.listdir(os.path.join('前端静态资源目录', 'bgm'))
     结果 = []
     if len(文件组) == 0:
         try:
@@ -108,7 +108,7 @@ def 网易云爬虫_本地音乐提供器():
             网易云爬虫_本地音乐提供器()
         except Exception as e:
             print(f'网易云爬虫：服务器环境异常，可能是因为Chrome和Chromedriver不存在，请将其安装以激活网易云音乐爬虫服务，如无视该错误，将会放慢index页面加载速度。你也可以上传一个MP3'
-                  f'文件到static/bgm文件夹中以忽略该错误：{e}')
+                  f'文件到前端静态资源目录/bgm文件夹中以忽略该错误：{e}')
             return []
     else:
         for i in 文件组:

@@ -4,6 +4,7 @@ import random
 from 后端.后端执行与回调部.回调相关.图片返回器 import 图片返回器
 from 后端.后端执行与回调部.执行部门.运维相关.路径控制 import 路径控制
 
+
 def 随机图片发生器(model, 图片信息资源):
     if len(图片信息资源) == 0:
         return 图片返回器.随机选择的图片_失败()
