@@ -8,6 +8,6 @@ root_bp = Blueprint('index', __name__)
 
 @root_bp.route('/')
 def zhuye():
-    return render_template('main.html',
+    return render_template('main.html.',
                            域名=路径控制.启动位置.域名(),
                            调试模式=main_调试模式())

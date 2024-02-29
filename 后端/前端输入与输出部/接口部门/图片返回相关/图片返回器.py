@@ -9,8 +9,6 @@ from 后端.后端执行与回调部.执行部门.运维相关.路径控制 impo
 
 from 后端.三方隔离接口部.海纳专用.密码工具 import 密码工具
 
-
-
 img_bp = Blueprint('img', __name__)
 
 
@@ -45,23 +43,18 @@ def img(filename, model):
             return send_file(os.path.join(路径控制.反跨源回调图片_路径(), "fankuayuan.png"))
 
     if model == '主站原始图片':
-        return send_file(os.path.join(路径控制.主站原始图片_路径(), filename))
+        return send_file(os.path.join('..', '..', 路径控制.主站原始图片_路径(), filename))
 
     elif model == 'picture_down':
-        return send_file(os.path.join(路径控制.主站压缩图片_路径(), filename))
+        return send_file(os.path.join('..', '..', 路径控制.主站压缩图片_路径(), filename))
 
     elif model == 'temp_files':
-        return send_file(os.path.join(路径控制.审核系统原始图片_路径(), filename))
+        return send_file(os.path.join('..', '..', 路径控制.审核系统原始图片_路径(), filename))
 
     elif model == 'Temp_File_Start':
-        return send_file(os.path.join(路径控制.审核系统压缩图片_路径(), filename))
+        return send_file(os.path.join('..', '..', 路径控制.审核系统压缩图片_路径(), filename))
 
     else:
         return '404'
 
-
-
-
-
 ########################################################################################
-
