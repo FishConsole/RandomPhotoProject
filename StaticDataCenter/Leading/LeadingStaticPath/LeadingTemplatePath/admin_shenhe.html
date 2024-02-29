@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>审核图片</title>
+    <link href="../../../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+
+    <script src="../../../static/js/mdui_tool.js"></script>
+    <link rel="stylesheet" href="../../../static/css/RandomPhoto_style.css"/>
+
+    <style>
+        * {
+            user-select: none;
+            transition: none;
+        }
+
+        .表格宽度限制 {
+            height: 75vh;
+            width: 84vw;
+            overflow: scroll;
+            border-radius: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
+            align-items: flex-start;
+        }
+
+        body ::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        body ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, .2);
+            border-radius: 3px;
+        }
+
+
+        td {
+            white-space: nowrap;
+        }
+
+    .什么都没有 {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 30px;
+        margin-top: -120px;
+    }
+
+    .什么都没有 > p {
+        margin-top: 23px;
+        font-size: 20px;
+        color: #0416408a;
+    }
+
+    .什么都没有 > img {
+        height: 180px;
+        border: 1px solid #000000e3;
+        border-radius: 23px;
+    }
+
+        @media (max-width: 600px) {
+            /*小手机屏幕*/
+            .表格宽度限制 {
+                height: 75vh;
+                width: 90vw;
+            }
+
+            .查看大图 > img {
+                height: auto;
+                width: 77vw;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            /*大屏幕*/
+            .查看大图 > img {
+                height: 60vh;
+                width: auto;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="mdui-progress" style="position:fixed;top:60px;z-index:3;opacity: 0">
+    <div class="mdui-progress-determinate" style="width: 0;opacity: 0" id="进度条"></div>
+</div>
+
+<div class="范围" style="display: none">
+    <div class="什么都没有">
+        <img src="../../static/assats/猫.gif">
+        <p style='margin-top: 23px;'>啥事没有，睡觉</p>
+    </div>
+</div>
+
+<div class="表格宽度限制">
+    <div class="mdui-table-fluid">
+        <table class="mdui-table">
+            <thead>
+            <tr>
+                <th>index</th>
+                <th>Photo Name</th>
+                <th>Action Bar</th>
+                <th>Photo Tag</th>
+            </tr>
+            </thead>
+            <tbody id="图片信息展示框"></tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    图片信息展示框 = document.getElementById('图片信息展示框')
+    const 数据源 = {{ 数据源 | safe }}
+    if (Object.keys(数据源).length > 0) {
+        计数器 = 0
+        for (i in 数据源) {
+            图片信息 = 数据源[i]
+            console.log(i)
+            图片信息展示框.innerHTML += `
+                <tr id="ID_${计数器}">
+                <td>${计数器}</td>
+                <td onclick="查看大图('${图片信息[0]}');">${图片信息[0]}</td>
+                <td>
+                    <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="删除审核图片('${图片信息[0]}','ID_${计数器}')">删除图片</button>
+                    <button class="mdui-btn mdui-color-theme-accent mdui-ripple" onclick="通过审核图片('${图片信息[0]}','ID_${计数器}')">通过审核</button>
+                </td>
+                <td>
+                    ${图片信息[1]}
+                </td>
+            </tr>
+    `
+            计数器 = 计数器 + 1
+        }
+    }else{
+        表格宽度限制 = document.querySelector('.表格宽度限制')
+        范围 = document.querySelector('.范围')
+        表格宽度限制.style.cssText = 'display:none'
+        范围.style.cssText = ''
+    }
+</script>
+<script src="../../static/js/independent/shenghe.js"></script>
+
+</body>
+</html>

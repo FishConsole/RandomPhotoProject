@@ -1,0 +1,10 @@
+.iframe_RandomPhoto{
+    position: fixed;
+    left: 0;
+    top: 10vw;
+    width: 100%;
+    height: 100%;
+    z-index: 5001;
+    border: medium none;
+    opacity: 0;
+}

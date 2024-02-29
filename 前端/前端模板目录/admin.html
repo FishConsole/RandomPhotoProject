@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>RandomPhoto - Audit System</title>
+<link href="../../../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
+
+<link rel="stylesheet" href="../../static/css/independent/upload.css" type="text/css">
+<link rel="stylesheet" href="../../static/css/RandomPhoto_style.css"/>
+<link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
+
+<script src="../../static/js/independent/shenghe.js"></script>
+<script src="../../static/js/mdui_tool.js"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+      integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+        crossorigin="anonymous"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+
+<style>
+    img {
+        height: 44vw;
+        width: auto;
+        margin: 0 auto;
+        width: auto !important;
+    }
+
+    #范围 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 24px;
+    }
+
+    .mdui-card {
+        width: 80vw;
+        overflow: hidden;
+        margin-top: 90px;
+        border-radius: 20px;
+        background: #edf2f6;
+
+    }
+
+    .mdui-card-actions {
+        height: 56px;
+        border-top: 1px solid rgb(0 0 0 / 10%);
+    }
+
+    .mdui-card-media {
+        height: auto;
+    }
+
+    .header-img {
+        padding: 0;
+    }
+
+    .留白 {
+        width: 100%;
+        height: 390px;
+    }
+
+    .卡片_操作按钮 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .卡片_操作按钮_范围 {
+        border-top: 1px solid rgb(0 0 0 / 10%);
+    }
+
+    .什么都没有 {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 30px;
+        margin-top: 51px;
+    }
+
+    .什么都没有 > p {
+        margin-top: 23px;
+        font-size: 20px;
+        color: #0416408a;
+    }
+
+    .什么都没有 > img {
+        height: 180px;
+        border: 1px solid #000000e3;
+        border-radius: 23px;
+    }
+
+    .选项卡 {
+        position: fixed;
+        top: 50px;
+        z-index: 999;
+        width: 95%;
+        left: 5px;
+        background: white;
+    }
+
+    /*.mdui-progress {*/
+    /*    position: fixed;*/
+    /*    top: 0;*/
+    /*}*/
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    iframe {
+        transition: all 0.45s cubic-bezier(0.42, 0.28, 0, 1.01);
+    }
+
+    .iframe-off {
+        top: 10px;
+        width: 30vw;
+        height: 50vh;
+        display: flex;
+        filter: blur(30px);
+        left: 12%;
+        opacity: 0;
+        z-index: 0;
+
+    }
+
+
+    .iframe-on {
+        left: 0vw;
+        display: flex;
+        filter: blur(0px);
+        z-index: 1;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    @media (min-width: 0px) {
+        /*手机屏幕*/
+        .iframe-off {
+            left: 35.5vw;
+            top: 19vh;
+        }
+    }
+
+    @media (min-width: 640px) {
+        /*大屏幕*/
+        .iframe-off {
+            left: 37.5vw;
+        }
+    }
+
+    .mdui-bottom-nav {
+        z-index: 3;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: white;
+        height: 80px;
+    }
+
+    .mdui-bottom-nav-active > i {
+        background: #8087ff54;
+        width: 99px;
+        height: 38px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mdui-bottom-nav-active > span {
+        margin-top: 8px;
+    }
+
+    .header-admin-img{
+        height: 23px;
+        position: relative;
+        top: 4px;
+        padding-right: 6px;
+    }
+</style>
+</head>
+<div id="调试模式" style="display: none">{{ 调试模式 }}</div>
+
+<body>
+<div class="顶栏">
+    <div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header"
+         style="position:fixed;background: white;z-index: 999;">
+        <a href="javascript:" class="mdui-typo-headline">
+            <span><img src="../../static/assats/randomphoto.svg" class="header-admin-img"></span>
+            <span class="header-text">Audit System</span>
+        </a>
+    </div>
+</div>
+
+
+<div>
+    <iframe src="/admin~/{{ token }}/shenhe" class="iframe-on" id="shenhe"></iframe>
+    <iframe src="/admin~/{{ token }}/autotag" class="iframe-off" id="autotag"></iframe>
+    <iframe src="/admin~/{{ token }}/edittag" class="iframe-off" id="edittag"></iframe>
+</div>
+
+
+<div class="mdui-bottom-nav" style="border-top: 1px solid #00000042;">
+    <a href="javascript:;" class="mdui-ripple mdui-bottom-nav-active" onclick="显示_审核图片();admin_启动子页面(1)">
+        <i class="mdui-icon material-symbols-outlined" id="显示_审核图片_图标">verified</i>
+        <span id="显示_审核图片_文字">审核图片</span>
+    </a>
+    <a href="javascript:;" class="mdui-ripple" onclick="显示_自动生成tag();admin_启动子页面(2)">
+        <i class="mdui-icon material-symbols-outlined" id="显示_自动生成tag_图标" style="margin-top:20px">Autostop</i>
+        <span id="显示_自动生成tag_文字" style="opacity: 0;">自动生成tag</span>
+    </a>
+    <a href="javascript:;" class="mdui-ripple" onclick="显示_修改标签();admin_启动子页面(3)">
+        <i class="mdui-icon material-symbols-outlined" id="显示_修改标签_图标"  style="margin-top:20px">auto_fix_normal</i>
+        <span id="显示_修改标签_文字" style="opacity: 0;">修改标签</span>
+    </a>
+    <script>
+        审核图片 = document.getElementById('显示_审核图片_文字')
+        自动生成tag = document.getElementById('显示_自动生成tag_文字')
+        修改标签 = document.getElementById('显示_修改标签_文字')
+
+        显示_审核图片_图标 = document.getElementById('显示_审核图片_图标')
+        显示_自动生成tag_图标 = document.getElementById('显示_自动生成tag_图标')
+        显示_修改标签_图标 = document.getElementById('显示_修改标签_图标')
+        function 显示_审核图片() {
+            审核图片.style.cssText = 'opacity: 1;'
+            自动生成tag.style.cssText = 'opacity: 0;'
+            修改标签.style.cssText = 'opacity: 0;'
+
+            显示_审核图片_图标.style.cssText = ''
+            显示_自动生成tag_图标.style.cssText = 'margin-top:20px'
+            显示_修改标签_图标.style.cssText = 'margin-top:20px'
+
+        }
+
+        function 显示_自动生成tag() {
+            自动生成tag.style.cssText = 'opacity: 1;'
+            审核图片.style.cssText = 'opacity: 0;'
+            修改标签.style.cssText = 'opacity: 0;'
+
+            显示_自动生成tag_图标.style.cssText = ''
+            显示_审核图片_图标.style.cssText = 'margin-top:20px'
+            显示_修改标签_图标.style.cssText = 'margin-top:20px'
+        }
+
+        function 显示_修改标签() {
+            修改标签.style.cssText = 'opacity: 1;'
+            审核图片.style.cssText = 'opacity: 0;'
+            自动生成tag.style.cssText = 'opacity: 0;'
+
+            显示_修改标签_图标.style.cssText = ''
+            显示_自动生成tag_图标.style.cssText = 'margin-top:20px'
+            显示_审核图片_图标.style.cssText = 'margin-top:20px'
+
+        }
+    </script>
+
+    <script>
+        function admin_启动子页面(页面) {
+            if (页面 == 1) {
+                document.getElementById("shenhe").className = "iframe-on";
+                setTimeout(() => {
+                    document.getElementById("autotag").className = "iframe-off";
+                    document.getElementById("edittag").className = "iframe-off"
+                }, 90)
+            } else if(页面 == 2) {
+                document.getElementById("autotag").className = "iframe-on";
+                setTimeout(() => {
+                    document.getElementById("shenhe").className = "iframe-off";
+                    document.getElementById("edittag").className = "iframe-off"
+                }, 90)
+            } else if(页面 == 3) {
+                document.getElementById("edittag").className = "iframe-on";
+                setTimeout(() => {
+                    document.getElementById("shenhe").className = "iframe-off";
+                    document.getElementById("autotag").className = "iframe-off";
+
+                }, 90)
+            }
+        }
+    </script>
+</body>
+
+</html>

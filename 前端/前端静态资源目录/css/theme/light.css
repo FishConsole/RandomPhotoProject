@@ -1,0 +1,82 @@
+.mdui-btn-raised {
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0), 0 1px 3px 0 rgba(0, 0, 0, 0.14), 0 2px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.mdui-menu {
+  background-color: #dde1ff;
+  box-shadow: 0 3px 6px 0px rgba(26, 27, 51, 0.212);
+}
+
+.mdui-list-item:hover {
+  background-color: rgba(94, 137, 190, 0.2);
+}
+
+.mdui-snackbar {
+  box-shadow: 0px 3px 12px rgba(87, 87, 87, 0.638);
+}
+
+.mdui-overlay {
+  background-color: rgba(0, 19, 86, 0.133);
+}
+
+.mdui-dialog-actions .mdui-btn {
+  background: #fbf8ff;
+  color: #95a6fd !important;
+}
+
+.mdui-typo a::before {
+  background-color: rgba(0, 19, 86, 0.247);
+}
+
+.mdui-list-item:hover {
+  background-color: rgba(94, 137, 190, 0.2);
+}
+
+.mdui-snackbar {
+  box-shadow: 0px 3px 12px rgba(0, 10, 61, 0.638);
+}
+
+.mdui-overlay {
+  box-shadow: 0px 3px 12px rgba(0, 10, 61, 0.134);
+}
+
+.mdui-dialog-actions>a {
+  background: #dde1ff;
+  color: rgba(45, 64, 144, 0.536) !important;
+}
+
+.mdui-typo a::before {
+  background-color: #5f6d8a;
+}
+
+.mdui-menu-item>a:hover {
+  background-color: #96a0c887;
+}
+
+.mdui-btn,.mdui-btn-raised{
+  background: none;
+}
+
+/*----------------------------------------------------------------------------------*/
+.正文_介绍 {
+  background-color: #dde1ff;
+  color: #334481;
+}
+
+.启动图 {
+  text-align: center;
+  font-size: 38px;
+  margin-top: 33vh;
+  animation-iteration-count: infinite;
+  text-shadow: 2px 2px 20px #2646685c;
+  font-weight: bold;
+}
+
+.div {
+  background: #dde1ff;
+}
+
+.div_a {
+  background: #ffa5c7b3;
+}
+/*----------------------------------------------------------------------------------*/

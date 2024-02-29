@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+    <meta name="keywords"
+          content="RandomPhotoProject,RandomPhoto,鱼几斤,随机图片站,接口站,2645602049@qq.com"/>
+    <meta name="description" content="欢迎来到RandomPhoto，RandomPhoto是一款免费的壁纸提供接口站，本站存有300多张全网精选二次元壁纸，分为手机版和电脑版两种版本，你可以在本站预览和下载所有的壁纸。我们不希望您通过直链方式调用图片，但我们欢迎您从指定的select接口调用图片这个项目经历了很多跌宕起伏，但是我相信他能变得很好，我相信他能一直活下去">
+
+    <title>RandomPhoto - 文件上传</title>
+    <link rel="stylesheet" href="" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+          integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+    <link rel="canonical" href="{{ 域名 }}/Upload">
+    <link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
+
+    <script src="../static/js/mdui_tool.js"></script>
+    <script src="../static/js/ajax_helper.js"></script>
+    <link rel="stylesheet" href="../static/css/independent/upload.css">
+    <link rel="stylesheet" href="../static/css/RandomPhoto_style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+            integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+            crossorigin="anonymous"></script>
+
+    <style>
+        .mdui-btn-icon > img {
+    height: 27px !important;
+    width: 27px !important;
+}
+
+.mdui-btn-icon > img:hover {
+    transform: unset;
+}
+
+.mdui-btn-icon > img:hover {
+    transform: unset;
+}
+
+.mdui-toolbar > .mdui-btn-icon {
+    height: unset !important;
+}
+
+.悬浮搜索按钮 > img {
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: -2px;
+    left: -6px;
+}
+
+.header-text-img {
+    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1.5s;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 7px;
+}
+
+@keyframes 旋转 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+    </style>
+
+</head>
+
+<body>
+<div id="调试模式" style="display: none">{{ 调试模式 }}</div>
+<div class="mdui-toolbar mdui-color-theme mdui-toolbar  应用栏 header">
+    <a href="javascript:" class="mdui-btn mdui-btn-icon" onclick="parent.parent.返回('upload')">
+        <img src="../static/assats/arrow_back.svg" alt="">
+    </a>
+    <a href="javascript:" class="mdui-typo-headline">
+        <span class="header-text">upload</span>
+        <svg t="1694421163222" class="icon header-text-img" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4610" data-spm-anchor-id="a313x.search_index.0.i10.59383a81hODNfy" width="200" height="200"><path d="M808.986483 254.142188c0-243.909126-284.562011-243.909126-284.562011-243.909126l0 487.817228C524.426519 498.049267 808.986483 498.049267 808.986483 254.142188L808.986483 254.142188z" fill="#4081ec" p-id="4611" data-spm-anchor-id="a313x.search_index.0.i2.59383a81hODNfy" class=""></path><path d="M254.642073 213.488279c-243.909126 0-243.909126 284.560988-243.909126 284.560988l487.817228 0C498.549152 498.049267 498.549152 213.488279 254.642073 213.488279L254.642073 213.488279z" fill="#e24034" p-id="4612" data-spm-anchor-id="a313x.search_index.0.i1.59383a81hODNfy" class=""></path><path d="M213.989187 767.835759c0 243.908102 284.560988 243.908102 284.560988 243.908102L498.550175 523.924587C498.549152 523.927657 213.989187 523.927657 213.989187 767.835759L213.989187 767.835759z" fill="#fabd03" p-id="4613" data-spm-anchor-id="a313x.search_index.0.i4.59383a81hODNfy" class="selected"></path><path d="M768.334621 808.486598c243.908102 0 243.908102-284.562011 243.908102-284.562011L524.423449 523.924587C524.426519 523.927657 524.426519 808.486598 768.334621 808.486598L768.334621 808.486598z" fill="#34a853" p-id="4614" data-spm-anchor-id="a313x.search_index.0.i3.59383a81hODNfy" class=""></path></svg>
+
+    </a>
+</div>
+
+<div class="mdui-progress" id="progressBar" style="display: none;">
+    <div class="mdui-progress-determinate" id="progressContainer">
+    </div>
+</div>
+
+
+<div class="范围">
+    <img src="../static/assats/cloud_upload.svg" style="width: 50px;height: 50px;">
+    <h1>上传文件</h1>
+    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+        <input id="文件上传" type="file" name="file" class="file-input" multiple=true style="display: none">
+        <label for="文件上传" class="mdui-btn mdui-ripple 文件上传" style="">
+            选择文件
+        </label>
+        <input id="开始上传" type="submit" style="display: none">
+        <label for="开始上传" class="mdui-btn mdui-ripple" style="background-color: #ff000075;">开始上传</label>
+    </form>
+
+</div>
+<p class="upload_info" id="upload_info">空闲</p>
+<script src="../static/js/independent/upload.js"></script>
+</body>
+</html>

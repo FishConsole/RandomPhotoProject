@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+
+    <title>文件上传</title>
+    <link href="../static/favicon.svg" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../../../static/css/RandomPhoto_style.css">
+    <link rel="stylesheet" href="../../../static/css/independent/upload.css">
+    <link rel="stylesheet" href="../../../static/css/independent/upload.css">
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
+    <script src="../../../static/js/ajax_helper.js"></script>
+    <script src="../../../static/js/mdui_tool.js"></script>
+    <script src="../../../static/js/independent/upload.js"></script>
+
+    <style>
+        .范围,h1{
+            transition: none!important;
+        }
+        .mdui-dialog{
+            margin-top:-90px
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="调试模式" style="display: none">{{ 调试模式 }}</div>
+
+    <div class="mdui-progress" id="progressBar" style="display: none">
+        <div class="mdui-progress-indeterminate"></div>
+    </div>
+
+    <div class="范围">
+        <i class="mdui-icon material-symbols-outlined" style="font-size: 50px;">photo_filter</i>
+        <h1>AUTOTAG</h1>
+        <form method="POST" enctype="multipart/form-data" id="uploadForm">
+            <div onclick="开始生成()" class="mdui-btn mdui-ripple" style="background-color: #607aff5c;">立即开始</div>
+        </form>
+    </div>
+    <script>
+        function 开始生成(){
+            文本对话框("输入文件名：请注意，需要审核系统拥有此图片才会生效",function (文件名){
+                document.getElementById('progressBar').style.cssText = ''
+                ajax_helper_main("get",`../../admin_thing~/shenhe/AutoTag/${文件名}`,{
+                    "filename":文件名
+                },function (data){
+                    mdui.alert("生成成功")
+                    document.getElementById('progressBar').style.cssText = 'display:none'
+                },function (data){
+                    // 查询数据源状态
+                    data = JSON.parse(data)
+                    if(data['error']){
+                        对话框(data['message'])
+                    }
+                    else{
+                        console.log(文件名)
+                        result = data['result'][`img/审核系统原始图片/${文件名}`]
+                        回调数据 = ''
+                        // 迭代result，生成回调数据字符串
+                        for (let index = 0; index < result.length; index++) {
+                            回调数据 += `${result[index]}`
+                        }
+                        对话框(回调数据)
+                    }
+                    document.getElementById('progressBar').style.cssText = 'display:none'
+                })
+            })
+        }
+    </script>
+
+</body>
+<script>
+
+</script>
+</html>

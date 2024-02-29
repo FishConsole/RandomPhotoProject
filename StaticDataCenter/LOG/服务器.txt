@@ -1,0 +1,59 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (::)
+ * Running on http://[::1]:5000
+ * Running on http://[240e:430:2a41:870c:c470:ccae:c996:3c6b]:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:20] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:23] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:23] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:23] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:24] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:24] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:24] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:24] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:25] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:27] "[36mGET /static/css/independent/main/Æô¶¯Í¼.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:27] "[36mGET /static/css/independent/main/×é¼þ.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:27] "[36mGET /static/css/independent/main/×ÓÒ³ÃæÏà¹Ø.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/css/independent/main/½¥±äÈë³¡.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/css/independent/main/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/js/independent/main.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /Random HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "GET /index/ HTTP/1.1" 200 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/css/RandomPhoto_style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/css/independent/photo.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/css/theme/light.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "GET /static/js/ChangeLog.js HTTP/1.1" 200 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/js/ÔÓÎï¼ä/¾²Ì¬×ÊÔ´¼¯ÖÐ¹ÜÀí²¿ÃÅ.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/js/mdui_tool.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/js/index.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/upload.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/settings.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/history_edu.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/help.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/group.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/menu_open.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/arrow_back.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/arrow_forward.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "GET /music HTTP/1.1" 200 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:28] "[36mGET /static/assats/manage_search.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:29] "[36mGET /img/Ö÷Õ¾Ñ¹ËõÍ¼Æ¬/20240227170205.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "GET /ChangeLog HTTP/1.1" 200 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "GET /Upload HTTP/1.1" 200 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/js/ÔÓÎï¼ä/¾²Ì¬×ÊÔ´¼¯ÖÐ¹ÜÀí²¿ÃÅ.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/css/theme/light.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/css/independent/ChangeLog/ÏîÄ¿·¶Î§.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/css/independent/ChangeLog/ÕýÎÄ.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/css/RandomPhoto_style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/js/mdui_tool.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/js/ajax_helper.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/css/independent/upload.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/css/RandomPhoto_style.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/js/mdui_tool.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/js/ChangeLog.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/assats/arrow_back.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/js/independent/upload.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/assats/arrow_back.svg HTTP/1.1[0m" 304 -
+INFO:werkzeug:::1 - - [27/Feb/2024 21:30:30] "[36mGET /static/assats/cloud_upload.svg HTTP/1.1[0m" 304 -

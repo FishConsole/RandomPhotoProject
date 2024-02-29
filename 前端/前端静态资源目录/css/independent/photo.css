@@ -1,0 +1,384 @@
+/*----------------------------------------------------------------------------------*/
+
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+img {
+    height: 182px;
+    width: 148px;
+    transform: scale(0.9);
+    border-radius: 21px;
+    transition: all 0.35s;
+    object-fit: cover;
+    border-style: none !important;
+}
+
+img:hover {
+    transform: scale(1.7);
+    border-radius: 4px;
+}
+
+
+p {
+    margin-top: -10px;
+    font-weight: 550;
+    position: relative;
+    top: -30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+i {
+    position: relative;
+    left: -5px;
+    top: -3px;
+    animation-name: start;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    background: none !important;
+}
+
+a {
+    text-decoration: none;
+    background: none;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+#播放列表 > li {
+    line-height: 20px;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+.header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 9;
+    width: 100%;
+    animation-name: start;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    transition: none;
+}
+
+.header-text {
+    position: relative;
+    top: -4px;
+}
+
+.header-img {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    top: 16px;
+    left: -5px;
+}
+
+.header-text-img {
+    animation: 旋转 infinite cubic-bezier(0.38, 0.42, 0.92, 0.91) 1.5s;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 3px;
+}
+
+.time {
+    font-weight: bold;
+    font-size: 13px;
+    height: 30px;
+    margin-top: 0px;
+}
+
+.time > span {
+    position: relative;
+    top: 5px;
+    left: 45px;
+}
+
+
+.img {
+    overflow: hidden;
+    display: flex;
+    width: 140px;
+    height: 250px;
+    border-radius: 21px;
+    margin: 20px;
+    animation-name: start;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    object-fit: cover;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img:hover {
+    box-shadow: none;
+    border-radius: 21px;
+}
+
+.img:active {
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+
+.页面切换 {
+    font-weight: 600;
+}
+
+.页面切换:hover {
+    border-bottom: 2px solid black;
+    color: #4bc2ff;
+}
+
+.页面切换:active {
+    border-bottom: 2px solid black;
+    color: #4bc2ff;
+
+}
+
+
+.限制 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    flex-direction: column;
+    margin-left: -16px;
+}
+
+
+.抽屉栏_内容 {
+    width: 89%;
+    margin-left: 24px !important;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.抽屉栏_内容 > li {
+    border-radius: 25px;
+    margin-top: 8px;
+}
+
+.抽屉栏_内容 > li > i {
+    border-radius: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.抽屉栏_内容 > li > div {
+    font-weight: bold !important;
+    font-size: 13px !important;
+    position: relative;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.抽屉栏_内容 > li > div > img:hover {
+    transform: unset;
+}
+
+.div {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 7px;
+    left: -31px;
+    border-radius: 45%;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: 旋转;
+    animation-delay: 1.5s;
+    transform-origin: center;
+    transform: rotate(0deg);
+}
+
+.div_a {
+    position: absolute;
+    animation-delay: 1s;
+    top: 9px;
+    left: -38px;
+}
+
+.抽屉栏_标题_分割线 {
+    margin-bottom: 16px;
+    margin-left: 17px;
+    width: 77%;
+}
+
+.抽屉栏_标题 {
+    font-weight: 520;
+    font-size: 26px;
+    z-index: 1;
+    position: absolute;
+    left: 43px;
+    top: 40px;
+}
+
+.悬浮搜索按钮 {
+    height: 55px;
+    width: 142px;
+    position: fixed;
+    bottom: 20px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 2px 3px 0px #00000040;
+    right: 13px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.悬浮搜索按钮:hover {
+    background: rgb(172 177 188);
+    box-shadow: 4px 3px 14px rgb(0 0 0 / 24%);
+}
+
+.index_抽屉栏分割线 {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(to bottom, #00aaff, #0077ff);
+}
+
+.index_抽屉栏分割线::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 200px;
+    height: 40px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M0,10 C50,30 150,30 200,10' fill='%230077ff' /></svg>");
+    background-repeat: repeat-x;
+}
+
+.悬浮搜索按钮 > img:hover, .mdui-list-item > img:hover {
+    transform: unset;
+}
+
+.悬浮搜索按钮 > img {
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: -2px;
+    left: -6px;
+}
+
+.备案信息 {
+    font-size: 10px !important;
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+
+.备案信息 > a {
+    color: rgba(0, 0, 0, 0.61)
+}
+
+#图片展示器 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transition: none;
+}
+
+#音乐播放器 {
+    display: flex;
+    justify-content: center;
+}
+
+
+/*----------------------------------------------------------------------------------*/
+
+.抽屉栏_图标 {
+    left: -4px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.涟漪动画 {
+    overflow: hidden;
+    height: 100px;
+}
+
+#图片展示器 > span {
+    transition: none !important;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+@media (max-width: 300px) {
+    /*小手机屏幕*/
+    .大标题 {
+        display: none;
+    }
+}
+
+
+@media (min-width: 1024px) {
+    /*手机屏幕*/
+    .限制 {
+        width: 100vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    /*电脑屏幕*/
+    .限制 {
+        width: 100% !important;
+    }
+
+    .img {
+        width: 172px;
+    }
+
+    span > a > img {
+        width: 184px !important;
+
+    }
+
+    .mdui-toolbar {
+        width: 83% !important;
+    }
+
+    .mdui-drawer {
+        background: none !important;
+    }
+
+    .xianzhi {
+        width: 100% !important;
+    }
+
+}
+
+/*----------------------------------------------------------------------------------*/
+
+@keyframes 旋转 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*----------------------------------------------------------------------------------*/

@@ -1,0 +1,392 @@
+* {
+    transition: 0.4s all cubic-bezier(0.36, 0.31, 0, 1.05);
+    user-select: none;
+    font-weight: 400;
+    margin: 0;
+    /* padding: 0; */
+}
+
+body.mdui-locked {
+    overflow: unset;
+}
+
+iframe {
+    position: fixed;
+    left: 100vw;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5001;
+    border: medium none;
+    will-change: left;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+.child_page {
+
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.page_blank {
+    width: 100%;
+    height: 60vh;
+}
+
+/*////////////////////////////////////////////////////////////////////////////*/
+
+.mdui-progress-indeterminate{
+    background: white;
+}
+
+.mdui-drawer {
+    border-radius: 30px;
+    left: -17px;
+    max-width: 294px;
+    box-shadow: none !important;
+}
+
+.mdui-drawer::-webkit-scrollbar{
+    display: none;
+}
+
+body.mdui-loaded .mdui-drawer {
+    will-change: transition;
+}
+
+.mdui-dialog-confirm {
+    border-radius: 30px;
+}
+
+.mdui-dialog-actions .mdui-btn:first-child {
+    margin-left: 0;
+    margin-top: 0vw;
+}
+
+.mdui-typo-title {
+    font-size: 12px;
+    font-weight: bold;
+    position: relative;
+    top: 2px;
+}
+
+.mdui-dialog > .mdui-dialog-title {
+    padding: 36px 24px 20px 25px;
+    margin-left: 38%;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+.mdui-drawer {
+    display: block;
+}
+
+.mdui-drawer-close {
+    width: 0px;
+    transform: translateX(-40px) !important;
+}
+
+.mdui-dialog-alert {
+    border-radius: 30px;
+}
+
+.mdui-snackbar {
+    margin-top: 5px;
+    border-radius: 4px;
+    color: white !important;
+}
+
+
+
+.mdui-dialog-actions {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px 35px 15px 8px;
+    text-align: right;
+}
+
+.mdui-dialog-actions .mdui-btn:first-child {
+    margin-left: 0;
+    margin-top: -3vw;
+}
+
+.mdui-btn {
+    border-radius: 30px;
+    margin-right: 8px;
+    margin-bottom: 16px;
+    margin-top: 0 !important;
+}
+
+.mdui-drawer-close {
+    width: 0px;
+    transform: translateX(-40px) !important;
+}
+
+
+.mdui-typo,
+.mdui-dialog-content {
+    line-height: 1.8;
+    word-wrap: break-word;
+    font-size: 14px !important;
+    letter-spacing: 1.7px;
+    font-weight: 400;
+}
+
+.mdui-dialog-alert {
+    max-width: 348px !important;
+}
+
+.mdui-dialog {
+    -webkit-box-shadow: 0 1px 15px -7px rgb(0 0 0 / 0%), 0 24px 38px 3px rgb(0 0 0 / 0%), 0 0px 38px 0px rgb(0 0 0 / 12%);
+    box-shadow: 0 1px 15px -7px rgb(0 0 0 / 0%), 0 24px 38px 3px rgb(0 0 0 / 0%), 0 0px 38px 0px rgb(0 0 0 / 12%);
+}
+
+.mdui-dialog,
+.mdui-dialog-alert {
+    border-radius: 30px !important;
+    height: none !important;
+}
+
+.mdui-snackbar {
+    margin-top: 5px;
+    border-radius: 4px;
+    z-index: 9999;
+}
+
+
+
+.mdui-dialog-actions {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px 35px 15px 8px;
+    text-align: right;
+}
+
+.mdui-dialog-actions .mdui-btn:first-child {
+    margin-left: 0;
+    margin-top: -3vw;
+}
+
+.mdui-btn {
+    border-radius: 27px;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.mdui-menu {
+    margin: 43px -11px;
+    border-radius: 20px;
+    padding: 3px 0 3px;
+}
+
+.mdui-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+}
+
+.mdui-spinner-circle-clipper .mdui-spinner-circle {
+    border-color: #598dce;
+}
+
+.mdui-textfield-input {
+    opacity: 1;
+}
+
+.mdui-fab, .mdui-fab-fixed {
+    right: 30px;
+    bottom: 30px;
+    backdrop-filter: blur(8px);
+}
+
+.mdui-switch-icon {
+    height: 27px;
+    width: 49px;
+    border-radius: 80px;
+    border: 2px solid white;
+}
+
+.mdui-switch-icon::before {
+    top: 3.7px;
+    box-shadow: none;
+    left: 4px;
+}
+
+.mdui-switch input[type=checkbox]:checked + .mdui-switch-icon::before {
+    left: 25px !important;
+    background-color: #ffffff !important;
+}
+
+.mdui-switch input[type=checkbox]:checked + .mdui-switch-icon {
+    background-color: rgb(3 0 123 / 73%);
+    border: 2px solid rgb(3 0 123 / 0%);
+}
+
+.mdui-dialog-actions .mdui-btn:first-child {
+    margin-top: 0 !important;
+}
+
+.mdui-overlay {
+    background: rgb(37 32 86 / 40%) !important;
+}
+
+.mdui-toolbar > * {
+    overflow: unset;
+}
+
+
+.mdui-panel-item-open > .mdui-panel-item-header {
+    height: 50px;
+}
+
+.mdui-panel-item-body>p{
+    line-height: 2.5em;
+}
+
+.mdui-panel-item-body::after, .mdui-panel-item-body::before {
+    margin-top: 40px;
+}
+
+
+.mdui-panel-item {
+    box-shadow: none !important;
+    border-radius: 27px;
+    width: 92%;
+}
+
+.mdui-panel {
+    margin-top: 20px;
+    margin-left: 16px;
+}
+
+a {
+    color: #ff4b79;
+}
+
+.mdui-btn > img {
+    position: relative;
+    top: 3px;
+}
+
+.mdui-dialog-title > div > img {
+    height: 47px;
+    width: 40px;
+    position: relative;
+    left: 17px;
+    top: -11px;
+    margin-top: 23px;
+}
+
+.mdui-dialog-title > div > img:hover {
+    transform: unset;
+}
+
+.mdui-dialog-alert {
+    max-width: 500px !important;
+    background: #ffffffe3;
+    backdrop-filter: blur(30px);
+}
+
+.mdui-panel {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+.mdui-panel-item-header {
+    display: flex;
+    justify-content: center;
+    background: none;
+}
+
+.mdui-panel-item-header:active {
+    background: none;
+}
+
+.mdui-toolbar > .mdui-btn-icon {
+    height: unset !important;
+}
+
+.mdui-list-item > div {
+    border-radius: 30px;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.mdui-btn-icon > img:hover, .mdui-list-item > img:hover {
+    transform: unset;
+}
+
+.mdui-btn-icon > img, .mdui-list-item > div > img {
+    height: 27px !important;
+    width: 27px !important;
+}
+
+.mdui-table-fluid{
+    border-radius: 20px;
+}
+
+.div {
+    width: 200px;
+    height: 200px;
+    border-radius: 45%;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: 旋转;
+    margin-left:-77px;
+}
+
+.div_a {
+    animation-delay: 1.5s;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
+.对话框图标 {
+    font-size: 36px;
+    margin-left: 19px;
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+
+.对话框文字{
+    position: relative;
+    left: -55px;
+}
+
+.对话框_程序名{
+    position: relative;
+    left: -40px;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
+@media (min-width: 0px) {
+    /*手机屏幕*/
+    .mdui-drawer {
+        background: #ffffffc2;
+        backdrop-filter: blur(30px);
+    }
+}
+
+@media (max-width: 1000px) {
+    /*大屏幕*/
+    .mdui-drawer {
+        background: #ffffffc2;
+        backdrop-filter: blur(30px);
+    }
+}
+
+@media (min-width: 1024px) {
+    /*电脑屏幕*/
+    .mdui-drawer {
+        position: absolute;
+        top: 30px;
+        background: none;
+        backdrop-filter: none;
+    }
+}
